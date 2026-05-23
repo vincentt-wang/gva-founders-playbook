@@ -1,1240 +1,487 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GVA Founders Playbook | Taiwan-to-Global Pre-Accelerator for Deep Tech Founders</title>
+<title>GVA Founders Playbook | Taiwan-to-Global Pre-Accelerator</title>
 <meta name="description" content="GVA Founders Playbook is Taiwan's only pre-accelerator for deep tech founders ready to pitch global VCs. Build your investor narrative, raise with confidence.">
 <meta name="keywords" content="Taiwan-to-Global, pre-accelerator, founders playbook, startup fundraising, pitch deck, deep tech, venture capital, GVA">
-<link rel="alternate" hreflang="zh-TW" href="./index.html">
-<link rel="alternate" hreflang="en" href="./index.html?lang=en">
-<!-- Open Graph -->
+<link rel="alternate" hreflang="zh-TW" href="./?lang=zh">
+<link rel="alternate" hreflang="en" href="./">
 <meta property="og:title" content="GVA Founders Playbook | Taiwan-to-Global Pre-Accelerator">
-<meta property="og:description" content="The operating system for deep tech founders ready to face global VCs.">
+<meta property="og:description" content="The operating system for deep tech founders going global.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vincentt-wang.github.io/gva-founders-playbook/">
-<meta property="og:image" content="https://vincentt-wang.github.io/gva-founders-playbook/og-image.png">
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GVA Founders Playbook">
-<meta name="twitter:description" content="Taiwan-to-Global Pre-Accelerator for Deep Tech Founders">
-<meta name="twitter:image" content="https://vincentt-wang.github.io/gva-founders-playbook/og-image.png">
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Course",
-      "name": "GVA Founders Playbook",
-      "description": "Taiwan-to-Global pre-accelerator for deep tech founders",
-      "provider": { "@type": "Organization", "name": "Bonhope Capital" },
-      "courseMode": "online",
-      "inLanguage": ["zh-TW", "en"],
-      "url": "https://vincentt-wang.github.io/gva-founders-playbook/"
-    },
-    {
-      "@type": "Organization",
-      "name": "GVA — Global Venture Accelerator",
-      "url": "https://www.gva.tw",
-      "sameAs": ["https://www.linkedin.com/company/gva-tw"]
-    }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"GVA Founders Playbook","description":"Taiwan-to-Global pre-accelerator for deep tech founders","provider":{"@type":"Organization","name":"Bonhope Capital"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── DESIGN TOKENS ─────────────────────────────────────── */
+/* ── TOKENS ───────────────────────────────────────────────── */
 :root {
-  --bg:          #030812;
-  --bg2:         #060F1E;
-  --bg3:         #0A1628;
-  --bg-red:      #0D0610;
-  --surface:     rgba(7,17,32,0.7);
-  --surface2:    rgba(11,24,41,0.8);
-  --blue:        #2563EB;
-  --blue2:       #3B82F6;
-  --teal:        #06B6D4;
-  --gold:        #F59E0B;
-  --danger:      #EF4444;
-  --text1:       #F0F6FF;
-  --text2:       #94A3B8;
-  --text3:       #475569;
-  --border:      rgba(255,255,255,0.07);
-  --border2:     rgba(255,255,255,0.12);
-  --radius-card: 16px;
-  --radius-btn:  12px;
-  --radius-input:8px;
-  --font-display:'Syne', sans-serif;
-  --font-body:   'DM Sans', sans-serif;
-  --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+  --white:     #FFFFFF;
+  --off:       #F7FAFB;
+  --off2:      #EEF5F7;
+  --teal:      #0891B2;
+  --teal-2:    #0E7490;
+  --teal-3:    #06B6D4;
+  --teal-pale: #ECFEFF;
+  --warn-bg:   #FFF8F4;
+  --text:      #0B1623;
+  --text2:     #445566;
+  --text3:     #8FA3B1;
+  --border:    rgba(11,22,35,0.08);
+  --border2:   rgba(11,22,35,0.14);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+  --r-card:    20px;
+  --r-btn:     12px;
+  --fd:        'Bricolage Grotesque', sans-serif;
+  --fb:        'Inter', sans-serif;
+  --ease:      cubic-bezier(0.4,0,0.2,1);
 }
 
-/* ─── RESET ──────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text1);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.65;
-  overflow-x: hidden;
-}
-img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+/* ── RESET ────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--white);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+img{max-width:100%;display:block}
 
-/* ─── SCROLL PROGRESS BAR ─────────────────────────────────── */
-#progress-bar {
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, var(--blue), var(--teal));
-  z-index: 9999;
-  transition: width 0.1s linear;
-}
+/* ── SCROLL PROGRESS ──────────────────────────────────────── */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--teal),var(--teal-3));z-index:9999;transition:width .1s linear}
 
-/* ─── NAV ────────────────────────────────────────────────── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 0 2rem;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background var(--transition), backdrop-filter var(--transition), border-color var(--transition);
-  border-bottom: 1px solid transparent;
+/* ── NAV ──────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  transition:background .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
+  border-bottom:1px solid transparent;
 }
-nav.scrolled {
-  background: rgba(3,8,18,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-color: var(--border);
-}
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--blue2), var(--teal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text2);
-  transition: color var(--transition);
-  letter-spacing: 0.01em;
-}
-.nav-links a:hover { color: var(--text1); }
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.lang-toggle {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text2);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 4px 14px;
-  transition: all var(--transition);
-  font-family: var(--font-display);
-}
-.lang-toggle:hover { color: var(--teal); border-color: var(--teal); }
-.btn-nav {
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 8px 20px;
-  border-radius: var(--radius-btn);
-  background: var(--blue);
-  color: #fff;
-  transition: all var(--transition);
-  font-family: var(--font-display);
-}
-.btn-nav:hover { background: var(--blue2); transform: translateY(-1px); }
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 28px;
-  padding: 4px 0;
-}
-.hamburger span {
-  display: block;
-  height: 2px;
-  background: var(--text2);
-  border-radius: 2px;
-  transition: all var(--transition);
-}
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(3,8,18,0.97);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text1);
-  transition: color var(--transition);
-}
-.mobile-menu a:hover { color: var(--teal); }
-.mobile-close {
-  position: absolute;
-  top: 1.5rem; right: 2rem;
-  font-size: 2rem;
-  color: var(--text2);
-}
+nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--border);box-shadow:0 1px 0 rgba(0,0,0,0.04)}
 
-/* ─── SECTION BASICS ─────────────────────────────────────── */
-section { position: relative; }
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 1rem;
-  font-family: var(--font-display);
-}
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: var(--text1);
-  margin-bottom: 1.25rem;
-}
-.section-sub {
-  font-size: 1.05rem;
-  color: var(--text2);
-  max-width: 600px;
-  line-height: 1.75;
-}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{display:flex;flex-direction:column;gap:4px;transition:.3s var(--ease)}
+.lm-bar{height:2px;background:var(--teal);border-radius:2px;transition:all .35s var(--ease);transform-origin:left center}
+.lm-bar:nth-child(1){width:14px}
+.lm-bar:nth-child(2){width:20px}
+.lm-bar:nth-child(3){width:14px}
+.logo:hover .lm-bar:nth-child(1){width:20px;transform:translateY(-2px)}
+.logo:hover .lm-bar:nth-child(3){width:20px;transform:translateY(2px)}
+.logo:hover .lm-bar:nth-child(2){width:14px}
+.logo-text{font-family:var(--fd);font-weight:800;font-size:.95rem;letter-spacing:-.01em;color:var(--text);white-space:nowrap}
 
-/* ─── ANIMATED DIVIDER ───────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blue) 30%, var(--teal) 60%, transparent);
-  opacity: 0.4;
-  margin: 0;
-  animation: shimmer-line 4s ease-in-out infinite;
-}
-@keyframes shimmer-line {
-  0%,100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
-}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text2);transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.btn-lang{font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;transition:all .2s;font-family:var(--fd)}
+.btn-lang:hover{color:var(--teal);border-color:var(--teal)}
+.btn-nav{font-family:var(--fd);font-weight:700;font-size:.875rem;padding:9px 22px;border-radius:var(--r-btn);background:var(--teal);color:#fff;transition:all .2s;white-space:nowrap}
+.btn-nav:hover{background:var(--teal-2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(8,145,178,.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px 0;width:26px}
+.hamburger span{display:block;height:2px;background:var(--text2);border-radius:2px;transition:all .3s}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(255,255,255,.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--text);transition:color .2s}
+.mob-menu a:hover{color:var(--teal)}
+.mob-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--text3)}
 
-/* ─── FADE-UP ANIMATION ──────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+/* ── CONTAINERS & REVEAL ──────────────────────────────────── */
+.container{max-width:1180px;margin:0 auto;padding:0 2rem}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* ─── HERO ───────────────────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 0 80px;
-}
-#hero-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.6;
-}
-.hero-glow {
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80vw;
-  height: 80vw;
-  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 65%);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 820px;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--teal);
-  border: 1px solid rgba(6,182,212,0.3);
-  border-radius: 20px;
-  padding: 6px 16px;
-  margin-bottom: 2rem;
-  background: rgba(6,182,212,0.05);
-  font-family: var(--font-display);
-}
-.hero-badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 0 8px var(--teal);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%,100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.6); }
-}
-.hero-h1 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 1.0;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.5rem;
-  min-height: 1.1em;
-}
-.hero-h1 .gradient-text {
-  background: linear-gradient(135deg, #60A5FA 0%, #06B6D4 50%, #34D399 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.cursor-blink {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--teal);
-  margin-left: 4px;
-  vertical-align: text-bottom;
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-.hero-sub {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: var(--text2);
-  max-width: 640px;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-}
-.hero-ctas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  padding: 14px 28px;
-  border-radius: var(--radius-btn);
-  background: linear-gradient(135deg, var(--blue), var(--blue2));
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition);
-  box-shadow: 0 0 30px rgba(37,99,235,0.3);
-}
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-.btn-primary:hover::after { transform: translateX(100%); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(37,99,235,0.5); }
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 14px 28px;
-  border-radius: var(--radius-btn);
-  border: 1px solid var(--border2);
-  color: var(--text1);
-  transition: all var(--transition);
-}
-.btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
-.hero-stats {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.stat-pill {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text3);
-  padding-right: 1.5rem;
-  margin-right: 1.5rem;
-  border-right: 1px solid var(--border);
-  white-space: nowrap;
-}
-.stat-pill:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-.stat-pill strong { color: var(--text2); font-weight: 600; }
-.scroll-chevron {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  animation: bounce-down 2.5s ease-in-out infinite;
-}
-.scroll-chevron span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border-right: 2px solid var(--text3);
-  border-bottom: 2px solid var(--text3);
-  transform: rotate(45deg);
-}
-@keyframes bounce-down {
-  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
-  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
-}
+/* ── SECTION LABELS & TITLES ──────────────────────────────── */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.25rem}
+.eyebrow::before{content:'';width:20px;height:2px;background:var(--teal);border-radius:2px;flex-shrink:0}
+.section-h{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.08;letter-spacing:-.04em;color:var(--text);margin-bottom:1.25rem}
+.section-p{font-size:1.05rem;color:var(--text2);line-height:1.75;max-width:580px}
 
-/* ─── PAIN SECTION ───────────────────────────────────────── */
-#pain {
-  background: var(--bg-red);
-  padding: 100px 0;
-}
-.pain-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-.pain-card {
-  background: rgba(239,68,68,0.04);
-  border: 1px solid rgba(239,68,68,0.12);
-  border-left: 3px solid var(--danger);
-  border-radius: var(--radius-card);
-  padding: 2rem;
-  transition: all var(--transition);
-}
-.pain-card:hover {
-  background: rgba(239,68,68,0.07);
-  border-color: rgba(239,68,68,0.25);
-  transform: translateY(-4px);
-}
-.pain-icon {
-  width: 48px; height: 48px;
-  background: rgba(239,68,68,0.1);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-}
-.pain-icon svg { width: 24px; height: 24px; color: var(--danger); }
-.pain-card h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  margin-bottom: 0.6rem;
-  color: var(--text1);
-}
-.pain-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+/* ── BUTTONS ──────────────────────────────────────────────── */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:var(--r-btn);background:var(--teal);color:#fff;position:relative;overflow:hidden;transition:all .25s var(--ease);box-shadow:0 0 0 rgba(8,145,178,0)}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.18) 50%,transparent 62%);transform:translateX(-100%);transition:transform .55s ease}
+.btn-primary:hover::after{transform:translateX(100%)}
+.btn-primary:hover{background:var(--teal-2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(8,145,178,.32)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:600;font-size:.95rem;padding:14px 28px;border-radius:var(--r-btn);border:1.5px solid var(--border2);color:var(--text);transition:all .25s var(--ease)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
 
-/* ─── PILLARS SECTION ────────────────────────────────────── */
-#pillars {
-  padding: 100px 0;
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
-}
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-.pillar-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: 2.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition);
-  cursor: default;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-.pillar-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-card);
-  background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-.pillar-card:hover::before { opacity: 1; }
-.pillar-card:hover {
-  border-color: rgba(59,130,246,0.35);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(37,99,235,0.15);
-}
-.pillar-number {
-  font-family: var(--font-display);
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(59,130,246,0.2);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.05em;
-}
-.pillar-icon {
-  width: 52px; height: 52px;
-  background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(6,182,212,0.1));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  border: 1px solid rgba(59,130,246,0.2);
-}
-.pillar-icon svg { width: 26px; height: 26px; color: var(--blue2); }
-.pillar-card h3 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  color: var(--text1);
-}
-.pillar-desc { font-size: 0.92rem; color: var(--text2); line-height: 1.65; }
-.pillar-reveal {
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.85rem;
-  color: var(--teal);
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.pillar-card:hover .pillar-reveal { opacity: 1; transform: translateY(0); }
+/* ── ANIMATED DIVIDER ─────────────────────────────────────── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--teal) 30%,var(--teal-3) 65%,transparent);opacity:.2}
 
-/* ─── CURRICULUM SECTION ─────────────────────────────────── */
-#curriculum {
-  padding: 100px 0;
-  background: var(--bg2);
+/* ── HERO ─────────────────────────────────────────────────── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:140px 0 100px;
+  position:relative;overflow:hidden;
+  background:var(--white);
 }
-.lock-overlay {
-  max-width: 480px;
-  margin: 3rem auto 0;
-  text-align: center;
-}
-.lock-icon {
-  width: 72px; height: 72px;
-  background: rgba(245,158,11,0.1);
-  border: 1px solid rgba(245,158,11,0.2);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-}
-.lock-icon svg { width: 36px; height: 36px; color: var(--gold); }
-.lock-overlay p {
-  color: var(--text2);
-  font-size: 0.95rem;
-  margin-bottom: 1.75rem;
-}
-.pw-input-group {
-  display: flex;
-  gap: 0.75rem;
-  max-width: 380px;
-  margin: 0 auto;
-}
-.pw-input {
-  flex: 1;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-input);
-  padding: 12px 16px;
-  color: var(--text1);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color var(--transition);
-  letter-spacing: 0.1em;
-}
-.pw-input:focus { border-color: var(--gold); }
-.btn-unlock {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, var(--gold), #D97706);
-  color: #000;
-  border-radius: var(--radius-input);
-  transition: all var(--transition);
-  white-space: nowrap;
-}
-.btn-unlock:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245,158,11,0.3); }
-.pw-error {
-  color: var(--danger);
-  font-size: 0.85rem;
-  margin-top: 0.75rem;
-  display: none;
-}
-.accordion-wrap {
-  display: none;
-  margin-top: 2rem;
-}
-.accordion-wrap.unlocked { display: block; }
-.accordion-item {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-  background: var(--surface);
-  transition: border-color var(--transition);
-}
-.accordion-item:hover { border-color: rgba(59,130,246,0.2); }
-.accordion-trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  text-align: left;
-  gap: 1rem;
-  background: none;
-}
-.accordion-left {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-.module-num {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--blue2);
-  background: rgba(59,130,246,0.1);
-  border: 1px solid rgba(59,130,246,0.2);
-  border-radius: 6px;
-  padding: 4px 10px;
-  white-space: nowrap;
-}
-.accordion-trigger h4 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--text1);
-}
-.accordion-chevron {
-  width: 20px; height: 20px;
-  color: var(--text3);
-  flex-shrink: 0;
-  transition: transform var(--transition);
-}
-.accordion-item.open .accordion-chevron { transform: rotate(180deg); }
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
-}
-.accordion-inner {
-  padding: 0 1.5rem 1.5rem;
-  padding-left: calc(1.5rem + 1.25rem + 3.5rem);
-  font-size: 0.9rem;
-  color: var(--text2);
-  line-height: 1.7;
-}
-.accordion-inner ul { list-style: none; }
-.accordion-inner li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 0.4rem;
-}
-.accordion-inner li::before {
-  content: '→';
-  color: var(--teal);
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
+.hero-glow-1{position:absolute;top:-20%;right:-10%;width:70vw;height:70vw;background:radial-gradient(ellipse,rgba(6,182,212,.1) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 10s ease-in-out infinite}
+.hero-glow-2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(8,145,178,.07) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 14s ease-in-out infinite reverse}
+@keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(8,145,178,.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)}
 
-/* ─── METHODOLOGY BRIDGE ─────────────────────────────────── */
-#methodology {
-  padding: 120px 0;
-  background: linear-gradient(135deg, #020C1E 0%, #041020 40%, #061428 100%);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-#methodology::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 65%);
-  pointer-events: none;
-}
-.methodology-eyebrow {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  background: rgba(245,158,11,0.08);
-  border: 1px solid rgba(245,158,11,0.2);
-  border-radius: 20px;
-  padding: 5px 16px;
-  margin-bottom: 2rem;
-  font-family: var(--font-display);
-}
-#methodology .section-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  max-width: 720px;
-  margin: 0 auto 1.25rem;
-}
-#methodology .section-sub {
-  max-width: 560px;
-  margin: 0 auto 2.5rem;
-}
-.btn-methodology {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 18px 36px;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
-  color: #fff;
-  border-radius: var(--radius-btn);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition);
-  box-shadow: 0 0 40px rgba(37,99,235,0.35);
-}
-.btn-methodology::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0.7s ease;
-}
-.btn-methodology:hover::after { transform: translateX(100%); }
-.btn-methodology:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 70px rgba(37,99,235,0.55);
-}
-.methodology-stats {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 4rem;
-  flex-wrap: wrap;
-}
-.m-stat { text-align: center; }
-.m-stat-num {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--blue2), var(--teal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-.m-stat-label { font-size: 0.85rem; color: var(--text3); letter-spacing: 0.04em; }
+.hero-inner{position:relative;z-index:2;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(8,145,178,.25);border-radius:24px;padding:7px 18px;background:rgba(8,145,178,.05);margin-bottom:2.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:dot-pulse 2s ease-in-out infinite}
+@keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
 
-/* ─── SOCIAL PROOF ───────────────────────────────────────── */
-#proof {
-  padding: 100px 0;
-  background: var(--bg);
-}
-.logo-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin: 3rem 0;
-}
-.logo-badge {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  color: var(--text3);
-  transition: all var(--transition);
-  white-space: nowrap;
-}
-.logo-badge:hover { color: var(--text1); border-color: var(--border2); transform: translateY(-2px); }
-.testimonial-card {
-  max-width: 640px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2.5rem;
-  backdrop-filter: blur(12px);
-  position: relative;
-}
-.quote-mark {
-  font-family: var(--font-display);
-  font-size: 5rem;
-  line-height: 0.8;
-  color: var(--blue2);
-  opacity: 0.25;
-  margin-bottom: 1rem;
-  display: block;
-}
-.testimonial-text {
-  font-size: 1.1rem;
-  color: var(--text1);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  font-style: italic;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.testimonial-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--border2);
-  object-fit: cover;
-}
-.author-info h5 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text1);
-}
-.author-info p { font-size: 0.82rem; color: var(--text2); }
+.hero-h1{font-family:var(--fd);font-weight:800;font-size:clamp(3.8rem,8.5vw,8.5rem);line-height:1.0;letter-spacing:-.05em;color:var(--text);margin-bottom:2rem}
+.hero-h1 em{font-style:normal;color:var(--teal)}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text2);max-width:620px;margin:0 auto 3rem;line-height:1.7}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.hero-stats{display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap}
+.h-stat{padding:0 2.5rem;text-align:center;border-right:1px solid var(--border)}
+.h-stat:last-child{border-right:none}
+.h-stat-n{font-family:var(--fd);font-weight:800;font-size:1.6rem;line-height:1;color:var(--text);letter-spacing:-.03em}
+.h-stat-l{font-size:.78rem;color:var(--text3);margin-top:4px;white-space:nowrap}
+.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:cue-bounce 2.5s ease-in-out infinite;z-index:2}
+.scroll-cue-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--teal),transparent);border-radius:1px}
+.scroll-cue-dot{width:6px;height:6px;border-radius:50%;border:1.5px solid var(--teal)}
+@keyframes cue-bounce{0%,100%{transform:translateX(-50%) translateY(0);opacity:.5}50%{transform:translateX(-50%) translateY(8px);opacity:1}}
 
-/* ─── APPLICATION FORM ───────────────────────────────────── */
-#apply {
-  padding: 100px 0;
-  background: var(--bg2);
-  position: relative;
-  overflow: hidden;
-}
-#apply::before {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 65%);
-  pointer-events: none;
-}
-.form-wrap {
-  max-width: 600px;
-  margin: 3rem auto 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 2.5rem;
-  backdrop-filter: blur(12px);
-}
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group.full { grid-column: 1 / -1; }
-.form-group label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text2);
-  letter-spacing: 0.04em;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-}
-.form-group input,
-.form-group textarea {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-input);
-  padding: 12px 16px;
-  color: var(--text1);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-  resize: none;
-}
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--blue2);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--text3); }
-.btn-submit {
-  width: 100%;
-  margin-top: 1.25rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--blue), var(--blue2));
-  color: #fff;
-  border-radius: var(--radius-btn);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition);
-  box-shadow: 0 0 30px rgba(37,99,235,0.25);
-}
-.btn-submit::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-.btn-submit:hover::after { transform: translateX(100%); }
-.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(37,99,235,0.4); }
-.form-success {
-  display: none;
-  text-align: center;
-  padding: 2rem;
-}
-.form-success svg { width: 56px; height: 56px; color: #10B981; margin: 0 auto 1.25rem; }
-.form-success h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-  color: var(--text1);
-}
-.form-success p { font-size: 0.95rem; color: var(--text2); }
-.form-disclaimer {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  color: var(--text3);
-}
+/* ── MARQUEE ──────────────────────────────────────────────── */
+#marquee{padding:28px 0;background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee-scroll 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:2rem;padding:0 3rem;font-family:var(--fd);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.marquee-sep{width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.5;flex-shrink:0}
+@keyframes marquee-scroll{to{transform:translateX(-50%)}}
 
-/* ─── FAQ ────────────────────────────────────────────────── */
-#faq {
-  padding: 100px 0;
-  background: var(--bg);
-}
-.faq-wrap {
-  max-width: 760px;
-  margin: 3rem auto 0;
-}
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  margin-bottom: 0.75rem;
-  background: var(--surface);
-  overflow: hidden;
-  transition: border-color var(--transition);
-}
-.faq-item:hover { border-color: var(--border2); }
-.faq-trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  gap: 1rem;
-  background: none;
-  text-align: left;
-}
-.faq-trigger h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.98rem;
-  color: var(--text1);
-}
-.faq-chevron {
-  width: 20px; height: 20px;
-  color: var(--text3);
-  flex-shrink: 0;
-  transition: transform var(--transition);
-}
-.faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--teal); }
-.faq-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
-}
-.faq-inner {
-  padding: 0 1.5rem 1.25rem;
-  font-size: 0.92rem;
-  color: var(--text2);
-  line-height: 1.7;
-}
+/* ── PAIN SECTION ─────────────────────────────────────────── */
+#pain{padding:120px 0;background:var(--warn-bg)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3.5rem}
+.pain-card{background:var(--white);border:1px solid rgba(239,68,68,.1);border-top:3px solid #EF4444;border-radius:var(--r-card);padding:2.25rem 2rem;box-shadow:var(--shadow-sm);transition:all .3s var(--ease)}
+.pain-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.pain-ico{width:48px;height:48px;background:#FEF2F2;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.pain-ico svg{width:24px;height:24px;color:#EF4444}
+.pain-card h3{font-family:var(--fd);font-weight:700;font-size:1.05rem;margin-bottom:.6rem;letter-spacing:-.01em}
+.pain-card p{font-size:.9rem;color:var(--text2);line-height:1.65}
 
-/* ─── FOOTER ─────────────────────────────────────────────── */
-footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 60px 0 0;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border);
-}
-.footer-brand .nav-logo { font-size: 1.15rem; margin-bottom: 0.75rem; display: block; }
-.footer-tagline { font-size: 0.88rem; color: var(--text3); line-height: 1.65; max-width: 280px; margin-bottom: 1.5rem; }
-.social-links { display: flex; gap: 0.75rem; }
-.social-link {
-  width: 40px; height: 40px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text3);
-  transition: all var(--transition);
-}
-.social-link:hover { border-color: var(--blue2); color: var(--blue2); transform: translateY(-2px); }
-.social-link svg { width: 18px; height: 18px; }
-.footer-nav h5 {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 1.25rem;
-}
-.footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.footer-nav a { font-size: 0.9rem; color: var(--text2); transition: color var(--transition); }
-.footer-nav a:hover { color: var(--text1); }
-.footer-bottom {
-  padding: 1.5rem 0;
-  font-size: 0.78rem;
-  color: var(--text3);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
+/* ── PILLARS ──────────────────────────────────────────────── */
+#pillars{padding:120px 0;background:var(--white)}
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:3.5rem}
+.pillar-card{background:var(--off);border:1px solid var(--border);border-radius:var(--r-card);padding:2.5rem 2rem;transition:all .3s var(--ease);cursor:default;position:relative;overflow:hidden}
+.pillar-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-3));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.pillar-card:hover{background:var(--white);box-shadow:var(--shadow-md);transform:translateY(-6px);border-color:rgba(8,145,178,.2)}
+.pillar-card:hover::before{transform:scaleX(1)}
+.p-num{font-family:var(--fd);font-size:3.5rem;font-weight:800;line-height:1;letter-spacing:-.05em;color:rgba(8,145,178,.12);margin-bottom:1.5rem}
+.p-ico{width:52px;height:52px;background:rgba(8,145,178,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;transition:background .3s}
+.pillar-card:hover .p-ico{background:rgba(8,145,178,.18)}
+.p-ico svg{width:26px;height:26px;color:var(--teal)}
+.pillar-card h3{font-family:var(--fd);font-weight:800;font-size:1.2rem;letter-spacing:-.02em;margin-bottom:.75rem}
+.pillar-card p{font-size:.92rem;color:var(--text2);line-height:1.7}
+.p-detail{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--teal);font-weight:500;opacity:0;transform:translateY(6px);transition:all .3s var(--ease);display:flex;align-items:center;gap:6px}
+.pillar-card:hover .p-detail{opacity:1;transform:none}
 
-/* ─── COUNTER ────────────────────────────────────────────── */
-.count-num { display: inline; }
+/* ── GLOBE SECTION ────────────────────────────────────────── */
+#global{padding:120px 0;background:linear-gradient(180deg,var(--white) 0%,var(--teal-pale) 40%,var(--white) 100%)}
+.global-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+.global-text{}
+.globe-wrap{display:flex;justify-content:center;align-items:center;position:relative}
+.globe-glow{position:absolute;inset:-40px;background:radial-gradient(ellipse,rgba(8,145,178,.12) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+#globe-canvas{border-radius:50%;display:block}
+.city-legend{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.75rem}
+.city-tag{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:500;color:var(--text2);background:var(--white);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+.city-dot-tag{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.city-dot-tag.origin{background:#F59E0B;box-shadow:0 0 6px #F59E0B}
 
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .nav-links, .nav-actions { display: none; }
-  .hamburger { display: flex; }
-  .hero-content { text-align: center; }
-  .hero-ctas { justify-content: center; }
-  .hero-stats { justify-content: center; }
-  .pain-grid { grid-template-columns: 1fr; }
-  .pillars-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .methodology-stats { gap: 2rem; }
-  .accordion-inner { padding-left: 1.5rem; }
+/* ── CURRICULUM ───────────────────────────────────────────── */
+#curriculum{padding:120px 0;background:var(--white)}
+.curriculum-inner{display:grid;grid-template-columns:1fr 1.8fr;gap:5rem;align-items:start;margin-top:3.5rem}
+.acc-item{border:1px solid var(--border);border-radius:var(--r-card);margin-bottom:.75rem;background:var(--off);overflow:hidden;transition:border-color .3s}
+.acc-item:hover{border-color:rgba(8,145,178,.25)}
+.acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;gap:1rem;background:none;text-align:left}
+.acc-left{display:flex;align-items:center;gap:1.25rem}
+.mod-tag{font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.1em;color:var(--teal);background:rgba(8,145,178,.1);border:1px solid rgba(8,145,178,.2);border-radius:6px;padding:4px 10px;white-space:nowrap}
+.acc-trigger h4{font-family:var(--fd);font-weight:700;font-size:.98rem;letter-spacing:-.01em;color:var(--text)}
+.acc-chev{width:18px;height:18px;color:var(--text3);flex-shrink:0;transition:transform .35s var(--ease)}
+.acc-item.open .acc-chev{transform:rotate(180deg);color:var(--teal)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.acc-inner{padding:.25rem 1.5rem 1.5rem;padding-left:calc(1.5rem + 1.25rem + 2.5rem);font-size:.88rem;color:var(--text2);line-height:1.7}
+.acc-inner ul{list-style:none}
+.acc-inner li{display:flex;align-items:flex-start;gap:8px;margin-bottom:.4rem}
+.acc-inner li::before{content:'→';color:var(--teal);font-size:.82rem;flex-shrink:0;margin-top:2px}
+
+/* ── METHODOLOGY ──────────────────────────────────────────── */
+#methodology{padding:120px 0;background:var(--teal);position:relative;overflow:hidden;text-align:center}
+#methodology::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:200%;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none}
+#methodology .eyebrow{color:rgba(255,255,255,.7)}
+#methodology .eyebrow::before{background:rgba(255,255,255,.5)}
+#methodology .section-h{color:#fff;font-size:clamp(2.2rem,4.5vw,4rem)}
+#methodology .section-p{color:rgba(255,255,255,.75);margin:0 auto 3rem}
+.btn-meth{display:inline-flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;padding:18px 36px;border-radius:var(--r-btn);background:#fff;color:var(--teal);position:relative;overflow:hidden;transition:all .3s var(--ease);box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.btn-meth::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(8,145,178,.12) 50%,transparent 62%);transform:translateX(-100%);transition:transform .6s ease}
+.btn-meth:hover::after{transform:translateX(100%)}
+.btn-meth:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.2)}
+.meth-metrics{display:flex;justify-content:center;gap:4rem;margin-top:4.5rem;flex-wrap:wrap;position:relative;z-index:2}
+.mm{text-align:center}
+.mm-n{font-family:var(--fd);font-weight:800;font-size:2.8rem;line-height:1;color:#fff;letter-spacing:-.04em;margin-bottom:.35rem}
+.mm-l{font-size:.82rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
+
+/* ── SOCIAL PROOF ─────────────────────────────────────────── */
+#proof{padding:120px 0;background:var(--off)}
+.logos{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin:3rem 0}
+.logo-badge{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 24px;font-family:var(--fd);font-weight:800;font-size:.88rem;letter-spacing:.04em;color:var(--text3);transition:all .25s;white-space:nowrap}
+.logo-badge:hover{color:var(--text2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.tcard{max-width:680px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:2.75rem;box-shadow:var(--shadow-sm)}
+.tcard-q{font-family:var(--fd);font-size:4rem;line-height:.8;color:rgba(8,145,178,.2);margin-bottom:1rem}
+.tcard-text{font-size:1.1rem;color:var(--text);line-height:1.75;margin-bottom:1.75rem;font-style:italic}
+.tcard-author{display:flex;align-items:center;gap:1rem}
+.tcard-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--border2);object-fit:cover}
+.tcard-info h5{font-family:var(--fd);font-weight:700;font-size:.95rem}
+.tcard-info p{font-size:.82rem;color:var(--text2)}
+
+/* ── APPLY ────────────────────────────────────────────────── */
+#apply{padding:120px 0;background:var(--white);position:relative;overflow:hidden}
+#apply::after{content:'';position:absolute;bottom:-40%;right:-15%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(8,145,178,.06) 0%,transparent 60%);pointer-events:none}
+.form-shell{max-width:580px;margin:3.5rem auto 0;background:var(--off);border:1px solid var(--border);border-radius:24px;padding:2.75rem;position:relative;z-index:2}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1/-1}
+.fg label{font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
+.fg input,.fg textarea{background:var(--white);border:1px solid var(--border2);border-radius:10px;padding:12px 16px;color:var(--text);font-family:var(--fb);font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s;resize:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(8,145,178,.1)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text3)}
+.btn-submit{width:100%;margin-top:1.25rem;font-family:var(--fd);font-weight:700;font-size:1rem;padding:16px;background:var(--teal);color:#fff;border-radius:var(--r-btn);position:relative;overflow:hidden;transition:all .25s var(--ease);box-shadow:0 4px 20px rgba(8,145,178,.2)}
+.btn-submit::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.15) 50%,transparent 62%);transform:translateX(-100%);transition:transform .55s ease}
+.btn-submit:hover::after{transform:translateX(100%)}
+.btn-submit:hover{background:var(--teal-2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(8,145,178,.3)}
+.form-note{text-align:center;margin-top:1rem;font-size:.78rem;color:var(--text3)}
+.form-success{display:none;text-align:center;padding:2rem 0}
+.form-success svg{width:56px;height:56px;color:#10B981;margin:0 auto 1.25rem}
+.form-success h3{font-family:var(--fd);font-weight:700;font-size:1.3rem;margin-bottom:.75rem}
+.form-success p{font-size:.95rem;color:var(--text2)}
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+#faq{padding:120px 0;background:var(--off)}
+.faq-wrap{max-width:780px;margin:3.5rem auto 0}
+.fq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-card);margin-bottom:.75rem;overflow:hidden;transition:border-color .25s}
+.fq-item:hover{border-color:rgba(8,145,178,.2)}
+.fq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;gap:1rem;background:none;text-align:left}
+.fq-trigger h4{font-family:var(--fd);font-weight:600;font-size:.98rem;letter-spacing:-.01em;color:var(--text)}
+.fq-chev{width:18px;height:18px;color:var(--text3);flex-shrink:0;transition:transform .35s var(--ease)}
+.fq-item.open .fq-chev{transform:rotate(180deg);color:var(--teal)}
+.fq-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.fq-inner{padding:.25rem 1.5rem 1.25rem;font-size:.92rem;color:var(--text2);line-height:1.7}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer{background:#0B1623;padding:72px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-brand{}.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:.85rem}
+.ft-logo .lm-bar{background:rgba(255,255,255,.5)}
+.ft-logo-text{font-family:var(--fd);font-weight:800;font-size:.95rem;color:rgba(255,255,255,.9)}
+.ft-tagline{font-size:.88rem;color:rgba(255,255,255,.35);line-height:1.65;max-width:260px;margin-bottom:1.5rem}
+.ft-socials{display:flex;gap:.75rem}
+.ft-social{width:38px;height:38px;border:1px solid rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);transition:all .25s}
+.ft-social:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.ft-social svg{width:17px;height:17px}
+.ft-nav h5{font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
+.ft-nav ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.ft-nav a{font-size:.88rem;color:rgba(255,255,255,.45);transition:color .2s}
+.ft-nav a:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;font-size:.78rem;color:rgba(255,255,255,.25)}
+
+/* ── CONNECTING LINE ANIMATION ────────────────────────────── */
+.section-connector{overflow:hidden;height:80px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--white)}
+.connector-svg{width:100%;height:60px;position:absolute}
+.connector-path{fill:none;stroke:rgba(8,145,178,.2);stroke-width:1.5;stroke-dasharray:800;stroke-dashoffset:800;animation:draw-path 2.5s ease forwards}
+.connector-path.vis{animation:draw-path 2.5s ease forwards}
+@keyframes draw-path{to{stroke-dashoffset:0}}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media(max-width:900px){
+  .global-inner{grid-template-columns:1fr}
+  .curriculum-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right{display:none}
+  .hamburger{display:flex}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .h-stat{padding:0 1.25rem}
+  .meth-metrics{gap:2rem}
+  .hero-h1{font-size:clamp(3rem,10vw,5rem)}
 }
 </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
-<div id="progress-bar"></div>
+<div id="bar"></div>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
-  <a href="#about" onclick="closeMobile()" data-zh="關於計畫" data-en="About">關於計畫</a>
-  <a href="#curriculum" onclick="closeMobile()" data-zh="課程內容" data-en="Curriculum">課程內容</a>
-  <a href="#apply" onclick="closeMobile()" data-zh="立即申請" data-en="Apply">立即申請</a>
-  <button class="lang-toggle" style="margin-top:1rem" onclick="toggleLang();closeMobile()" id="mobileLangBtn">EN</button>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#about" onclick="closeMob()" data-en="About" data-zh="關於計畫">About</a>
+  <a href="#curriculum" onclick="closeMob()" data-en="Curriculum" data-zh="課程">Curriculum</a>
+  <a href="#apply" onclick="closeMob()" data-en="Apply" data-zh="申請">Apply</a>
+  <button class="btn-lang" onclick="toggleLang();closeMob()" id="mobLangBtn">中文</button>
 </div>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a class="nav-logo" href="#" data-zh="GVA Founders Playbook" data-en="GVA Founders Playbook">GVA Founders Playbook</a>
+<nav id="nav">
+  <a class="logo" href="#">
+    <div class="logo-mark" aria-hidden="true">
+      <div class="lm-bar"></div>
+      <div class="lm-bar"></div>
+      <div class="lm-bar"></div>
+    </div>
+    <span class="logo-text" data-en="GVA Founders Playbook" data-zh="GVA Founders Playbook">GVA Founders Playbook</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#about" data-zh="關於計畫" data-en="About">關於計畫</a></li>
-    <li><a href="#curriculum" data-zh="課程內容" data-en="Curriculum">課程內容</a></li>
-    <li><a href="#methodology" data-zh="方法論" data-en="Methodology">方法論</a></li>
-    <li><a href="#faq" data-zh="FAQ" data-en="FAQ">FAQ</a></li>
+    <li><a href="#about" data-en="About" data-zh="關於計畫">About</a></li>
+    <li><a href="#pillars" data-en="The Program" data-zh="計畫內容">The Program</a></li>
+    <li><a href="#curriculum" data-en="Curriculum" data-zh="課程">Curriculum</a></li>
+    <li><a href="#faq" data-en="FAQ" data-zh="FAQ">FAQ</a></li>
   </ul>
-  <div class="nav-actions">
-    <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
-    <a href="#apply" class="btn-nav" data-zh="申請加入" data-en="Apply Now">申請加入</a>
+  <div class="nav-right">
+    <button class="btn-lang" onclick="toggleLang()" id="langBtn">中文</button>
+    <a href="#apply" class="btn-nav" data-en="Apply Now" data-zh="立即申請">Apply Now</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="openMobile()">
+  <button class="hamburger" aria-label="Menu" onclick="openMob()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ═══════════════════════ HERO ═══════════════════════════ -->
+<!-- ════════════════════ HERO ════════════════════════════════ -->
 <section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-glow"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-grid"></div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge" data-zh="Pre-Accelerator · Taiwan to Global" data-en="Pre-Accelerator · Taiwan to Global">
-        Pre-Accelerator · Taiwan to Global
-      </div>
+    <div class="hero-inner">
+      <div class="hero-badge" data-en="Pre-Accelerator · Taiwan to Global" data-zh="前加速計畫 · 台灣出海">Pre-Accelerator · Taiwan to Global</div>
       <h1 class="hero-h1">
-        <span class="gradient-text" id="typewriter">From Lab to Global Stage</span><span class="cursor-blink"></span>
+        <span data-en="Turn Your Breakthrough" data-zh="把你的突破">Turn Your Breakthrough</span><br>
+        <em><span data-en="Into a Fundable Story." data-zh="變成一個值得投資的故事。">Into a Fundable Story.</span></em>
       </h1>
-      <p class="hero-sub" data-zh="深科技創辦人的出海作戰系統。你的技術已經達到世界級水準，現在是時候讓全球 VC 看到它真正的價值。" data-en="The operating system for deep tech founders ready to face global VCs — but stuck translating breakthroughs into fundable stories.">
-        深科技創辦人的出海作戰系統。你的技術已經達到世界級水準，現在是時候讓全球 VC 看到它真正的價值。
+      <p class="hero-sub" data-en="The operating system for deep tech founders who are ready to face global VCs — but stuck translating breakthroughs into stories investors act on." data-zh="為準備面對全球 VC 的深科技創辦人打造的作戰系統。把世界級技術，轉換成投資人會行動的故事。">
+        The operating system for deep tech founders who are ready to face global VCs — but stuck translating breakthroughs into stories investors act on.
       </p>
       <div class="hero-ctas">
-        <a href="#apply" class="btn-primary" data-zh="立即申請 →" data-en="Apply Now →">立即申請 →</a>
-        <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-ghost" data-zh="探索完整方法論" data-en="Explore Methodology">探索完整方法論</a>
+        <a href="#apply" class="btn-primary" data-en="Apply for the Next Cohort →" data-zh="申請加入下一期 →">Apply for the Next Cohort →</a>
+        <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-outline" data-en="Explore the Methodology" data-zh="探索完整方法論">Explore the Methodology</a>
       </div>
       <div class="hero-stats">
-        <div class="stat-pill" data-zh="<strong><span class='count-num' data-target='161'>0</span> 頁完整教材</strong>" data-en="<strong><span class='count-num' data-target='161'>0</span>-page playbook</strong>">
-          <strong><span class="count-num" data-target="161">161</span> 頁完整教材</strong>
+        <div class="h-stat">
+          <div class="h-stat-n"><span class="cnt" data-target="8">8</span></div>
+          <div class="h-stat-l" data-en="Core Modules" data-zh="核心模組">Core Modules</div>
         </div>
-        <div class="stat-pill" data-zh="<strong><span class='count-num' data-target='8'>0</span> 大模組</strong>" data-en="<strong><span class='count-num' data-target='8'>0</span> curriculum modules</strong>">
-          <strong><span class="count-num" data-target="8">8</span> 大模組</strong>
+        <div class="h-stat">
+          <div class="h-stat-n"><span class="cnt" data-target="15">15</span></div>
+          <div class="h-stat-l" data-en="Founders Per Cohort" data-zh="每期名額">Founders Per Cohort</div>
         </div>
-        <div class="stat-pill" data-zh="台灣唯一 Global VC 前加速計畫" data-en="Taiwan's only pre-accelerator for global VC">
-          台灣唯一 Global VC 前加速計畫
+        <div class="h-stat">
+          <div class="h-stat-n">2</div>
+          <div class="h-stat-l" data-en="Global Expeditions" data-zh="現地考察">Global Expeditions</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n" data-en="Taiwan's #1" data-zh="台灣第一">Taiwan's #1</div>
+          <div class="h-stat-l" data-en="Global VC Pre-Accelerator" data-zh="全球 VC 前加速計畫">Global VC Pre-Accelerator</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="scroll-chevron">
-    <span></span>
+  <div class="scroll-cue">
+    <div class="scroll-cue-line"></div>
+    <div class="scroll-cue-dot"></div>
   </div>
 </section>
 
+<!-- MARQUEE -->
+<div id="marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- doubled for seamless loop, populated by JS -->
+  </div>
+</div>
+
 <div class="divider"></div>
 
-<!-- ═══════════════════ PAIN SECTION ════════════════════════ -->
-<section id="about" style="background:var(--bg-red);padding:100px 0;">
+<!-- ══════════════════ PAIN / ABOUT ══════════════════════════ -->
+<section id="about" style="padding:120px 0;background:var(--warn-bg)">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-zh="創辦人困境" data-en="The Founder's Wall">創辦人困境</div>
-      <h2 class="section-title" data-zh="你不是缺技術，你缺的是全球語言" data-en="You Don't Lack Technology. You Lack the Global Story.">
-        你不是缺技術，你缺的是全球語言
-      </h2>
-      <p class="section-sub" data-zh="台灣深科技創辦人拿著世界頂尖的研發成果，卻在第一輪 VC 對話中就出局。不是實力問題，是語言問題。" data-en="Taiwan's deep tech founders carry world-class R&D. Yet they're eliminated in the first VC conversation. It's not a capability gap — it's a narrative gap.">
-        台灣深科技創辦人拿著世界頂尖的研發成果，卻在第一輪 VC 對話中就出局。不是實力問題，是語言問題。
+      <div class="eyebrow" data-en="The Founder's Wall" data-zh="創辦人的牆">The Founder's Wall</div>
+      <h2 class="section-h" style="max-width:640px" data-en="Your Technology Is World-Class. Your Story Isn't — Yet." data-zh="你的技術是世界級的。但你的故事，還不是。">Your Technology Is World-Class.<br>Your Story Isn't — Yet.</h2>
+      <p class="section-p" data-en="Taiwan's deep tech founders carry transformative R&D. Yet they're eliminated in the first VC meeting — not because of capability, but because of narrative." data-zh="台灣深科技創辦人掌握著顛覆性的研發成果，卻在第一輪 VC 對話中出局。不是能力問題，是敘事問題。">
+        Taiwan's deep tech founders carry transformative R&D. Yet they're eliminated in the first VC meeting — not because of capability, but because of narrative.
       </p>
     </div>
     <div class="pain-grid">
-      <div class="pain-card reveal reveal-delay-1">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
+      <div class="pain-card reveal d1">
+        <div class="pain-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <h3 data-zh="技術世界頂尖，投資人敘事空白" data-en="World-class tech, zero investor narrative">技術世界頂尖，投資人敘事空白</h3>
-        <p data-zh="研發能力碾壓競爭對手，但講不出讓 VC 心動的 2 分鐘版本。" data-en="Your R&D is irreplaceable. But you can't deliver the 2-minute version that moves investors.">
-          研發能力碾壓競爭對手，但講不出讓 VC 心動的 2 分鐘版本。
-        </p>
+        <h3 data-en="World-class tech, zero investor narrative" data-zh="技術世界頂尖，投資人敘事空白">World-class tech, zero investor narrative</h3>
+        <p data-en="Your R&D crushes the competition. But you can't deliver the 2-minute version that moves capital." data-zh="研發能力碾壓競爭對手，但你說不出讓 VC 心動的 2 分鐘版本。">Your R&D crushes the competition. But you can't deliver the 2-minute version that moves capital.</p>
       </div>
-      <div class="pain-card reveal reveal-delay-2">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>
-          </svg>
+      <div class="pain-card reveal d2">
+        <div class="pain-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
         </div>
-        <h3 data-zh="Pitch Deck 為本土設計，國際場館全軍覆沒" data-en="Pitch deck built for local, rejected globally">Pitch Deck 為本土設計，國際場館全軍覆沒</h3>
-        <p data-zh="AppWorks 說你很強，YC 直接 pass。框架不同，語言不同，預期不同。" data-en="AppWorks says you're great. YC passes immediately. Different frameworks, different languages, different expectations.">
-          AppWorks 說你很強，YC 直接 pass。框架不同，語言不同，預期不同。
-        </p>
+        <h3 data-en="Pitch deck built for local, rejected globally" data-zh="為本土設計的 Pitch Deck，全球場館全軍覆沒">Pitch deck built for local, rejected globally</h3>
+        <p data-en="AppWorks calls you strong. YC passes immediately. Different frameworks, different expectations." data-zh="AppWorks 說你很強，YC 直接 pass。框架不同，語言不同，預期不同。">AppWorks calls you strong. YC passes immediately. Different frameworks, different expectations.</p>
       </div>
-      <div class="pain-card reveal reveal-delay-3">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
+      <div class="pain-card reveal d3">
+        <div class="pain-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
-        <h3 data-zh="沒有 Warm Intro，沒有配對，沒有 Term Sheet" data-en="No warm intro, no pattern match, no term sheet">沒有 Warm Intro，沒有配對，沒有 Term Sheet</h3>
-        <p data-zh="海外 VC 網絡靠的是信任鏈。沒有人引薦你，你的 deck 永遠到不了真正的決策者。" data-en="Global VC networks run on trust chains. Without an introduction, your deck never reaches the real decision-makers.">
-          海外 VC 網絡靠的是信任鏈。沒有人引薦你，你的 deck 永遠到不了真正的決策者。
-        </p>
+        <h3 data-en="No warm intro, no pattern match, no term sheet" data-zh="沒有引薦，沒有配對，沒有 Term Sheet">No warm intro, no pattern match, no term sheet</h3>
+        <p data-en="Global VC networks run on trust chains. Without an introduction, your deck never reaches the decision-maker." data-zh="海外 VC 網絡靠信任鏈運作。沒有引薦，你的 deck 永遠到不了真正的決策者。">Global VC networks run on trust chains. Without an introduction, your deck never reaches the decision-maker.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECTOR -->
+<div class="section-connector">
+  <svg class="connector-svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path class="connector-path" d="M0,30 C360,0 720,60 1080,30 S1440,0 1440,30"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════ PILLARS ════════════════════════════ -->
+<section id="pillars" style="padding:120px 0;background:var(--white)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start">
+      <div class="reveal">
+        <div class="eyebrow" data-en="Three Systems" data-zh="三大系統">Three Systems</div>
+        <h2 class="section-h" data-en="One Operating System for Going Global." data-zh="一套出海作戰系統。">One Operating System<br>for Going Global.</h2>
+        <p class="section-p" data-en="Curriculum, community, and in-person immersion — covering everything a founder needs before going global." data-zh="課程、社群、現地體驗——完整覆蓋創辦人出海前的每個準備環節。">Curriculum, community, and in-person immersion — covering everything a founder needs before going global.</p>
+      </div>
+      <div class="pillars-grid" style="margin-top:0">
+        <div class="pillar-card reveal d1">
+          <div class="p-num">01</div>
+          <div class="p-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3 data-en="Founders Playbook" data-zh="Founders Playbook">Founders Playbook</h3>
+          <p data-en="Structured curriculum across 8 core modules. From investor psychology to term sheet literacy — every critical stage has a framework." data-zh="8 大核心模組的結構化課程。從投資人心理到 Term Sheet 解讀，每個關鍵環節都有框架。">Structured curriculum across 8 core modules. From investor psychology to term sheet literacy — every critical stage has a framework.</p>
+          <div class="p-detail" data-en="→ Includes mentor 1:1 pitch feedback" data-zh="→ 含導師 1:1 pitch 反饋">→ Includes mentor 1:1 pitch feedback</div>
+        </div>
+        <div class="pillar-card reveal d2">
+          <div class="p-num">02</div>
+          <div class="p-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 data-en="Curated Community" data-zh="精選社群">Curated Community</h3>
+          <p data-en="10–15 handpicked founders per cohort. Shared ambition, diverse sectors. Peer pressure is the most effective accelerant." data-zh="每期精選 10–15 名創辦人。相同的出海野心，不同的產業背景。同儕壓力是最好的前進動力。">10–15 handpicked founders per cohort. Shared ambition, diverse sectors. Peer pressure is the most effective accelerant.</p>
+          <div class="p-detail" data-en="→ Private community + lifetime alumni network" data-zh="→ 私人社群＋終身校友網絡">→ Private community + lifetime alumni network</div>
+        </div>
+        <div class="pillar-card reveal d3">
+          <div class="p-num">03</div>
+          <div class="p-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 data-en="Ecosystem Expeditions" data-zh="生態系考察">Ecosystem Expeditions</h3>
+          <p data-en="In-person immersion in Silicon Valley and Singapore. Walk into VC offices, meet founder communities, validate your narrative in the real world." data-zh="矽谷＋新加坡現地考察。親身走進 VC 辦公室，把課堂內容在真實場景驗證。">In-person immersion in Silicon Valley and Singapore. Walk into VC offices, meet founder communities, validate your narrative in the real world.</p>
+          <div class="p-detail" data-en="→ Real VC meetings + live pitch opportunities" data-zh="→ 真實 VC 會面＋現場 pitch 機會">→ Real VC meetings + live pitch opportunities</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1242,65 +489,119 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ══════════════════ THREE PILLARS ════════════════════════ -->
-<section id="pillars" style="padding:100px 0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);">
+<!-- ════════════════════ GLOBE / GLOBAL ══════════════════════ -->
+<section id="global" style="padding:120px 0;background:linear-gradient(180deg,var(--white) 0%,var(--teal-pale) 40%,var(--white) 100%)">
+  <div class="container">
+    <div class="global-inner">
+      <div class="reveal">
+        <div class="eyebrow" data-en="Global Reach" data-zh="全球觸角">Global Reach</div>
+        <h2 class="section-h" data-en="From Taiwan to Every Global Capital." data-zh="從台灣，到每一個全球資本中心。">From Taiwan to Every<br>Global Capital.</h2>
+        <p class="section-p" data-en="GVA connects Taiwan's deep tech founders directly to the networks, investors, and ecosystems that move global capital — in Silicon Valley, Singapore, New York, and beyond." data-zh="GVA 將台灣深科技創辦人直接連接到驅動全球資本的網絡、投資人和生態系——矽谷、新加坡、紐約，以及更遠的地方。">
+          GVA connects Taiwan's deep tech founders directly to the networks, investors, and ecosystems that move global capital — in Silicon Valley, Singapore, New York, and beyond.
+        </p>
+        <div class="city-legend" style="margin-top:2.5rem">
+          <span class="city-tag"><span class="city-dot-tag origin"></span>Taipei</span>
+          <span class="city-tag"><span class="city-dot-tag"></span>San Francisco</span>
+          <span class="city-tag"><span class="city-dot-tag"></span>New York</span>
+          <span class="city-tag"><span class="city-dot-tag"></span>Singapore</span>
+          <span class="city-tag"><span class="city-dot-tag"></span>London</span>
+          <span class="city-tag"><span class="city-dot-tag"></span>Tokyo</span>
+        </div>
+      </div>
+      <div class="globe-wrap reveal d2">
+        <div class="globe-glow"></div>
+        <canvas id="globe-canvas" width="500" height="500"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ CURRICULUM ════════════════════════════ -->
+<section id="curriculum" style="padding:120px 0;background:var(--white)">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-zh="三大支柱" data-en="Three Pillars">三大支柱</div>
-      <h2 class="section-title" data-zh="不只是課程，是整套出海系統" data-en="Not Just a Course. An Operating System for Going Global.">
-        不只是課程，是整套出海系統
-      </h2>
-      <p class="section-sub" data-zh="三個核心模塊，從內容到社群到現場體驗，完整覆蓋創辦人出海前的準備工作。" data-en="Three core modules — curriculum, community, and in-person immersion — covering everything a founder needs before going global.">
-        三個核心模塊，從內容到社群到現場體驗，完整覆蓋創辦人出海前的準備工作。
-      </p>
+      <div class="eyebrow" data-en="The Curriculum" data-zh="課程架構">The Curriculum</div>
+      <h2 class="section-h" data-en="Eight Modules. One Outcome: Your First Term Sheet." data-zh="八個模組。一個目標：你的第一張 Term Sheet。">Eight Modules.<br>One Outcome: Your First Term Sheet.</h2>
     </div>
-    <div class="pillars-grid" style="margin-top:3rem;">
-      <div class="pillar-card reveal reveal-delay-1">
-        <div class="pillar-number">01</div>
-        <div class="pillar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-          </svg>
-        </div>
-        <h3 data-zh="Founders Playbook" data-en="Founders Playbook">Founders Playbook</h3>
-        <p class="pillar-desc" data-zh="161 頁結構化教材，8 大核心模組，從投資人心理到 Term Sheet 解讀，每個關鍵環節都有框架和範例。" data-en="161 pages of structured curriculum across 8 core modules — from investor psychology to term sheet literacy, every critical stage has a framework and example.">
-          161 頁結構化教材，8 大核心模組，從投資人心理到 Term Sheet 解讀，每個關鍵環節都有框架和範例。
-        </p>
-        <div class="pillar-reveal">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-          <span data-zh="含導師 1:1 pitch 反饋回合" data-en="Includes mentor 1:1 pitch feedback sessions">含導師 1:1 pitch 反饋回合</span>
+    <div class="curriculum-inner">
+      <div class="reveal d1" style="position:sticky;top:100px">
+        <p class="section-p" data-en="Each module maps to a critical friction point in the global fundraising journey. Build the narrative, the model, and the confidence — in sequence." data-zh="每個模組對應出海募資路上一個關鍵的卡關點。按順序建立敘事、財務模型和信心。">Each module maps to a critical friction point in the global fundraising journey. Build the narrative, the model, and the confidence — in sequence.</p>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--off);border-radius:16px;border:1px solid var(--border)">
+          <div style="font-family:var(--fd);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem" data-en="Program Format" data-zh="課程形式">Program Format</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.88rem;color:var(--text2)">
+            <div data-en="📅 12 weeks online + 2 expeditions" data-zh="📅 12 週線上 + 2 次現地考察">📅 12 weeks online + 2 expeditions</div>
+            <div data-en="👥 10–15 founders per cohort" data-zh="👥 每期 10–15 名創辦人">👥 10–15 founders per cohort</div>
+            <div data-en="🗣 Weekly live sessions + 1:1 mentorship" data-zh="🗣 每週 live session + 1:1 導師">🗣 Weekly live sessions + 1:1 mentorship</div>
+            <div data-en="🌐 English + Chinese bilingual" data-zh="🌐 中英雙語">🌐 English + Chinese bilingual</div>
+          </div>
         </div>
       </div>
-      <div class="pillar-card reveal reveal-delay-2">
-        <div class="pillar-number">02</div>
-        <div class="pillar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
+      <div class="reveal d2">
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M1</span><h4 data-en="Investor Psychology & Capital Markets" data-zh="投資人心理與資本市場">Investor Psychology & Capital Markets</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="VC decision models: why they invest, why they pass" data-zh="VC 決策模型：為什麼投，為什麼不投">VC decision models: why they invest, why they pass</li>
+            <li data-en="Global vs. regional capital market structural differences" data-zh="全球 vs. 區域資本市場結構差異">Global vs. regional capital market structural differences</li>
+            <li data-en="How to find the right investor, not just any investor" data-zh="如何找到對的投資人，而不是任何投資人">How to find the right investor, not just any investor</li>
+          </ul></div></div>
         </div>
-        <h3 data-zh="Curated Community" data-en="Curated Community">Curated Community</h3>
-        <p class="pillar-desc" data-zh="每期精選 10–15 名創辦人，相同的出海野心，不同的產業背景。同儕壓力是最好的前進動力。" data-en="10–15 handpicked founders per cohort — shared ambition, diverse sectors. Peer pressure is the most effective accelerant.">
-          每期精選 10–15 名創辦人，相同的出海野心，不同的產業背景。同儕壓力是最好的前進動力。
-        </p>
-        <div class="pillar-reveal">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-          <span data-zh="私人 Slack 社群＋終身校友網絡" data-en="Private Slack community + lifetime alumni network">私人 Slack 社群＋終身校友網絡</span>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M2</span><h4 data-en="Competitive Landscape Mapping" data-zh="競爭格局分析">Competitive Landscape Mapping</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Global competitor scanning and differentiation frameworks" data-zh="全球競爭者掃描框架與差異化定位">Global competitor scanning and differentiation frameworks</li>
+            <li data-en="TAM/SAM/SOM: correct calculation and investor-ready presentation" data-zh="TAM/SAM/SOM 的正確計算與投資人級呈現">TAM/SAM/SOM: correct calculation and investor-ready presentation</li>
+            <li data-en="Translating technical moats into investor language" data-zh="技術護城河的語言化：讓 VC 看懂你的 moat">Translating technical moats into investor language</li>
+          </ul></div></div>
         </div>
-      </div>
-      <div class="pillar-card reveal reveal-delay-3">
-        <div class="pillar-number">03</div>
-        <div class="pillar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M3</span><h4 data-en="Business Model Architecture" data-zh="商業模式架構設計">Business Model Architecture</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Converting deep tech products into investable business models" data-zh="從技術產品到可投資商業模式的轉化">Converting deep tech products into investable business models</li>
+            <li data-en="Valuation logic for SaaS, deep tech, and hardware" data-zh="SaaS、深科技、硬體的不同估值邏輯">Valuation logic for SaaS, deep tech, and hardware</li>
+            <li data-en="Revenue model design and unit economics" data-zh="Revenue model 設計與 unit economics">Revenue model design and unit economics</li>
+          </ul></div></div>
         </div>
-        <h3 data-zh="Ecosystem Expeditions" data-en="Ecosystem Expeditions">Ecosystem Expeditions</h3>
-        <p class="pillar-desc" data-zh="矽谷 + 新加坡現地考察，親身走進 VC 辦公室、meet founder 社群，把課堂學到的直接在現場驗證。" data-en="In-person immersion in Silicon Valley and Singapore — walk into VC offices, meet founder communities, and validate everything learned in the classroom.">
-          矽谷 + 新加坡現地考察，親身走進 VC 辦公室、meet founder 社群，把課堂學到的直接在現場驗證。
-        </p>
-        <div class="pillar-reveal">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-          <span data-zh="真實 VC 會面＋現場 pitch 機會" data-en="Real VC meetings + live pitch opportunities">真實 VC 會面＋現場 pitch 機會</span>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M4</span><h4 data-en="Go-to-Market for Global" data-zh="全球市場進入策略">Go-to-Market for Global</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Selecting your first overseas market and entry timing" data-zh="選擇第一個海外市場並設定進入時機">Selecting your first overseas market and entry timing</li>
+            <li data-en="Channel strategy: direct sales vs. partners vs. PLG" data-zh="Channel strategy：直銷 vs. 合作夥伴 vs. PLG">Channel strategy: direct sales vs. partners vs. PLG</li>
+            <li data-en="Common mistakes going global from Taiwan" data-zh="Taiwan base 出海的常見錯誤與避坑">Common mistakes going global from Taiwan</li>
+          </ul></div></div>
+        </div>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M5</span><h4 data-en="Pitch Narrative Construction" data-zh="Pitch 敘事結構建構">Pitch Narrative Construction</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Investor-grade story arc: problem → solution → market → traction → team" data-zh="投資人級別故事弧線：問題→解法→市場→牽引力→團隊">Investor-grade story arc: problem → solution → market → traction → team</li>
+            <li data-en="10-minute to 2-minute pitch: versions for every context" data-zh="從 10 分鐘到 2 分鐘：不同場合的 pitch 版本">10-minute to 2-minute pitch: versions for every context</li>
+            <li data-en="Live practice: real feedback, not polite encouragement" data-zh="現場練習：真實反饋，不是禮貌性鼓勵">Live practice: real feedback, not polite encouragement</li>
+          </ul></div></div>
+        </div>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M6</span><h4 data-en="Financial Modeling for VCs" data-zh="VC 財務模型建構">Financial Modeling for VCs</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="What numbers VCs actually look for in a deck" data-zh="VC 看 deck 時真正在看什麼數字">What numbers VCs actually look for in a deck</li>
+            <li data-en="3-year financial projection logic and common mistakes" data-zh="3 年財務預測的建立邏輯與常見錯誤">3-year financial projection logic and common mistakes</li>
+            <li data-en="Raise size, valuation, dilution: calculation and negotiation" data-zh="募資額度、估值、稀釋的計算與談判策略">Raise size, valuation, dilution: calculation and negotiation</li>
+          </ul></div></div>
+        </div>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M7</span><h4 data-en="Term Sheet Literacy" data-zh="Term Sheet 解讀與談判">Term Sheet Literacy</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Real impact of liquidation preference, anti-dilution, and pro-rata" data-zh="Liquidation preference、anti-dilution、pro-rata 的實際影響">Real impact of liquidation preference, anti-dilution, and pro-rata</li>
+            <li data-en="Which terms are negotiable and which are VC non-negotiables" data-zh="哪些條款可以談，哪些是 VC 底線">Which terms are negotiable and which are VC non-negotiables</li>
+            <li data-en="From term sheet to closing: timeline and pitfall avoidance" data-zh="從 term sheet 到 closing：時程管理與陷阱規避">From term sheet to closing: timeline and pitfall avoidance</li>
+          </ul></div></div>
+        </div>
+        <div class="acc-item" onclick="toggleAcc(this)">
+          <button class="acc-trigger"><div class="acc-left"><span class="mod-tag">M8</span><h4 data-en="Post-Raise Execution" data-zh="募資後的執行系統">Post-Raise Execution</h4></div><svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="acc-body"><div class="acc-inner"><ul>
+            <li data-en="Board management and long-term investor relations" data-zh="Board management 與投資人關係的長期維護">Board management and long-term investor relations</li>
+            <li data-en="Deploying first capital effectively: prioritization framework" data-zh="如何把第一筆資金用在刀口上：優先序框架">Deploying first capital effectively: prioritization framework</li>
+            <li data-en="Signal-building for Series A: KPI design from seed onwards" data-zh="下一輪的信號建立：從 seed 到 Series A 的 KPI 設計">Signal-building for Series A: KPI design from seed onwards</li>
+          </ul></div></div>
         </div>
       </div>
     </div>
@@ -1309,309 +610,84 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ════════════════════ CURRICULUM ═════════════════════════ -->
-<section id="curriculum" style="padding:100px 0;background:var(--bg2);">
-  <div class="container">
+<!-- ════════════════ METHODOLOGY BRIDGE ══════════════════════ -->
+<section id="methodology" style="padding:120px 0">
+  <div class="container" style="position:relative;z-index:2;text-align:center">
     <div class="reveal">
-      <div class="section-label" data-zh="課程架構" data-en="Curriculum">課程架構</div>
-      <h2 class="section-title" data-zh="8 大模組課程" data-en="The 8-Module Curriculum">8 大模組課程</h2>
-      <p class="section-sub" data-zh="從市場認知到交割完成，每個模組對應出海募資路上一個關鍵的卡關點。輸入密碼解鎖完整課綱。" data-en="From market insight to deal close — each module maps to a critical friction point in the global fundraising journey. Enter the password to unlock the full curriculum.">
-        從市場認知到交割完成，每個模組對應出海募資路上一個關鍵的卡關點。輸入密碼解鎖完整課綱。
-      </p>
+      <div class="eyebrow" data-en="The Framework" data-zh="方法論">The Framework</div>
+      <h2 class="section-h" style="color:#fff;font-size:clamp(2.2rem,5vw,4.5rem);max-width:760px;margin:0 auto 1.25rem" data-en="The Framework Powering Every Module." data-zh="驅動每個模組的核心方法論。">The Framework<br>Powering Every Module.</h2>
+      <p class="section-p" style="color:rgba(255,255,255,.7);margin:0 auto 3rem" data-en="Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum." data-zh="每個模組都建立在嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整方法論。">Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum.</p>
+      <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-meth" data-en="Explore the Full Methodology →" data-zh="探索完整方法論教材 →">Explore the Full Methodology →</a>
     </div>
-
-    <div class="reveal" style="margin-top:3rem;">
-      <!-- LOCK OVERLAY -->
-      <div class="lock-overlay" id="lockOverlay">
-        <div class="lock-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
-        </div>
-        <p data-zh="完整課綱需要密碼解鎖" data-en="Full curriculum is password-protected">完整課綱需要密碼解鎖</p>
-        <div class="pw-input-group">
-          <input class="pw-input" type="password" id="pwInput" placeholder="輸入密碼" autocomplete="off">
-          <button class="btn-unlock" onclick="checkPassword()" data-zh="解鎖" data-en="Unlock">解鎖</button>
-        </div>
-        <p class="pw-error" id="pwError" data-zh="密碼錯誤，請再試一次" data-en="Incorrect password. Please try again.">密碼錯誤，請再試一次</p>
-      </div>
-
-      <!-- ACCORDION (hidden until unlocked) -->
-      <div class="accordion-wrap" id="accordionWrap">
-        <!-- M1 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M1</span>
-              <h4 data-zh="投資人心理與資本市場生態" data-en="Investor Psychology & Capital Markets">投資人心理與資本市場生態</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="VC 決策模型：為什麼他們投你，又為什麼不投你" data-en="VC decision models: why they invest, why they pass">VC 決策模型：為什麼他們投你，又為什麼不投你</li>
-                <li data-zh="全球 vs. 區域資本市場的結構差異" data-en="Global vs. regional capital market structural differences">全球 vs. 區域資本市場的結構差異</li>
-                <li data-zh="如何找到對的投資人，而不是任何投資人" data-en="How to find the right investor, not just any investor">如何找到對的投資人，而不是任何投資人</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M2 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M2</span>
-              <h4 data-zh="競爭格局分析與市場定位" data-en="Competitive Landscape Mapping">競爭格局分析與市場定位</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="全球競爭者掃描框架與差異化定位" data-en="Global competitor scanning framework and differentiation">全球競爭者掃描框架與差異化定位</li>
-                <li data-zh="TAM/SAM/SOM 的正確計算與呈現方式" data-en="TAM/SAM/SOM: correct calculation and presentation">TAM/SAM/SOM 的正確計算與呈現方式</li>
-                <li data-zh="技術護城河的語言化：讓 VC 看懂你的 moat" data-en="Translating technical moats into investor language">技術護城河的語言化：讓 VC 看懂你的 moat</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M3 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M3</span>
-              <h4 data-zh="商業模式架構設計" data-en="Business Model Architecture">商業模式架構設計</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="從技術產品到可投資商業模式的轉化路徑" data-en="Converting tech products into investable business models">從技術產品到可投資商業模式的轉化路徑</li>
-                <li data-zh="SaaS、深科技、硬體的不同估值邏輯" data-en="Valuation logic for SaaS, deep tech, and hardware">SaaS、深科技、硬體的不同估值邏輯</li>
-                <li data-zh="Revenue model 設計與 unit economics 計算" data-en="Revenue model design and unit economics calculation">Revenue model 設計與 unit economics 計算</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M4 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M4</span>
-              <h4 data-zh="全球市場進入策略" data-en="Go-to-Market for Global">全球市場進入策略</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="如何選擇第一個海外市場並設定進入時機" data-en="How to select your first overseas market and timing">如何選擇第一個海外市場並設定進入時機</li>
-                <li data-zh="Channel strategy：直銷 vs. 合作夥伴 vs. PLG" data-en="Channel strategy: direct sales vs. partners vs. PLG">Channel strategy：直銷 vs. 合作夥伴 vs. PLG</li>
-                <li data-zh="Taiwan base 出海的常見錯誤與避坑指南" data-en="Common mistakes when going global from Taiwan">Taiwan base 出海的常見錯誤與避坑指南</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M5 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M5</span>
-              <h4 data-zh="Pitch 敘事結構建構" data-en="Pitch Narrative Construction">Pitch 敘事結構建構</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="投資人級別的故事弧線：問題→解法→市場→牽引力→團隊" data-en="Investor-grade story arc: problem → solution → market → traction → team">投資人級別的故事弧線：問題→解法→市場→牽引力→團隊</li>
-                <li data-zh="從 10 分鐘到 2 分鐘：不同場合的 pitch 版本" data-en="10-minute to 2-minute pitch: versions for every context">從 10 分鐘到 2 分鐘：不同場合的 pitch 版本</li>
-                <li data-zh="現場練習：真實反饋，不是禮貌性鼓勵" data-en="Live practice: real feedback, not polite encouragement">現場練習：真實反饋，不是禮貌性鼓勵</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M6 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M6</span>
-              <h4 data-zh="VC 財務模型建構" data-en="Financial Modeling for VCs">VC 財務模型建構</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="VC 看 deck 時真正在看什麼數字" data-en="What numbers VCs actually look for in a deck">VC 看 deck 時真正在看什麼數字</li>
-                <li data-zh="3 年財務預測的建立邏輯與常見錯誤" data-en="3-year financial projection logic and common mistakes">3 年財務預測的建立邏輯與常見錯誤</li>
-                <li data-zh="募資額度、估值、稀釋的計算與談判策略" data-en="Raise size, valuation, and dilution: calculation and negotiation">募資額度、估值、稀釋的計算與談判策略</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M7 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M7</span>
-              <h4 data-zh="Term Sheet 解讀與談判" data-en="Term Sheet Literacy">Term Sheet 解讀與談判</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="Liquidation preference、anti-dilution、pro-rata 的實際影響" data-en="Real impact of liquidation preference, anti-dilution, and pro-rata">Liquidation preference、anti-dilution、pro-rata 的實際影響</li>
-                <li data-zh="哪些條款可以談，哪些是 VC 底線" data-en="Which terms are negotiable and which are VC non-negotiables">哪些條款可以談，哪些是 VC 底線</li>
-                <li data-zh="從 term sheet 到 closing：時程管理與陷阱規避" data-en="From term sheet to closing: timeline management and pitfall avoidance">從 term sheet 到 closing：時程管理與陷阱規避</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- M8 -->
-        <div class="accordion-item" onclick="toggleAccordion(this)">
-          <button class="accordion-trigger">
-            <div class="accordion-left">
-              <span class="module-num">M8</span>
-              <h4 data-zh="募資後的執行系統" data-en="Post-Raise Execution">募資後的執行系統</h4>
-            </div>
-            <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-inner">
-              <ul>
-                <li data-zh="Board management 與投資人關係的長期維護" data-en="Board management and long-term investor relations">Board management 與投資人關係的長期維護</li>
-                <li data-zh="如何把第一筆資金用在刀口上：優先序框架" data-en="How to deploy first capital effectively: prioritization framework">如何把第一筆資金用在刀口上：優先序框架</li>
-                <li data-zh="下一輪的信號建立：從 seed 到 Series A 的 KPI 設計" data-en="Signal-building for the next round: KPI design from seed to Series A">下一輪的信號建立：從 seed 到 Series A 的 KPI 設計</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="meth-metrics reveal">
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="8">8</span></div><div class="mm-l" data-en="Core Modules" data-zh="核心模組">Core Modules</div></div>
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="3">3</span></div><div class="mm-l" data-en="Core Pillars" data-zh="支柱系統">Core Pillars</div></div>
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="15">15</span></div><div class="mm-l" data-en="Founders Per Cohort" data-zh="人精選 Cohort">Founders Per Cohort</div></div>
+      <div class="mm"><div class="mm-n">2</div><div class="mm-l" data-en="Global Expeditions" data-zh="現地考察">Global Expeditions</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════════ METHODOLOGY BRIDGE ═══════════════════ -->
-<section id="methodology" style="padding:120px 0;background:linear-gradient(135deg,#020C1E 0%,#041020 40%,#061428 100%);text-align:center;position:relative;overflow:hidden;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(37,99,235,0.1) 0%,transparent 65%);pointer-events:none;"></div>
-  <div class="container" style="position:relative;z-index:2;">
-    <div class="reveal">
-      <span class="methodology-eyebrow" data-zh="完整方法論" data-en="Full Methodology">完整方法論</span>
-      <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.5rem);max-width:720px;margin:0 auto 1.25rem;" data-zh="Playbook 背後的 161 頁方法論" data-en="The 161-Page Methodology Behind the Playbook">
-        Playbook 背後的 161 頁方法論
-      </h2>
-      <p class="section-sub" style="max-width:560px;margin:0 auto 2.5rem;" data-zh="每個模組都建立在一套嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整行銷策略方法論。" data-en="Every module is grounded in a rigorous, field-tested framework. Explore the complete marketing strategy methodology that powers this curriculum.">
-        每個模組都建立在一套嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整行銷策略方法論。
-      </p>
-      <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-methodology" data-zh="探索完整方法論教材 →" data-en="Explore the Full Methodology →">
-        探索完整方法論教材 →
-      </a>
-    </div>
-    <div class="methodology-stats reveal">
-      <div class="m-stat">
-        <div class="m-stat-num"><span class="count-num" data-target="161">161</span></div>
-        <div class="m-stat-label" data-zh="頁完整教材" data-en="Pages of Content">頁完整教材</div>
-      </div>
-      <div class="m-stat">
-        <div class="m-stat-num"><span class="count-num" data-target="8">8</span></div>
-        <div class="m-stat-label" data-zh="大模組" data-en="Core Modules">大模組</div>
-      </div>
-      <div class="m-stat">
-        <div class="m-stat-num"><span class="count-num" data-target="3">3</span></div>
-        <div class="m-stat-label" data-zh="大支柱系統" data-en="Core Pillars">大支柱系統</div>
-      </div>
-      <div class="m-stat">
-        <div class="m-stat-num"><span class="count-num" data-target="15">15</span></div>
-        <div class="m-stat-label" data-zh="人精選 Cohort" data-en="Founders Per Cohort">人精選 Cohort</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ════════════════════ SOCIAL PROOF ═══════════════════════ -->
-<section id="proof" style="padding:100px 0;background:var(--bg);">
+<!-- ════════════════════ PROOF ════════════════════════════════ -->
+<section id="proof" style="padding:120px 0;background:var(--off)">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <div class="section-label" data-zh="生態系夥伴" data-en="Ecosystem Partners">生態系夥伴</div>
-      <h2 class="section-title" data-zh="建立在真實證據上，不是炒作" data-en="Built on Evidence, Not Hype">建立在真實證據上，不是炒作</h2>
+    <div class="reveal" style="text-align:center">
+      <div class="eyebrow" data-en="Ecosystem" data-zh="生態系夥伴">Ecosystem</div>
+      <h2 class="section-h" data-en="Built on Evidence, Not Hype." data-zh="建立在真實證據上，不是炒作。">Built on Evidence, Not Hype.</h2>
     </div>
-    <div class="logo-strip reveal">
-      <div class="logo-badge">YC</div>
+    <div class="logos reveal">
+      <div class="logo-badge">Y Combinator</div>
       <div class="logo-badge">Sequoia</div>
       <div class="logo-badge">500 Global</div>
       <div class="logo-badge">AppWorks</div>
       <div class="logo-badge">SOSV</div>
       <div class="logo-badge">Bonhope Capital</div>
     </div>
-    <div class="testimonial-card reveal">
-      <span class="quote-mark">"</span>
-      <p class="testimonial-text" data-zh="這不是一個告訴你創業是什麼的課程。這是一個讓你知道自己在哪個位置、需要補什麼、然後直接帶你去的計畫。參加之前我的 pitch 被矽谷投資人拒絕了 8 次，參加後的第一場 meeting 就進了 due diligence。" data-en="This isn't a course that tells you what entrepreneurship is. It's a program that shows you where you stand, what you're missing, and then takes you there. Before this, I was rejected by Silicon Valley investors 8 times. After my first meeting post-program, we entered due diligence.">
-        這不是一個告訴你創業是什麼的課程。這是一個讓你知道自己在哪個位置、需要補什麼、然後直接帶你去的計畫。參加之前我的 pitch 被矽谷投資人拒絕了 8 次，參加後的第一場 meeting 就進了 due diligence。
-      </p>
-      <div class="testimonial-author">
-        <img src="https://i.pravatar.cc/80?img=3" alt="Founder testimonial" class="testimonial-avatar" loading="lazy">
-        <div class="author-info">
-          <h5 data-zh="陳冠宇" data-en="Kevin Chen">陳冠宇</h5>
-          <p data-zh="Founder, DeepSense AI · Series A 籌備中" data-en="Founder, DeepSense AI · Series A in progress">Founder, DeepSense AI · Series A 籌備中</p>
+    <div class="tcard reveal">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text" data-en="This isn't a course that tells you what entrepreneurship is. It shows you where you stand, what you're missing, and then takes you there. Before this program, I was rejected by Silicon Valley investors eight times. After my first meeting post-program, we entered due diligence." data-zh="這不是一個告訴你創業是什麼的課程。它讓你看清楚自己在哪個位置、缺了什麼，然後直接帶你去。參加之前，我的 pitch 被矽谷投資人拒絕了八次。參加後的第一場 meeting 就進了 due diligence。">This isn't a course that tells you what entrepreneurship is. It shows you where you stand, what you're missing, and then takes you there. Before this program, I was rejected by Silicon Valley investors eight times. After my first meeting post-program, we entered due diligence.</p>
+      <div class="tcard-author">
+        <img src="https://i.pravatar.cc/80?img=3" alt="Founder" class="tcard-avatar" loading="lazy">
+        <div class="tcard-info">
+          <h5 data-en="Kevin Chen" data-zh="陳冠宇">Kevin Chen</h5>
+          <p data-en="Founder, DeepSense AI · Series A in progress" data-zh="Founder, DeepSense AI · Series A 籌備中">Founder, DeepSense AI · Series A in progress</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ══════════════════ APPLICATION FORM ═════════════════════ -->
-<section id="apply" style="padding:100px 0;background:var(--bg2);position:relative;overflow:hidden;">
-  <div style="position:absolute;bottom:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.07) 0%,transparent 65%);pointer-events:none;"></div>
-  <div class="container" style="position:relative;z-index:2;">
-    <div class="reveal" style="text-align:center;">
-      <div class="section-label" data-zh="加入下一期" data-en="Join the Next Cohort">加入下一期</div>
-      <h2 class="section-title" data-zh="申請加入 Founders Playbook" data-en="Apply for the Next Cohort">申請加入 Founders Playbook</h2>
-      <p class="section-sub" style="margin:0 auto;" data-zh="每期名額有限。填寫申請表，我們會在 48 小時內與你聯繫。" data-en="Cohort size is intentionally small. Fill in your application — we'll be in touch within 48 hours.">
-        每期名額有限。填寫申請表，我們會在 48 小時內與你聯繫。
-      </p>
+<!-- ════════════════════ APPLY ════════════════════════════════ -->
+<section id="apply" style="padding:120px 0;background:var(--white)">
+  <div style="position:absolute;bottom:-40%;right:-15%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(8,145,178,.05) 0%,transparent 60%);pointer-events:none"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="reveal" style="text-align:center">
+      <div class="eyebrow" data-en="Join the Next Cohort" data-zh="加入下一期">Join the Next Cohort</div>
+      <h2 class="section-h" data-en="Apply for the Next Cohort." data-zh="申請加入 Founders Playbook。">Apply for the<br>Next Cohort.</h2>
+      <p class="section-p" style="margin:0 auto" data-en="Cohort size is intentionally small. Fill in your application — we'll be in touch within 48 hours." data-zh="每期名額有限。填寫申請表，我們會在 48 小時內與你聯繫。">Cohort size is intentionally small. Fill in your application — we'll be in touch within 48 hours.</p>
     </div>
-    <div class="form-wrap reveal">
+    <div class="form-shell reveal">
       <form id="applyForm" onsubmit="submitForm(event)">
-        <div class="form-grid">
-          <div class="form-group">
-            <label data-zh="姓名" data-en="Full Name">姓名</label>
-            <input type="text" name="name" required placeholder="Vincent Wang">
-          </div>
-          <div class="form-group">
-            <label data-zh="Email" data-en="Email">Email</label>
-            <input type="email" name="email" required placeholder="founder@startup.com">
-          </div>
-          <div class="form-group full">
-            <label data-zh="公司 / 新創名稱" data-en="Company / Startup Name">公司 / 新創名稱</label>
-            <input type="text" name="company" required placeholder="DeepSense AI">
-          </div>
-          <div class="form-group full">
-            <label data-zh="一句話描述你的 Startup" data-en="One-line description of your startup">一句話描述你的 Startup</label>
-            <textarea name="description" rows="3" required placeholder="We build real-time molecular analysis chips for pharmaceutical R&D..."></textarea>
-          </div>
+        <div class="form-row">
+          <div class="fg"><label data-en="Full Name" data-zh="姓名">Full Name</label><input type="text" name="name" required placeholder="Vincent Wang"></div>
+          <div class="fg"><label data-en="Email" data-zh="Email">Email</label><input type="email" name="email" required placeholder="founder@startup.com"></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="fg full"><label data-en="Company / Startup" data-zh="公司 / 新創">Company / Startup</label><input type="text" name="company" required placeholder="DeepSense AI"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg full"><label data-en="One-line description of your startup" data-zh="一句話描述你的 Startup">One-line description of your startup</label><textarea name="desc" rows="3" required placeholder="We build real-time molecular analysis chips for pharmaceutical R&D..."></textarea></div>
         </div>
         <!-- TODO: Connect to systeme.io opt-in form / webhook to push leads into funnel + email automation -->
-        <button type="submit" class="btn-submit" data-zh="提交申請 →" data-en="Submit Application →">提交申請 →</button>
-        <p class="form-disclaimer" data-zh="你的資料僅用於申請審核，不會分享給第三方。" data-en="Your information is used solely for application review and will not be shared.">你的資料僅用於申請審核，不會分享給第三方。</p>
+        <button type="submit" class="btn-submit" data-en="Submit Application →" data-zh="提交申請 →">Submit Application →</button>
+        <p class="form-note" data-en="Your information is used solely for application review." data-zh="你的資料僅用於申請審核。">Your information is used solely for application review.</p>
       </form>
       <div class="form-success" id="formSuccess">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-        </svg>
-        <h3 data-zh="申請已收到" data-en="Application Received">申請已收到</h3>
-        <p data-zh="我們會在 48 小時內與你聯繫，確認資格與安排後續步驟。" data-en="We'll be in touch within 48 hours to confirm your eligibility and next steps.">
-          我們會在 48 小時內與你聯繫，確認資格與安排後續步驟。
-        </p>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 data-en="Application Received" data-zh="申請已收到">Application Received</h3>
+        <p data-en="We'll be in touch within 48 hours to confirm eligibility and next steps." data-zh="我們會在 48 小時內與你聯繫，確認資格與後續步驟。">We'll be in touch within 48 hours to confirm eligibility and next steps.</p>
       </div>
     </div>
   </div>
@@ -1619,360 +695,326 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ══════════════════════ FAQ ═══════════════════════════════ -->
-<section id="faq" style="padding:100px 0;background:var(--bg);">
+<!-- ════════════════════ FAQ ══════════════════════════════════ -->
+<section id="faq" style="padding:120px 0;background:var(--off)">
   <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:3rem;">
-      <div class="section-label" data-zh="常見問題" data-en="FAQ">常見問題</div>
-      <h2 class="section-title" data-zh="你可能想問的問題" data-en="Frequently Asked Questions">你可能想問的問題</h2>
+    <div class="reveal" style="text-align:center;margin-bottom:3.5rem">
+      <div class="eyebrow" data-en="FAQ" data-zh="常見問題">FAQ</div>
+      <h2 class="section-h" data-en="Questions Answered." data-zh="你可能想問的問題。">Questions Answered.</h2>
     </div>
     <div class="faq-wrap">
-      <div class="faq-item reveal" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="這個計畫適合誰？" data-en="Who is this for?">這個計畫適合誰？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="適合已有產品或早期牽引力、正在計劃或已開始接觸海外 VC 的台灣深科技創辦人。你不需要已經在募資，但你需要已經認真考慮。" data-en="Designed for Taiwan-based deep tech founders with a product or early traction who are planning — or have started — to approach global VCs. You don't need to be actively fundraising, but you need to be seriously considering it.">
-            適合已有產品或早期牽引力、正在計劃或已開始接觸海外 VC 的台灣深科技創辦人。你不需要已經在募資，但你需要已經認真考慮。
-          </div>
-        </div>
+      <div class="fq-item reveal" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="Who is this for?" data-zh="這個計畫適合誰？">Who is this for?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="Designed for Taiwan-based deep tech founders with a product or early traction who are planning — or have started — to approach global VCs. You don't need to be actively fundraising, but you need to be seriously considering it." data-zh="適合已有產品或早期牽引力、正在計劃或已開始接觸海外 VC 的台灣深科技創辦人。你不需要已經在募資，但你需要已經認真考慮。">Designed for Taiwan-based deep tech founders with a product or early traction who are planning — or have started — to approach global VCs. You don't need to be actively fundraising, but you need to be seriously considering it.</div></div>
       </div>
-      <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="計畫為期多長？" data-en="How long is the program?">計畫為期多長？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="核心課程為 12 週線上學習，含每週一次 live session。Ecosystem Expedition 現地考察另行安排，為期約 5–7 天。" data-en="The core curriculum is 12 weeks of online learning, with one live session per week. The Ecosystem Expedition is scheduled separately and runs approximately 5–7 days.">
-            核心課程為 12 週線上學習，含每週一次 live session。Ecosystem Expedition 現地考察另行安排，為期約 5–7 天。
-          </div>
-        </div>
+      <div class="fq-item reveal d1" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="How long is the program?" data-zh="計畫為期多長？">How long is the program?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="The core curriculum is 12 weeks of online learning with one live session per week. The Ecosystem Expeditions are scheduled separately and run approximately 5–7 days each." data-zh="核心課程為 12 週線上學習，含每週一次 live session。Ecosystem Expedition 現地考察另行安排，每次約 5–7 天。">The core curriculum is 12 weeks of online learning with one live session per week. The Ecosystem Expeditions are scheduled separately and run approximately 5–7 days each.</div></div>
       </div>
-      <div class="faq-item reveal reveal-delay-2" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="課程用中文還是英文進行？" data-en="Is this in English or Chinese?">課程用中文還是英文進行？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="主要教學以中文進行，教材提供中英雙語。Pitch 練習和 Ecosystem Expedition 採英文進行，因為這正是你真實出海的語境。" data-en="Instruction is primarily in Chinese, with bilingual materials. Pitch practice and the Ecosystem Expedition are conducted in English — because that's the real-world context you're preparing for.">
-            主要教學以中文進行，教材提供中英雙語。Pitch 練習和 Ecosystem Expedition 採英文進行，因為這正是你真實出海的語境。
-          </div>
-        </div>
+      <div class="fq-item reveal d2" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="Is this in English or Chinese?" data-zh="課程用中文還是英文？">Is this in English or Chinese?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="Instruction is primarily in Chinese with bilingual materials. Pitch practice and the Ecosystem Expeditions are conducted in English — because that's the real-world context you're preparing for." data-zh="主要教學以中文進行，教材提供中英雙語。Pitch 練習和 Ecosystem Expedition 採英文，因為這正是你真實出海的語境。">Instruction is primarily in Chinese with bilingual materials. Pitch practice and the Ecosystem Expeditions are conducted in English — because that's the real-world context you're preparing for.</div></div>
       </div>
-      <div class="faq-item reveal reveal-delay-3" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="費用是多少？" data-en="How much does it cost?">費用是多少？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="費用依學員背景與 Cohort 方案而定，申請通過後會有專人說明。GVA 計畫不以課程費用為主要商業模式，我們對創辦人的長期關係更感興趣。" data-en="Pricing varies based on founder profile and cohort structure. Details are provided after your application is reviewed. GVA's model is not primarily tuition-based — we're more interested in long-term relationships with founders.">
-            費用依學員背景與 Cohort 方案而定，申請通過後會有專人說明。GVA 計畫不以課程費用為主要商業模式，我們對創辦人的長期關係更感興趣。
-          </div>
-        </div>
+      <div class="fq-item reveal d3" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="What's the cohort size?" data-zh="每期有幾個人？">What's the cohort size?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="Maximum 15 founders per cohort, intentionally small. Deep peer exchange requires trust, and trust requires time and space — which scale destroys." data-zh="每期上限 15 名創辦人，刻意保持小規模。深度的同儕交流需要信任，而信任需要時間和空間才能建立。">Maximum 15 founders per cohort, intentionally small. Deep peer exchange requires trust, and trust requires time and space — which scale destroys.</div></div>
       </div>
-      <div class="faq-item reveal" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="每期 Cohort 有幾個人？" data-en="What's the cohort size?">每期 Cohort 有幾個人？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="每期上限 15 名創辦人，刻意保持小規模。我們相信真正有深度的同儕交流需要信任，而信任需要時間和空間去建立。" data-en="Maximum 15 founders per cohort, intentionally small. Deep peer exchange requires trust, and trust requires time and space — which scale destroys.">
-            每期上限 15 名創辦人，刻意保持小規模。我們相信真正有深度的同儕交流需要信任，而信任需要時間和空間去建立。
-          </div>
-        </div>
+      <div class="fq-item reveal" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="How much does it cost?" data-zh="費用是多少？">How much does it cost?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="Pricing varies based on founder profile and cohort structure. Details are provided after your application is reviewed. GVA's model is not primarily tuition-based — we're more interested in long-term relationships with founders." data-zh="費用依學員背景與 Cohort 方案而定，申請通過後會有專人說明。GVA 不以課程費用為主要商業模式，我們對創辦人的長期關係更感興趣。">Pricing varies based on founder profile and cohort structure. Details are provided after your application is reviewed. GVA's model is not primarily tuition-based — we're more interested in long-term relationships with founders.</div></div>
       </div>
-      <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)">
-        <button class="faq-trigger">
-          <h4 data-zh="這跟一般加速器有什麼不同？" data-en="How is this different from other accelerators?">這跟一般加速器有什麼不同？</h4>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body">
-          <div class="faq-inner" data-zh="一般加速器在你 raise 之後幫你 scale。我們在你 raise 之前幫你準備好。焦點在：你能不能跟全球 VC 說一個他們聽得懂、願意跟進的故事。這個差別，決定你能不能進到下一個對話。" data-en="Most accelerators help you scale after you raise. We prepare you before you raise. The focus is singular: can you tell a story that global VCs understand and want to follow? That gap determines whether you get into the next conversation.">
-            一般加速器在你 raise 之後幫你 scale。我們在你 raise 之前幫你準備好。焦點在：你能不能跟全球 VC 說一個他們聽得懂、願意跟進的故事。這個差別，決定你能不能進到下一個對話。
-          </div>
-        </div>
+      <div class="fq-item reveal d1" onclick="toggleFaq(this)">
+        <button class="fq-trigger"><h4 data-en="How is this different from other accelerators?" data-zh="這跟一般加速器有什麼不同？">How is this different from other accelerators?</h4><svg class="fq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="fq-body"><div class="fq-inner" data-en="Most accelerators help you scale after you raise. We prepare you before you raise. The focus is singular: can you tell a story that global VCs understand and want to follow? That gap determines whether you get into the next conversation." data-zh="一般加速器在你 raise 之後幫你 scale。我們在你 raise 之前幫你準備好。焦點只有一個：你能不能跟全球 VC 說一個他們聽得懂、願意跟進的故事？這個差別，決定你能不能進到下一個對話。">Most accelerators help you scale after you raise. We prepare you before you raise. The focus is singular: can you tell a story that global VCs understand and want to follow? That gap determines whether you get into the next conversation.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════ FOOTER ══════════════════════════════ -->
+<!-- ════════════════════ FOOTER ═══════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="nav-logo">GVA Founders Playbook</span>
-        <p class="footer-tagline" data-zh="台灣深科技創辦人的出海作戰系統。從實驗室到全球舞台。" data-en="The operating system for Taiwan's deep tech founders going global. From lab to global stage.">
-          台灣深科技創辦人的出海作戰系統。從實驗室到全球舞台。
-        </p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/company/gva-tw" target="_blank" class="social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="https://twitter.com/gva_tw" target="_blank" class="social-link" aria-label="Twitter / X">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <div class="logo-mark" style="gap:3px"><div class="lm-bar" style="width:12px"></div><div class="lm-bar" style="width:18px"></div><div class="lm-bar" style="width:12px"></div></div>
+          <span class="ft-logo-text">GVA Founders Playbook</span>
+        </div>
+        <p class="ft-tagline" data-en="The operating system for Taiwan's deep tech founders going global. From breakthrough to boardroom." data-zh="台灣深科技創辦人的出海作戰系統。從突破到全球舞台。">The operating system for Taiwan's deep tech founders going global. From breakthrough to boardroom.</p>
+        <div class="ft-socials">
+          <a href="https://www.linkedin.com/company/gva-tw" target="_blank" class="ft-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://twitter.com/gva_tw" target="_blank" class="ft-social" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
       </div>
-      <div class="footer-nav">
-        <h5 data-zh="導覽" data-en="Navigation">導覽</h5>
+      <div class="ft-nav">
+        <h5 data-en="Navigation" data-zh="導覽">Navigation</h5>
         <ul>
-          <li><a href="#about" data-zh="關於計畫" data-en="About">關於計畫</a></li>
-          <li><a href="#pillars" data-zh="三大支柱" data-en="Three Pillars">三大支柱</a></li>
-          <li><a href="#curriculum" data-zh="課程模組" data-en="Curriculum">課程模組</a></li>
-          <li><a href="#methodology" data-zh="完整方法論" data-en="Methodology">完整方法論</a></li>
-          <li><a href="#apply" data-zh="申請加入" data-en="Apply">申請加入</a></li>
-          <li><a href="#faq" data-zh="常見問題" data-en="FAQ">常見問題</a></li>
-          <li><a href="https://www.gva.tw" target="_blank" data-zh="GVA 官網" data-en="GVA Official">GVA 官網</a></li>
+          <li><a href="#about" data-en="About the Program" data-zh="關於計畫">About the Program</a></li>
+          <li><a href="#pillars" data-en="The Three Systems" data-zh="三大系統">The Three Systems</a></li>
+          <li><a href="#curriculum" data-en="Curriculum" data-zh="課程架構">Curriculum</a></li>
+          <li><a href="#global" data-en="Global Network" data-zh="全球網絡">Global Network</a></li>
+          <li><a href="#apply" data-en="Apply Now" data-zh="立即申請">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="ft-nav">
+        <h5 data-en="Resources" data-zh="資源">Resources</h5>
+        <ul>
+          <li><a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" data-en="Full Methodology" data-zh="完整方法論">Full Methodology</a></li>
+          <li><a href="#faq" data-en="FAQ" data-zh="常見問題">FAQ</a></li>
+          <li><a href="https://www.gva.tw" target="_blank" data-en="GVA Official Site" data-zh="GVA 官網">GVA Official Site</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-zh="GVA is the IP of Bonhope Capital · Methodology by Vincent Wang · © 2026" data-en="GVA is the IP of Bonhope Capital · Methodology by Vincent Wang · © 2026">
-        GVA is the IP of Bonhope Capital · Methodology by Vincent Wang · © 2026
-      </span>
-      <span data-zh="Taiwan-to-Global Pre-Accelerator" data-en="Taiwan-to-Global Pre-Accelerator" style="color:var(--text3);">
-        Taiwan-to-Global Pre-Accelerator
-      </span>
+      <span data-en="GVA is the IP of Bonhope Capital · Methodology by Vincent Wang · © 2026" data-zh="GVA 為 Bonhope Capital 的 IP · 方法論由 Vincent Wang 建立 · © 2026">GVA is the IP of Bonhope Capital · Methodology by Vincent Wang · © 2026</span>
+      <span data-en="Taiwan-to-Global Pre-Accelerator" data-zh="台灣出海前加速計畫">Taiwan-to-Global Pre-Accelerator</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* ─── PROGRESS BAR ──────────────────────────────────────── */
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progress-bar').style.width = (scrolled / max * 100) + '%';
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('bar').style.width=pct+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
 });
 
-/* ─── NAV SCROLL ────────────────────────────────────────── */
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
-});
+/* ── MOBILE MENU ──────────────────────────────────────────── */
+function openMob(){document.getElementById('mobMenu').classList.add('open')}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
 
-/* ─── MOBILE MENU ───────────────────────────────────────── */
-function openMobile() { document.getElementById('mobileMenu').classList.add('open'); }
-function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
-document.getElementById('mobileClose').addEventListener('click', closeMobile);
+/* ── MARQUEE POPULATE ─────────────────────────────────────── */
+const PARTNERS=['Y Combinator','Sequoia Capital','500 Global','AppWorks','SOSV','Bonhope Capital','Silicon Valley Bank','AngelList'];
+const track=document.getElementById('marqueeTrack');
+const build=()=>PARTNERS.map(p=>`<span class="marquee-item"><span>${p}</span><span class="marquee-sep"></span></span>`).join('');
+track.innerHTML=build()+build(); // double for seamless loop
 
-/* ─── CANVAS PARTICLES ──────────────────────────────────── */
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [], raf;
-  const NUM = 70, CONN_DIST = 140, NODE_R = 1.8;
-
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function initNodes() {
-    nodes = [];
-    for (let i = 0; i < NUM; i++) {
-      nodes.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: NODE_R + Math.random() * 1.2
-      });
+/* ── SCROLL REVEAL ────────────────────────────────────────── */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      // animate connector paths
+      e.target.querySelectorAll&&e.target.querySelectorAll('.connector-path').forEach(p=>p.classList.add('vis'));
     }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Connector path observer
+const pathObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.5});
+document.querySelectorAll('.connector-path').forEach(p=>pathObs.observe(p));
+
+/* ── COUNTER ANIMATION ────────────────────────────────────── */
+const cntObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.cnt[data-target]').forEach(el=>{
+        const t=parseInt(el.dataset.target),d=1200,s=performance.now();
+        const tick=n=>{const p=Math.min((n-s)/d,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*t);if(p<1)requestAnimationFrame(tick);else el.textContent=t};
+        requestAnimationFrame(tick);
+      });
+      cntObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.hero-stats,.meth-metrics').forEach(el=>cntObs.observe(el));
+
+/* ── ACCORDION ────────────────────────────────────────────── */
+function toggleAcc(item){
+  const body=item.querySelector('.acc-body'),inner=item.querySelector('.acc-inner'),open=item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.acc-body').style.maxHeight='0'});
+  if(!open){item.classList.add('open');body.style.maxHeight=inner.scrollHeight+'px'}
+}
+function toggleFaq(item){
+  const body=item.querySelector('.fq-body'),inner=item.querySelector('.fq-inner'),open=item.classList.contains('open');
+  document.querySelectorAll('.fq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.fq-body').style.maxHeight='0'});
+  if(!open){item.classList.add('open');body.style.maxHeight=inner.scrollHeight+'px'}
+}
+
+/* ── FORM ─────────────────────────────────────────────────── */
+function submitForm(e){
+  e.preventDefault();
+  console.log('[GVA Apply]',Object.fromEntries(new FormData(e.target)));
+  // TODO: Connect to systeme.io opt-in form / webhook to push leads into funnel + email automation
+  document.getElementById('applyForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+
+/* ── BILINGUAL ────────────────────────────────────────────── */
+let lang=new URLSearchParams(location.search).get('lang')||localStorage.getItem('gva_lang')||'en';
+function applyLang(l){
+  lang=l;localStorage.setItem('gva_lang',l);
+  document.documentElement.lang=l==='zh'?'zh-TW':'en';
+  document.querySelectorAll('[data-en][data-zh]').forEach(el=>{
+    const v=l==='zh'?el.dataset.zh:el.dataset.en;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=v}
+    else{el.innerHTML=v}
+  });
+  document.getElementById('langBtn').textContent=l==='zh'?'EN':'中文';
+  if(document.getElementById('mobLangBtn'))document.getElementById('mobLangBtn').textContent=l==='zh'?'EN':'中文';
+}
+function toggleLang(){applyLang(lang==='en'?'zh':'en')}
+applyLang(lang);
+
+/* ── GLOBE CANVAS ─────────────────────────────────────────── */
+(function(){
+  const canvas=document.getElementById('globe-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const DEG=Math.PI/180;
+  let W=500,H=500,R=210,cx=250,cy=250;
+  let rotLon=115,rotLat=20;
+
+  const CITIES=[
+    {name:'Taipei',    lat:25.0, lon:121.5, origin:true},
+    {name:'San Francisco',lat:37.8,lon:-122.4},
+    {name:'New York', lat:40.7, lon:-74.0},
+    {name:'London',   lat:51.5, lon:-0.1},
+    {name:'Singapore',lat:1.3,  lon:103.8},
+    {name:'Tokyo',    lat:35.7, lon:139.7},
+    {name:'Dubai',    lat:25.2, lon:55.3},
+    {name:'Sydney',   lat:-33.9,lon:151.2},
+  ];
+
+  const ARCS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,2],[3,5]];
+
+  function proj(lat,lon){
+    const φ=lat*DEG,λ=(lon-rotLon)*DEG,φ0=rotLat*DEG;
+    const cosφ=Math.cos(φ),sinφ=Math.sin(φ);
+    const cosφ0=Math.cos(φ0),sinφ0=Math.sin(φ0);
+    const cosλ=Math.cos(λ),sinλ=Math.sin(λ);
+    const k=cosφ0*cosφ*cosλ+sinφ0*sinφ;
+    return{x:cosφ*sinλ,y:cosφ0*sinφ-sinφ0*cosφ*cosλ,vis:k>=0};
+  }
+  function sx(p){return cx+R*p.x}
+  function sy(p){return cy-R*p.y}
+
+  function slerp(a,b,t){
+    const v1={x:Math.cos(a.lat*DEG)*Math.cos(a.lon*DEG),y:Math.cos(a.lat*DEG)*Math.sin(a.lon*DEG),z:Math.sin(a.lat*DEG)};
+    const v2={x:Math.cos(b.lat*DEG)*Math.cos(b.lon*DEG),y:Math.cos(b.lat*DEG)*Math.sin(b.lon*DEG),z:Math.sin(b.lat*DEG)};
+    const dot=Math.max(-1,Math.min(1,v1.x*v2.x+v1.y*v2.y+v1.z*v2.z));
+    const omega=Math.acos(dot);
+    if(omega<0.001)return a;
+    const so=Math.sin(omega);
+    const w1=Math.sin((1-t)*omega)/so,w2=Math.sin(t*omega)/so;
+    const vt={x:w1*v1.x+w2*v2.x,y:w1*v1.y+w2*v2.y,z:w1*v1.z+w2*v2.z};
+    return{lat:Math.atan2(vt.z,Math.sqrt(vt.x*vt.x+vt.y*vt.y))/DEG,lon:Math.atan2(vt.y,vt.x)/DEG};
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (let i = 0; i < NUM; i++) {
-      const a = nodes[i];
-      a.x += a.vx; a.y += a.vy;
-      if (a.x < 0 || a.x > W) a.vx *= -1;
-      if (a.y < 0 || a.y > H) a.vy *= -1;
-      for (let j = i + 1; j < NUM; j++) {
-        const b = nodes[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < CONN_DIST) {
-          const alpha = (1 - dist / CONN_DIST) * 0.3;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(6,182,212,${alpha})`;
-          ctx.lineWidth = 0.7;
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+  class Arc{
+    constructor(ai,bi){this.a=CITIES[ai];this.b=CITIES[bi];this.prog=0;this.alpha=1;this.done=false;this.spd=0.0028+Math.random()*.001}
+    update(){
+      if(this.prog<1){this.prog=Math.min(1,this.prog+this.spd)}
+      else{this.alpha-=.012;if(this.alpha<=0)this.done=true}
+    }
+    draw(){
+      const steps=80,cur=Math.floor(this.prog*steps);
+      if(cur<2)return;
+      ctx.beginPath();
+      let first=true;
+      for(let i=0;i<=cur;i++){
+        const pt=slerp(this.a,this.b,i/steps);
+        const p=proj(pt.lat,pt.lon);
+        if(!p.vis){first=true;continue}
+        const x=sx(p),y=sy(p);
+        if(first){ctx.moveTo(x,y);first=false}else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=`rgba(8,145,178,${.55*this.alpha})`;
+      ctx.lineWidth=1.5;ctx.stroke();
+      // traveling dot
+      if(this.prog<1){
+        const pt=slerp(this.a,this.b,this.prog);
+        const p=proj(pt.lat,pt.lon);
+        if(p.vis){
+          const x=sx(p),y=sy(p);
+          const g=ctx.createRadialGradient(x,y,0,x,y,7);
+          g.addColorStop(0,`rgba(8,145,178,${.5*this.alpha})`);
+          g.addColorStop(1,'transparent');
+          ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+          ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${this.alpha})`;ctx.fill();
         }
       }
-      ctx.beginPath();
-      ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(96,165,250,0.7)';
-      ctx.fill();
     }
-    raf = requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); });
-  resize();
-  initNodes();
-  draw();
+  let arcs=[],frame=0,nextArc=0;
+  ARCS.forEach((_,i)=>setTimeout(()=>arcs.push(new Arc(ARCS[i][0],ARCS[i][1])),i*500));
+
+  function drawGlobe(){
+    ctx.clearRect(0,0,W,H);
+    // Clip to circle
+    ctx.save();ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.clip();
+    // Background
+    const bg=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    bg.addColorStop(0,'#F0FBFF');bg.addColorStop(1,'#E0F7FA');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    // Grid
+    for(let lat=-75;lat<=75;lat+=30){
+      ctx.beginPath();let f=true;
+      for(let lon=-180;lon<=180;lon+=3){
+        const p=proj(lat,lon);if(!p.vis){f=true;continue}
+        const x=sx(p),y=sy(p);
+        if(f){ctx.moveTo(x,y);f=false}else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle='rgba(8,145,178,.1)';ctx.lineWidth=.8;ctx.stroke();
+    }
+    for(let lon=-180;lon<=180;lon+=30){
+      ctx.beginPath();let f=true;
+      for(let lat=-90;lat<=90;lat+=3){
+        const p=proj(lat,lon);if(!p.vis){f=true;continue}
+        const x=sx(p),y=sy(p);
+        if(f){ctx.moveTo(x,y);f=false}else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle='rgba(8,145,178,.1)';ctx.lineWidth=.8;ctx.stroke();
+    }
+    ctx.restore();
+    // Sphere outline
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(8,145,178,.35)';ctx.lineWidth=1.5;ctx.stroke();
+    // Arcs
+    arcs.forEach(a=>a.draw());
+    // Cities
+    CITIES.forEach(c=>{
+      const p=proj(c.lat,c.lon);if(!p.vis)return;
+      const x=sx(p),y=sy(p);
+      if(c.origin){
+        // Pulse ring
+        const pulse=(Math.sin(frame*.05)+1)/2;
+        ctx.beginPath();ctx.arc(x,y,8+pulse*6,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(245,158,11,${.4-pulse*.3})`;ctx.lineWidth=1.5;ctx.stroke();
+        ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);
+        ctx.fillStyle='#F59E0B';ctx.fill();
+        ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);
+        ctx.fillStyle='#fff';ctx.fill();
+      } else {
+        ctx.beginPath();ctx.arc(x,y,3.5,0,Math.PI*2);
+        ctx.fillStyle='rgba(8,145,178,.8)';ctx.fill();
+        ctx.beginPath();ctx.arc(x,y,1.5,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,.9)';ctx.fill();
+      }
+    });
+  }
+
+  function loop(){
+    frame++;
+    rotLon+=0.04; // slow rotation
+    arcs=arcs.filter(a=>!a.done);
+    arcs.forEach(a=>a.update());
+    // spawn new arcs
+    if(frame%130===0){
+      const i=nextArc%ARCS.length;
+      arcs.push(new Arc(ARCS[i][0],ARCS[i][1]));
+      nextArc++;
+    }
+    drawGlobe();
+    requestAnimationFrame(loop);
+  }
+  loop();
 })();
-
-/* ─── TYPEWRITER ────────────────────────────────────────── */
-const TW_LINES_ZH = ['從實驗室到全球舞台', '建構你的投資人敘事', '帶著信心去募資'];
-const TW_LINES_EN = ['From Lab to Global Stage', 'Build Your Investor Narrative', 'Raise with Confidence'];
-let twIdx = 0, twChar = 0, twDeleting = false, twLang = 'zh';
-const twEl = document.getElementById('typewriter');
-
-function typewriterTick() {
-  const lines = twLang === 'zh' ? TW_LINES_ZH : TW_LINES_EN;
-  const current = lines[twIdx];
-  if (!twDeleting) {
-    twEl.textContent = current.slice(0, ++twChar);
-    if (twChar === current.length) {
-      twDeleting = true;
-      setTimeout(typewriterTick, 2200);
-      return;
-    }
-    setTimeout(typewriterTick, 68);
-  } else {
-    twEl.textContent = current.slice(0, --twChar);
-    if (twChar === 0) {
-      twDeleting = false;
-      twIdx = (twIdx + 1) % lines.length;
-      setTimeout(typewriterTick, 400);
-      return;
-    }
-    setTimeout(typewriterTick, 38);
-  }
-}
-typewriterTick();
-
-/* ─── SCROLL REVEAL ─────────────────────────────────────── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ─── COUNTER ANIMATION ─────────────────────────────────── */
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
-  const duration = 1200;
-  const start = performance.now();
-  function tick(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(ease * target);
-    if (progress < 1) requestAnimationFrame(tick);
-    else el.textContent = target;
-  }
-  requestAnimationFrame(tick);
-}
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.count-num[data-target]').forEach(animateCounter);
-      counterObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.methodology-stats, .hero-stats').forEach(el => counterObserver.observe(el));
-
-/* ─── ACCORDION ─────────────────────────────────────────── */
-function toggleAccordion(item) {
-  const body = item.querySelector('.accordion-body');
-  const inner = item.querySelector('.accordion-inner');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.accordion-item.open').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.accordion-body').style.maxHeight = '0';
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    body.style.maxHeight = inner.scrollHeight + 'px';
-  }
-}
-
-/* ─── FAQ ACCORDION ─────────────────────────────────────── */
-function toggleFaq(item) {
-  const body = item.querySelector('.faq-body');
-  const inner = item.querySelector('.faq-inner');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.faq-body').style.maxHeight = '0';
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    body.style.maxHeight = inner.scrollHeight + 'px';
-  }
-}
-
-/* ─── PASSWORD UNLOCK ───────────────────────────────────── */
-function checkPassword() {
-  const val = document.getElementById('pwInput').value.trim();
-  if (val === 'founders2026') {
-    document.getElementById('lockOverlay').style.display = 'none';
-    document.getElementById('accordionWrap').classList.add('unlocked');
-    localStorage.setItem('gva_unlocked', '1');
-  } else {
-    document.getElementById('pwError').style.display = 'block';
-    document.getElementById('pwInput').style.borderColor = 'var(--danger)';
-    setTimeout(() => { document.getElementById('pwInput').style.borderColor = ''; }, 1500);
-  }
-}
-document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
-if (localStorage.getItem('gva_unlocked') === '1') {
-  document.getElementById('lockOverlay').style.display = 'none';
-  document.getElementById('accordionWrap').classList.add('unlocked');
-}
-
-/* ─── FORM SUBMIT ───────────────────────────────────────── */
-function submitForm(e) {
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.target));
-  console.log('[GVA Apply]', data);
-  // TODO: Connect to systeme.io opt-in form / webhook to push leads into funnel + email automation
-  document.getElementById('applyForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-}
-
-/* ─── BILINGUAL ─────────────────────────────────────────── */
-let currentLang = localStorage.getItem('gva_lang') || 'zh';
-
-function applyLang(lang) {
-  currentLang = lang;
-  localStorage.setItem('gva_lang', lang);
-  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
-  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
-    const txt = lang === 'zh' ? el.dataset.zh : el.dataset.en;
-    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-      el.placeholder = txt;
-    } else {
-      el.innerHTML = txt;
-    }
-  });
-  const btnText = lang === 'zh' ? 'EN' : '中';
-  document.getElementById('langBtn').textContent = btnText;
-  if (document.getElementById('mobileLangBtn')) {
-    document.getElementById('mobileLangBtn').textContent = btnText;
-  }
-  // Sync typewriter language
-  twLang = lang;
-  // Sync FAQ inner content (they use data-zh/en directly on .faq-inner)
-}
-
-function toggleLang() {
-  applyLang(currentLang === 'zh' ? 'en' : 'zh');
-}
-
-// Init on load
-if (currentLang === 'en') applyLang('en');
-// Default ZH: already in DOM, just sync button
-else document.getElementById('langBtn').textContent = 'EN';
-
-/* ─── URL PARAM LANG ────────────────────────────────────── */
-const urlLang = new URLSearchParams(location.search).get('lang');
-if (urlLang === 'en') applyLang('en');
 </script>
 </body>
 </html>
