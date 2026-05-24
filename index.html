@@ -379,11 +379,9 @@ footer{background:#0B1623;padding:72px 0 0}
 .footer-bottom{padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;font-size:.78rem;color:rgba(255,255,255,.25)}
 
 /* ── CONNECTING LINE ANIMATION ────────────────────────────── */
-.section-connector{overflow:hidden;height:80px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--white)}
-.connector-svg{width:100%;height:60px;position:absolute}
-.connector-path{fill:none;stroke:rgba(8,145,178,.2);stroke-width:1.5;stroke-dasharray:800;stroke-dashoffset:800;animation:draw-path 2.5s ease forwards}
-.connector-path.vis{animation:draw-path 2.5s ease forwards}
-@keyframes draw-path{to{stroke-dashoffset:0}}
+.section-connector{display:none}
+.pillars-mtn{position:absolute;bottom:0;left:0;width:100%;pointer-events:none;z-index:0;opacity:.9}
+#pillars>.container{position:relative;z-index:1}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media(max-width:900px){
@@ -453,7 +451,7 @@ footer{background:#0B1623;padding:72px 0 0}
       <div class="hero-badge" data-en="Pre-Accelerator · Taiwan to Global" data-zh="前加速計畫 · 台灣出海">Pre-Accelerator · Taiwan to Global</div>
       <h1 class="hero-h1">
         <span data-en="Turn Your Breakthrough" data-zh="把你的突破">Turn Your Breakthrough</span><br>
-        <em><span data-en="Into a Fundable Story." data-zh="變成一個值得投資的故事">Into a Fundable Story.</span></em>
+        <em><span data-en="Into a Fundable Story." data-zh="化為值得投資的故事">Into a Fundable Story.</span></em>
       </h1>
       <p class="hero-sub" data-en="The operating system for deep tech founders who are ready to face global VCs — but stuck translating breakthroughs into stories investors act on." data-zh="為準備面對全球 VC 的深科技創辦人打造的作戰系統。把世界級技術，轉換成投資人會行動的故事。">
         The operating system for deep tech founders who are ready to face global VCs — but stuck translating breakthroughs into stories investors act on.
@@ -502,7 +500,7 @@ footer{background:#0B1623;padding:72px 0 0}
   <div class="container">
     <div class="reveal">
       <div class="eyebrow" data-en="The Founder's Wall" data-zh="創辦人的牆">The Founder's Wall</div>
-      <h2 class="section-h" style="max-width:640px" data-en="Your Technology Is World-Class. Your Story Isn't — Yet." data-zh="你的技術是世界級的，但你的故事，還不是">Your Technology Is World-Class.<br>Your Story Isn't — Yet.</h2>
+      <h2 class="section-h" style="max-width:640px" data-en="Your Technology Is World-Class. Your Story Isn't — Yet." data-zh="你的技術是世界級的，<br>但你的故事，還不是">Your Technology Is World-Class.<br>Your Story Isn't — Yet.</h2>
       <p class="section-p" data-en="Taiwan's deep tech founders carry transformative R&D. Yet they're eliminated in the first VC meeting — not because of capability, but because of narrative." data-zh="台灣深科技創辦人掌握著顛覆性的研發成果，卻在第一輪 VC 對話中出局。不是能力問題，是敘事問題。">
         Taiwan's deep tech founders carry transformative R&D. Yet they're eliminated in the first VC meeting — not because of capability, but because of narrative.
       </p>
@@ -520,7 +518,7 @@ footer{background:#0B1623;padding:72px 0 0}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
         </div>
         <h3 data-en="Pitch deck built for local, rejected globally" data-zh="為本土設計的 Pitch Deck，全球場館全軍覆沒">Pitch deck built for local, rejected globally</h3>
-        <p data-en="Appwork calls you strong. YCC passes immediately. Different frameworks, different expectations." data-zh="Appwork 說你很強，YCC 直接 pass。框架不同，語言不同，預期不同。">Appwork calls you strong. YCC passes immediately. Different frameworks, different expectations.</p>
+        <p data-en="NexusHub calls you strong. NorthStar VC passes immediately. Different frameworks, different expectations." data-zh="NexusHub 說你很強，NorthStar VC 直接 pass。框架不同，語言不同，預期不同。">Appwork calls you strong. YCC passes immediately. Different frameworks, different expectations.</p>
       </div>
       <div class="pain-card reveal d3">
         <div class="pain-ico">
@@ -541,7 +539,12 @@ footer{background:#0B1623;padding:72px 0 0}
 </div>
 
 <!-- ══════════════════════ PILLARS ════════════════════════════ -->
-<section id="pillars" style="padding:120px 0;background:var(--white)">
+<section id="pillars" style="padding:120px 0 160px;background:var(--white);position:relative;overflow:hidden">
+  <svg class="pillars-mtn" viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <path d="M0,260 L140,170 L300,220 L460,130 L600,195 L760,90 L920,165 L1080,75 L1220,145 L1440,100 L1440,340 L0,340Z" fill="rgba(8,145,178,.04)"/>
+    <path d="M0,280 L120,195 L280,240 L420,165 L570,220 L720,130 L880,200 L1040,115 L1200,185 L1360,150 L1440,165 L1440,340 L0,340Z" fill="rgba(8,145,178,.055)"/>
+    <path d="M0,300 L100,225 L250,265 L390,200 L530,245 L680,175 L830,230 L990,160 L1140,215 L1300,185 L1440,200 L1440,340 L0,340Z" fill="rgba(8,145,178,.07)"/>
+  </svg>
   <div class="container">
     <div class="pillars-inner">
       <div class="reveal">
@@ -735,7 +738,7 @@ footer{background:#0B1623;padding:72px 0 0}
   <div class="container" style="position:relative;z-index:2;text-align:center">
     <div class="reveal">
       <div class="eyebrow" data-en="The Framework" data-zh="方法論">The Framework</div>
-      <h2 class="section-h" style="color:#fff;font-size:clamp(2.2rem,5vw,4.5rem);max-width:760px;margin:0 auto 1.25rem" data-en="The Framework Powering Every Module." data-zh="驅動每個模組的核心方法論">The Framework<br>Powering Every Module.</h2>
+      <h2 class="section-h" style="color:#fff;font-size:clamp(2.2rem,5vw,4.5rem);max-width:760px;margin:0 auto 1.25rem" data-en="The Framework Powering Every Module." data-zh="驅動每個模組的<br>核心方法論">The Framework<br>Powering Every Module.</h2>
       <p class="section-p" style="color:rgba(255,255,255,.7);margin:0 auto 3rem" data-en="Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum." data-zh="每個模組都建立在嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整方法論。">Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum.</p>
       <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-meth" data-en="Explore the Full Methodology →" data-zh="探索完整方法論教材 →">Explore the Full Methodology →</a>
     </div>
@@ -772,16 +775,16 @@ footer{background:#0B1623;padding:72px 0 0}
       <div class="pc-img"><img src="https://i.pravatar.cc/460?img=45" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">FluxGrid</div><div class="pc-img-who">Amy Chen · Co-Founder</div></div></div>
       <div class="pc-body"><span class="pc-tag" data-en="Case Study 02" data-zh="案例 02">Case Study 02</span>
         <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-en="Before" data-zh="之前">Before</span></div><p class="pc-txt" data-en="&ldquo;Genuinely differentiated product. Zero ability to explain why it should matter to investors.&rdquo;" data-zh="「產品真的有差異化，但我完全不知道怎麼跟投資人解釋它為什麼重要。」">"Genuinely differentiated product. Zero ability to explain why it should matter to investors."</p></div>
-        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-en="After" data-zh="之後">After</span></div><p class="pc-txt" data-en="First post-program pitch led to a second meeting. Accepted into <strong>YCC Batch W25</strong>." data-zh="計畫後首場 pitch 直接進入第二次會議，成功入選 <strong>YCC Batch W25</strong>。">First post-program pitch led to a second meeting. Accepted into <strong>YCC Batch W25</strong>.</p></div>
-        <div class="pc-metric">YCC W25<div class="pc-metric-s" data-en="Y Combinator China · Batch W25" data-zh="YCC · W25 梯次">Y Combinator China · Batch W25</div></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-en="After" data-zh="之後">After</span></div><p class="pc-txt" data-en="First post-program pitch led to a second meeting. Accepted into <strong>NorthStar VC Batch W25</strong>." data-zh="計畫後首場 pitch 直接進入第二次會議，成功入選 <strong>NorthStar VC Batch W25</strong>。">First post-program pitch led to a second meeting. Accepted into <strong>YCC Batch W25</strong>.</p></div>
+        <div class="pc-metric">NStar W25<div class="pc-metric-s" data-en="NorthStar VC · Batch W25" data-zh="NorthStar VC · W25 梯次">NorthStar VC · Batch W25</div></div>
       </div>
     </div>
     <div class="proof-card" data-n="2">
       <div class="pc-img"><img src="https://i.pravatar.cc/460?img=46" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">HelixFlow</div><div class="pc-img-who">Marcus Huang · CEO</div></div></div>
       <div class="pc-body"><span class="pc-tag" data-en="Case Study 03" data-zh="案例 03">Case Study 03</span>
         <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-en="Before" data-zh="之前">Before</span></div><p class="pc-txt" data-en="&ldquo;Three years of building. Two failed fundraise attempts. Team starting to fracture.&rdquo;" data-zh="「三年建設，兩次募資失敗，團隊開始分裂。」">"Three years of building. Two failed fundraise attempts. Team starting to fracture."</p></div>
-        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-en="After" data-zh="之後">After</span></div><p class="pc-txt" data-en="Reconstructed the VC narrative from scratch. <strong>$12M Series A</strong> closed, led by Appwork." data-zh="從零重建 VC 敘事架構，$12M Series A 順利完成，由 Appwork 領投。">Reconstructed the VC narrative from scratch. <strong>$12M Series A</strong> closed, led by Appwork.</p></div>
-        <div class="pc-metric">$12M<div class="pc-metric-s" data-en="Series A · Appwork" data-zh="A 輪 · Appwork 領投">Series A · Appwork</div></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-en="After" data-zh="之後">After</span></div><p class="pc-txt" data-en="Reconstructed the VC narrative from scratch. <strong>$12M Series A</strong> closed, led by NexusHub." data-zh="從零重建 VC 敘事架構，$12M Series A 順利完成，由 NexusHub 領投。">Reconstructed the VC narrative from scratch. <strong>$12M Series A</strong> closed, led by Appwork.</p></div>
+        <div class="pc-metric">$12M<div class="pc-metric-s" data-en="Series A · NexusHub" data-zh="A 輪 · NexusHub 領投">Series A · NexusHub</div></div>
       </div>
     </div>
     <div class="proof-card" data-n="3">
@@ -834,25 +837,25 @@ footer{background:#0B1623;padding:72px 0 0}
     </div>
     <div class="logo-strip reveal">
       <div class="logo-strip-track">
-        <div class="ls-badge">YCC</div>
-        <div class="ls-badge">Sequora</div>
-        <div class="ls-badge">500 Ventures</div>
-        <div class="ls-badge">Appwork</div>
+        <div class="ls-badge">NorthStar VC</div>
+        <div class="ls-badge">Sequora Capital</div>
+        <div class="ls-badge">FivePeak Ventures</div>
+        <div class="ls-badge">NexusHub</div>
         <div class="ls-badge">Bonhope Capital</div>
         <div class="ls-badge">IndigoVC</div>
         <div class="ls-badge">Pacific Alley</div>
-        <div class="ls-badge">Endeavor Taiwan</div>
-        <div class="ls-badge">SOSV</div>
+        <div class="ls-badge">Frontline Partners</div>
+        <div class="ls-badge">ArcBridge</div>
         <!-- duplicate for loop -->
-        <div class="ls-badge">YCC</div>
-        <div class="ls-badge">Sequora</div>
-        <div class="ls-badge">500 Ventures</div>
-        <div class="ls-badge">Appwork</div>
+        <div class="ls-badge">NorthStar VC</div>
+        <div class="ls-badge">Sequora Capital</div>
+        <div class="ls-badge">FivePeak Ventures</div>
+        <div class="ls-badge">NexusHub</div>
         <div class="ls-badge">Bonhope Capital</div>
         <div class="ls-badge">IndigoVC</div>
         <div class="ls-badge">Pacific Alley</div>
-        <div class="ls-badge">Endeavor Taiwan</div>
-        <div class="ls-badge">SOSV</div>
+        <div class="ls-badge">Frontline Partners</div>
+        <div class="ls-badge">ArcBridge</div>
       </div>
     </div>
   </div>
@@ -1008,7 +1011,7 @@ function openMob(){document.getElementById('mobMenu').classList.add('open')}
 function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
 
 /* ── MARQUEE POPULATE ─────────────────────────────────────── */
-const PARTNERS=['YCC','Sequora Capital','500 Ventures','Appwork','SOSV','Bonhope Capital','IndigoVC','Pacific Alley'];
+const PARTNERS=['NorthStar VC','Sequora Capital','FivePeak Ventures','NexusHub','ArcBridge','Bonhope Capital','IndigoVC','Pacific Alley'];
 const track=document.getElementById('marqueeTrack');
 const build=()=>PARTNERS.map(p=>`<span class="marquee-item"><span>${p}</span><span class="marquee-sep"></span></span>`).join('');
 track.innerHTML=build()+build(); // double for seamless loop
@@ -1158,6 +1161,14 @@ applyLang(lang);
   }
 
   let arcs=[],frame=0,nextArc=0,cityScreenPos={},hoveredCity=null;
+  let isDrag=false,dragX=0,dragY=0;
+  canvas.style.cursor='grab';
+  canvas.addEventListener('mousedown',e=>{isDrag=true;dragX=e.clientX;dragY=e.clientY;canvas.style.cursor='grabbing';e.preventDefault();},{passive:false});
+  window.addEventListener('mousemove',e=>{if(!isDrag)return;rotLon-=(e.clientX-dragX)*.35;rotLat=Math.max(-70,Math.min(70,rotLat+(e.clientY-dragY)*.2));dragX=e.clientX;dragY=e.clientY;});
+  window.addEventListener('mouseup',()=>{isDrag=false;canvas.style.cursor=hoveredCity?'pointer':'grab';});
+  canvas.addEventListener('touchstart',e=>{isDrag=true;dragX=e.touches[0].clientX;dragY=e.touches[0].clientY;e.preventDefault();},{passive:false});
+  canvas.addEventListener('touchmove',e=>{if(!isDrag)return;rotLon-=(e.touches[0].clientX-dragX)*.35;rotLat=Math.max(-70,Math.min(70,rotLat+(e.touches[0].clientY-dragY)*.2));dragX=e.touches[0].clientX;dragY=e.touches[0].clientY;e.preventDefault();},{passive:false});
+  canvas.addEventListener('touchend',()=>{isDrag=false;});
   ARCS.forEach((_,i)=>setTimeout(()=>arcs.push(new Arc(ARCS[i][0],ARCS[i][1])),i*500));
 
   function drawGlobe(){
@@ -1236,7 +1247,7 @@ applyLang(lang);
 
   function loop(){
     frame++;
-    rotLon+=0.04;
+    if(!isDrag)rotLon+=0.04;
     arcs=arcs.filter(a=>!a.done);
     arcs.forEach(a=>a.update());
     if(frame%130===0){const i=nextArc%ARCS.length;arcs.push(new Arc(ARCS[i][0],ARCS[i][1]));nextArc++;}
@@ -1277,7 +1288,7 @@ applyLang(lang);
     });
     hoveredCity=best;
     if(!best&&tipEl)tipEl.classList.remove('vis');
-    canvas.style.cursor=best?'pointer':'default';
+    if(!isDrag)canvas.style.cursor=best?'pointer':'grab';
   });
   canvas.addEventListener('mouseleave',()=>{
     hoveredCity=null;
