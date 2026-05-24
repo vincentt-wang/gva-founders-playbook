@@ -180,7 +180,8 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 
 /* ── PILLARS ──────────────────────────────────────────────── */
 #pillars{padding:120px 0;background:var(--white)}
-.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:3.5rem}
+.pillars-inner{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
+.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:0}
 .pillar-card{background:var(--off);border:1px solid var(--border);border-radius:var(--r-card);padding:2.5rem 2rem;transition:all .3s var(--ease);cursor:default;position:relative;overflow:hidden}
 .pillar-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-3));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .pillar-card:hover{background:var(--white);box-shadow:var(--shadow-md);transform:translateY(-6px);border-color:rgba(8,145,178,.2)}
@@ -314,6 +315,7 @@ footer{background:#0B1623;padding:72px 0 0}
   .global-inner{grid-template-columns:1fr}
   .curriculum-inner{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
+  .pillars-inner{grid-template-columns:1fr;gap:2.5rem}
 }
 @media(max-width:768px){
   .nav-links,.nav-right{display:none}
@@ -323,6 +325,7 @@ footer{background:#0B1623;padding:72px 0 0}
   .h-stat{padding:0 1.25rem}
   .meth-metrics{gap:2rem}
   .hero-h1{font-size:clamp(3rem,10vw,5rem)}
+  .pillars-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -464,9 +467,9 @@ footer{background:#0B1623;padding:72px 0 0}
 <!-- ══════════════════════ PILLARS ════════════════════════════ -->
 <section id="pillars" style="padding:120px 0;background:var(--white)">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start">
+    <div class="pillars-inner">
       <div class="reveal">
-        <div class="eyebrow" data-en="Three Systems" data-zh="三大系統">Three Systems</div>
+        <div class="eyebrow" data-en="Four Pillars" data-zh="四大支柱">Four Pillars</div>
         <h2 class="section-h" data-en="One Operating System for Going Global." data-zh="一套出海作戰系統。">One Operating System<br>for Going Global.</h2>
         <p class="section-p" data-en="Curriculum, community, and in-person immersion — covering everything a founder needs before going global." data-zh="課程、社群、現地體驗——完整覆蓋創辦人出海前的每個準備環節。">Curriculum, community, and in-person immersion — covering everything a founder needs before going global.</p>
       </div>
@@ -497,6 +500,15 @@ footer{background:#0B1623;padding:72px 0 0}
           <h3 data-en="Ecosystem Expeditions" data-zh="生態系考察">Ecosystem Expeditions</h3>
           <p data-en="In-person immersion in Silicon Valley and Singapore. Walk into VC offices, meet founder communities, validate your narrative in the real world." data-zh="矽谷＋新加坡現地考察。親身走進 VC 辦公室，把課堂內容在真實場景驗證。">In-person immersion in Silicon Valley and Singapore. Walk into VC offices, meet founder communities, validate your narrative in the real world.</p>
           <div class="p-detail" data-en="→ Real VC meetings + live pitch opportunities" data-zh="→ 真實 VC 會面＋現場 pitch 機會">→ Real VC meetings + live pitch opportunities</div>
+        </div>
+        <div class="pillar-card reveal d4">
+          <div class="p-num">04</div>
+          <div class="p-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <h3 data-en="Investor Access" data-zh="投資人引薦">Investor Access</h3>
+          <p data-en="Warm intros to Tier-1 VCs across Silicon Valley, Singapore, and New York — from partners who've reviewed thousands of pitches." data-zh="矽谷、新加坡、紐約的一線 VC 暖場引薦——由見過數千場 Pitch 的合夥人把關。">Warm intros to Tier-1 VCs across Silicon Valley, Singapore, and New York — from partners who've reviewed thousands of pitches.</p>
+          <div class="p-detail" data-en="→ Pre-screened investor introductions" data-zh="→ 經篩選的投資人引薦機會">→ Pre-screened investor introductions</div>
         </div>
       </div>
     </div>
