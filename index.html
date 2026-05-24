@@ -255,7 +255,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .mm-l{font-size:.82rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
 
 /* ── PROOF (YC-style, cream bg, wheel-driven crossfade) ─── */
-#proof-rail{position:relative;height:calc(100vh + 1500px)}
+#proof-rail{position:relative;height:calc(100vh + 1500px);touch-action:pan-y}
 #proof{background:#F9F8F5;overflow:hidden;height:100vh;position:sticky;top:0}
 .pn-sticky{position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column}
 .pn-vbar{position:absolute;right:clamp(14px,2.2vw,28px);top:50%;transform:translateY(-50%);width:2px;height:100px;background:rgba(8,145,178,.18);border-radius:2px;z-index:2}
@@ -279,7 +279,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .pn-img-who{font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--text3);letter-spacing:.05em;align-self:flex-start}
 /* Center picker wheel */
 .pn-name-track{display:flex;flex-direction:column;will-change:transform}
-.pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transform-origin:center}
+.pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transform-origin:center;will-change:opacity,transform}
 .pn-name-brand{font-family:var(--fd);font-weight:900;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.04em;color:var(--text);line-height:1;white-space:nowrap}
 .pn-name-metric{font-family:var(--fd);font-weight:700;font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:-.02em;background:linear-gradient(135deg,var(--teal-3),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.3rem;line-height:1;transition:opacity .35s}
 .pn-name-sub{font-size:.88rem;color:var(--text3);margin-top:.2rem;letter-spacing:.03em;transition:opacity .35s}
@@ -1525,7 +1525,13 @@ applyLang(lang);
   function rebuildCache(){ nameTyCache = nameItems.map((_, i) => nameTy(i)); }
   rebuildCache();
   setTimeout(rebuildCache, 300); // re-run after fonts settle
-  window.addEventListener('resize', rebuildCache, {passive:true});
+
+  // Cache rail offset so scroll handler never calls getBoundingClientRect()
+  let railOffsetTop = 0;
+  function cacheRailTop(){ railOffsetTop = rail.getBoundingClientRect().top + window.scrollY; }
+  cacheRailTop();
+  setTimeout(cacheRailTop, 300);
+  window.addEventListener('resize', () => { rebuildCache(); cacheRailTop(); }, {passive:true});
 
   function go(idx){
     idx = Math.max(0, Math.min(N, idx));
@@ -1548,7 +1554,10 @@ applyLang(lang);
     }
   });
 
+  let prevScrolledVal = -1;
   function updateProof(scrolled){
+    if(Math.abs(scrolled - prevScrolledVal) < 0.3) return;
+    prevScrolledVal = scrolled;
     const rawFrac = scrolled / SCROLL_PER_STEP;
     const idx     = Math.min(N, Math.floor(rawFrac));
     go(idx);
@@ -1569,22 +1578,23 @@ applyLang(lang);
     if(vbarFill) vbarFill.style.height = `${Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100)}%`;
   }
 
-  // scroll: desktop + mobile momentum scrolling after finger lifts
+  // scroll: no getBoundingClientRect — use cached railOffsetTop + window.scrollY
   window.addEventListener('scroll', () => {
-    const scrolled = -rail.getBoundingClientRect().top;
-    if(scrolled < 0) return;
-    updateProof(scrolled);
+    const scrolled = window.scrollY - railOffsetTop;
+    if(scrolled < 0 || scrolled > N * SCROLL_PER_STEP + 200) return;
+    updateProof(Math.max(0, scrolled));
   }, { passive: true });
 
   // touchmove: zero-latency — bypasses scroll event delay on mobile
   let tStartY = 0, tStartScrolled = 0, touchInSection = false;
   let rafId = 0, pendingScrolled = 0;
   window.addEventListener('touchstart', e => {
-    const s = -rail.getBoundingClientRect().top;
+    cacheRailTop(); // refresh once per gesture (single BoundingClientRect call)
+    const s = window.scrollY - railOffsetTop;
     touchInSection = s >= 0 && s <= N * SCROLL_PER_STEP;
     if(!touchInSection) return;
     tStartY = e.touches[0].clientY;
-    tStartScrolled = s;
+    tStartScrolled = Math.max(0, s);
   }, { passive: true });
   window.addEventListener('touchmove', e => {
     if(!touchInSection) return;
