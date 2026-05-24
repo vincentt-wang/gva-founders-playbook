@@ -258,7 +258,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .mm-l{font-size:.82rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
 
 /* ── SOCIAL PROOF ─────────────────────────────────────────── */
-#proof{padding:120px 0;background:var(--off)}
+#proof{position:sticky;top:0;height:100vh;background:var(--off);overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0}
 .logos{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin:3rem 0}
 .logo-badge{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 24px;font-family:var(--fd);font-weight:800;font-size:.88rem;letter-spacing:.04em;color:var(--text3);transition:all .25s;white-space:nowrap}
 .logo-badge:hover{color:var(--text2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
@@ -269,26 +269,41 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .tcard-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--border2);object-fit:cover}
 .tcard-info h5{font-family:var(--fd);font-weight:700;font-size:.95rem}
 .tcard-info p{font-size:.82rem;color:var(--text2)}
-.alumni-wrap{display:flex;align-items:stretch;gap:2rem;margin-top:3.5rem}
-.alumni-side{width:240px;flex-shrink:0;border-radius:20px;overflow:hidden;min-height:320px}
-.alumni-side img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9) saturate(.8)}
-.alumni-rows{flex:1;min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:.85rem;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
-.alumni-row{overflow:hidden}
-.alumni-track{display:flex;gap:1rem;width:max-content}
-.alumni-track.go-l{animation:a-left 44s linear infinite}
-.alumni-track.go-r{animation:a-right 48s linear infinite}
-.alumni-rows:hover .alumni-track{animation-play-state:paused}
-@keyframes a-left{to{transform:translateX(-50%)}}
-@keyframes a-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.alumni-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:.8rem 1rem;display:flex;gap:.7rem;align-items:flex-start;width:232px;flex-shrink:0;transition:box-shadow .25s,transform .25s}
-.alumni-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px)}
-.alumni-av{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border2)}
-.alumni-cn{font-family:var(--fd);font-weight:700;font-size:.88rem;color:var(--text);white-space:nowrap}
-.alumni-fn{font-size:.75rem;color:var(--text3);margin-top:1px;white-space:nowrap}
-.alumni-res{font-size:.78rem;color:var(--teal);font-weight:600;margin-top:.4rem;line-height:1.35}
-@media(max-width:1024px){.alumni-side{width:180px}}
-@media(max-width:768px){.alumni-side{display:none}.alumni-wrap{margin-top:2rem;gap:0}}
-@media(max-width:600px){.alumni-card{width:198px}.alumni-cn,.alumni-fn{font-size:.82rem}}
+.proof-inner{max-width:980px;width:100%;margin:0 auto;padding:0 2rem}
+.proof-hd{text-align:center;margin-bottom:.9rem}
+.proof-hd .section-h{font-size:clamp(1.5rem,2.8vw,2.4rem);margin-bottom:0}
+.proof-prog{height:2px;background:var(--border);border-radius:2px;margin-bottom:1.2rem;overflow:hidden}
+.proof-prog-bar{height:100%;background:linear-gradient(90deg,var(--teal),#38bdf8);border-radius:2px;transition:width .4s var(--ease)}
+.proof-card{display:none;grid-template-columns:1fr 1.15fr;border-radius:20px;overflow:hidden;background:var(--white);box-shadow:0 4px 36px rgba(0,0,0,.09)}
+.proof-card.pc-active{display:grid;animation:pc-in .4s var(--ease) both}
+@keyframes pc-in{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+.pc-img{position:relative;overflow:hidden;min-height:400px}
+.pc-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.82) brightness(.9)}
+.pc-img-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,145,178,.22) 0%,rgba(0,0,0,.42) 100%)}
+.pc-img-lb{position:absolute;bottom:1.5rem;left:1.75rem;color:#fff}
+.pc-img-co{font-family:var(--fd);font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+.pc-img-who{font-size:.78rem;opacity:.78;margin-top:.3rem}
+.pc-body{padding:2rem 2.25rem;display:flex;flex-direction:column}
+.pc-tag{display:inline-block;font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(8,145,178,.1);border:1px solid rgba(8,145,178,.2);border-radius:6px;padding:3px 10px;margin-bottom:1.35rem;align-self:flex-start}
+.pc-blk{margin-bottom:1.1rem}
+.pc-lbl{font-family:var(--fd);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);display:flex;align-items:center;gap:.4rem;margin-bottom:.42rem}
+.pc-lbl.aft{color:var(--teal)}
+.pc-lbl svg{width:12px;height:12px;flex-shrink:0}
+.pc-txt{font-size:.9rem;color:var(--text2);line-height:1.68;margin:0}
+.pc-txt strong{color:var(--text);font-weight:700}
+.pc-metric{font-family:var(--fd);font-size:2.4rem;font-weight:900;background:linear-gradient(120deg,var(--teal),#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:auto;padding-top:1.1rem;border-top:1px solid var(--border)}
+.pc-metric-s{font-size:.76rem;color:var(--text3);-webkit-text-fill-color:var(--text3);font-weight:500;margin-top:.1rem}
+.proof-nav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+.pc-dots{display:flex;gap:6px;align-items:center}
+.pc-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);cursor:pointer;transition:all .3s}
+.pc-dot.on{width:22px;border-radius:4px;background:var(--teal)}
+.pc-ctr{font-family:var(--fd);font-size:.78rem;font-weight:700;color:var(--text3)}
+.pc-arrows{display:flex;gap:.5rem}
+.pc-arr{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text2)}
+.pc-arr:hover{border-color:var(--teal);color:var(--teal)}
+.pc-arr:disabled{opacity:.3;pointer-events:none}
+@media(max-width:768px){.proof-inner{padding:0 1rem}.proof-card.pc-active{display:flex;flex-direction:column;max-height:calc(100vh - 155px)}.pc-img{min-height:185px;max-height:215px;flex-shrink:0}.pc-img-co{font-size:1.1rem}.pc-body{padding:1.1rem 1.25rem;overflow:auto;flex:1}.pc-metric{font-size:1.85rem;padding-top:.7rem}.pc-blk{margin-bottom:.75rem}.proof-hd{margin-bottom:.5rem}.proof-hd .section-h{font-size:1.35rem}}
+@media(max-width:480px){.pc-img{min-height:160px;max-height:185px}.pc-body{padding:.85rem 1rem}.pc-metric{font-size:1.6rem}}
 
 /* ── APPLY ────────────────────────────────────────────────── */
 #apply{padding:120px 0;background:var(--white);position:relative;overflow:hidden}
@@ -712,65 +727,75 @@ footer{background:#0B1623;padding:72px 0 0}
 <div class="divider"></div>
 
 <!-- ════════════════════ PROOF ════════════════════════════════ -->
-<section id="proof" style="padding:120px 0;background:var(--off);overflow:hidden">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
+<div id="proof-outer" style="height:500vh;background:var(--off)">
+<section id="proof">
+  <div class="proof-inner">
+    <div class="proof-hd reveal">
       <div class="eyebrow" data-en="Cohort Alumni" data-zh="校友成果">Cohort Alumni</div>
       <h2 class="section-h" data-en="Built on Evidence, Not Hype." data-zh="建立在真實證據上，不是炒作。">Built on Evidence, Not Hype.</h2>
     </div>
-  </div>
-  <div class="alumni-wrap" style="padding:0 2rem">
-    <div class="alumni-side">
-      <img src="https://picsum.photos/seed/gvafdr1/280/480" alt="" loading="lazy">
+    <div class="proof-prog"><div class="proof-prog-bar" id="proofBar"></div></div>
+    <div class="proof-card" data-n="0">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=44" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">NeuroPulse</div><div class="pc-img-who">James Lin · CEO</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 01</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"Rejected by 6 US investors. My technical pitch made perfect sense to me — it never landed with them."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">Rebuilt the narrative in 8 weeks. <strong>$1.8M seed</strong> closed with Sequora Capital within 90 days of completing the program.</p></div>
+        <div class="pc-metric">$1.8M<div class="pc-metric-s">Seed Round · Sequora Capital</div></div>
+      </div>
     </div>
-    <div class="alumni-rows">
-      <!-- Row 1: scroll left -->
-      <div class="alumni-row"><div class="alumni-track go-l">
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=3" alt=""><div><div class="alumni-cn">NeuroPulse</div><div class="alumni-fn">James Lin · Founder</div><div class="alumni-res">Raised $1.8M seed · Sequora Capital</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=5" alt=""><div><div class="alumni-cn">FluxGrid</div><div class="alumni-fn">Amy Chen · Co-Founder</div><div class="alumni-res">Accepted · YCC Batch W25</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=7" alt=""><div><div class="alumni-cn">CogniBase</div><div class="alumni-fn">Daniel Wu · CEO</div><div class="alumni-res">$240K ARR · first enterprise contract</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=10" alt=""><div><div class="alumni-cn">OceanSync</div><div class="alumni-fn">Tina Liao · Founder</div><div class="alumni-res">Term sheet signed within 90 days</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=12" alt=""><div><div class="alumni-cn">HelixFlow</div><div class="alumni-fn">Marcus Huang · CEO</div><div class="alumni-res">Series A $12M · Appwork led</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=14" alt=""><div><div class="alumni-cn">TrueNorth AI</div><div class="alumni-fn">Sarah Chang · Co-Founder</div><div class="alumni-res">TechCrunch Disrupt SF · Top 10</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=15" alt=""><div><div class="alumni-cn">Solvara</div><div class="alumni-fn">Kevin Ho · Founder</div><div class="alumni-res">$900K raised · 3 angel syndicates</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=20" alt=""><div><div class="alumni-cn">DataBridge</div><div class="alumni-fn">Mei Lin · CTO</div><div class="alumni-res">$2.4M seed closed · entering SG market</div></div></div>
-        <!-- duplicate for seamless loop -->
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=3" alt=""><div><div class="alumni-cn">NeuroPulse</div><div class="alumni-fn">James Lin · Founder</div><div class="alumni-res">Raised $1.8M seed · Sequora Capital</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=5" alt=""><div><div class="alumni-cn">FluxGrid</div><div class="alumni-fn">Amy Chen · Co-Founder</div><div class="alumni-res">Accepted · YCC Batch W25</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=7" alt=""><div><div class="alumni-cn">CogniBase</div><div class="alumni-fn">Daniel Wu · CEO</div><div class="alumni-res">$240K ARR · first enterprise contract</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=10" alt=""><div><div class="alumni-cn">OceanSync</div><div class="alumni-fn">Tina Liao · Founder</div><div class="alumni-res">Term sheet signed within 90 days</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=12" alt=""><div><div class="alumni-cn">HelixFlow</div><div class="alumni-fn">Marcus Huang · CEO</div><div class="alumni-res">Series A $12M · Appwork led</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=14" alt=""><div><div class="alumni-cn">TrueNorth AI</div><div class="alumni-fn">Sarah Chang · Co-Founder</div><div class="alumni-res">TechCrunch Disrupt SF · Top 10</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=15" alt=""><div><div class="alumni-cn">Solvara</div><div class="alumni-fn">Kevin Ho · Founder</div><div class="alumni-res">$900K raised · 3 angel syndicates</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=20" alt=""><div><div class="alumni-cn">DataBridge</div><div class="alumni-fn">Mei Lin · CTO</div><div class="alumni-res">$2.4M seed closed · entering SG market</div></div></div>
-      </div></div>
-      <!-- Row 2: scroll right -->
-      <div class="alumni-row"><div class="alumni-track go-r">
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=22" alt=""><div><div class="alumni-cn">LumenX</div><div class="alumni-fn">Chris Kuo · CEO</div><div class="alumni-res">Investor deck → 4 term sheets in 6 weeks</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=24" alt=""><div><div class="alumni-cn">Prismatic</div><div class="alumni-fn">Rachel Su · Founder</div><div class="alumni-res">$600K angel round · pre-product stage</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=26" alt=""><div><div class="alumni-cn">VaultAI</div><div class="alumni-fn">Tom Wei · Co-Founder</div><div class="alumni-res">Endeavor Taiwan 2025 cohort selected</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=28" alt=""><div><div class="alumni-cn">Meridian Labs</div><div class="alumni-fn">Jennifer Liu · CEO</div><div class="alumni-res">Due diligence started 3 weeks post-cohort</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=32" alt=""><div><div class="alumni-cn">ForgeLink</div><div class="alumni-fn">Alex Tsai · Founder</div><div class="alumni-res">US market entry · MRR $28K</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=35" alt=""><div><div class="alumni-cn">Stratix</div><div class="alumni-fn">Vivian Yang · CEO</div><div class="alumni-res">6 active VC conversations · Series A pipeline</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=38" alt=""><div><div class="alumni-cn">ClearPath Bio</div><div class="alumni-fn">Eric Cheng · Co-Founder</div><div class="alumni-res">$1.1M raised · grant + venture combined</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=42" alt=""><div><div class="alumni-cn">EchoSense</div><div class="alumni-fn">Nina Park · Founder</div><div class="alumni-res">Accepted · Appwork accelerator Q1 2026</div></div></div>
-        <!-- duplicate for seamless loop -->
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=22" alt=""><div><div class="alumni-cn">LumenX</div><div class="alumni-fn">Chris Kuo · CEO</div><div class="alumni-res">Investor deck → 4 term sheets in 6 weeks</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=24" alt=""><div><div class="alumni-cn">Prismatic</div><div class="alumni-fn">Rachel Su · Founder</div><div class="alumni-res">$600K angel round · pre-product stage</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=26" alt=""><div><div class="alumni-cn">VaultAI</div><div class="alumni-fn">Tom Wei · Co-Founder</div><div class="alumni-res">Endeavor Taiwan 2025 cohort selected</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=28" alt=""><div><div class="alumni-cn">Meridian Labs</div><div class="alumni-fn">Jennifer Liu · CEO</div><div class="alumni-res">Due diligence started 3 weeks post-cohort</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=32" alt=""><div><div class="alumni-cn">ForgeLink</div><div class="alumni-fn">Alex Tsai · Founder</div><div class="alumni-res">US market entry · MRR $28K</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=35" alt=""><div><div class="alumni-cn">Stratix</div><div class="alumni-fn">Vivian Yang · CEO</div><div class="alumni-res">6 active VC conversations · Series A pipeline</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=38" alt=""><div><div class="alumni-cn">ClearPath Bio</div><div class="alumni-fn">Eric Cheng · Co-Founder</div><div class="alumni-res">$1.1M raised · grant + venture combined</div></div></div>
-        <div class="alumni-card"><img class="alumni-av" src="https://i.pravatar.cc/80?img=42" alt=""><div><div class="alumni-cn">EchoSense</div><div class="alumni-fn">Nina Park · Founder</div><div class="alumni-res">Accepted · Appwork accelerator Q1 2026</div></div></div>
-      </div></div>
+    <div class="proof-card" data-n="1">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=45" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">FluxGrid</div><div class="pc-img-who">Amy Chen · Co-Founder</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 02</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"Genuinely differentiated product. Zero ability to explain why it should matter to investors."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">First post-program pitch led to a second meeting. Accepted into <strong>YCC Batch W25</strong>.</p></div>
+        <div class="pc-metric">YCC W25<div class="pc-metric-s">Y Combinator China · Batch W25</div></div>
+      </div>
     </div>
-    <div class="alumni-side">
-      <img src="https://picsum.photos/seed/gvafdr2/280/480" alt="" loading="lazy">
+    <div class="proof-card" data-n="2">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=46" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">HelixFlow</div><div class="pc-img-who">Marcus Huang · CEO</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 03</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"Three years of building. Two failed fundraise attempts. Team starting to fracture."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">Reconstructed the VC narrative from scratch. <strong>$12M Series A</strong> closed, led by Appwork.</p></div>
+        <div class="pc-metric">$12M<div class="pc-metric-s">Series A · Appwork</div></div>
+      </div>
+    </div>
+    <div class="proof-card" data-n="3">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=47" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">LumenX</div><div class="pc-img-who">Chris Kuo · CEO</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 04</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"Four warm intros from strong connectors. Four passes — with no explanation why."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">Rewrote the pitch post-cohort. Received <strong>4 term sheets</strong> within 6 weeks.</p></div>
+        <div class="pc-metric">4 Term Sheets<div class="pc-metric-s">6 Weeks Post-Cohort</div></div>
+      </div>
+    </div>
+    <div class="proof-card" data-n="4">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=48" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">CogniBase</div><div class="pc-img-who">Daniel Wu · Founder</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 05</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"VCs liked the technology. Then they asked about the business model. I didn't have a real answer."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">Built a credible financial model. Closed <strong>$240K ARR</strong> from first enterprise contract.</p></div>
+        <div class="pc-metric">$240K ARR<div class="pc-metric-s">First Enterprise Contract</div></div>
+      </div>
+    </div>
+    <div class="proof-card" data-n="5">
+      <div class="pc-img"><img src="https://i.pravatar.cc/460?img=49" alt="" loading="lazy"><div class="pc-img-ov"></div><div class="pc-img-lb"><div class="pc-img-co">Meridian Labs</div><div class="pc-img-who">Jennifer Liu · CEO</div></div></div>
+      <div class="pc-body"><span class="pc-tag">Case Study 06</span>
+        <div class="pc-blk"><div class="pc-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Before</div><p class="pc-txt">"Strong traction in Taiwan. Couldn't explain to a US investor why any of it translated globally."</p></div>
+        <div class="pc-blk"><div class="pc-lbl aft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>After</div><p class="pc-txt">Reframed the market story. Closed <strong>US partnership</strong> and pre-Series A bridge in Singapore.</p></div>
+        <div class="pc-metric">US + SG<div class="pc-metric-s">Market Entry · Pre-Series A Bridge</div></div>
+      </div>
+    </div>
+    <div class="proof-nav">
+      <div class="pc-dots">
+        <span class="pc-dot on" data-n="0"></span><span class="pc-dot" data-n="1"></span><span class="pc-dot" data-n="2"></span><span class="pc-dot" data-n="3"></span><span class="pc-dot" data-n="4"></span><span class="pc-dot" data-n="5"></span>
+      </div>
+      <div class="pc-ctr">01 / 06</div>
+      <div class="pc-arrows">
+        <button class="pc-arr pc-prev" disabled aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="pc-arr pc-next" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
     </div>
   </div>
 </section>
-
+</div><!-- /proof-outer -->
 <!-- ════════════════════ APPLY ════════════════════════════════ -->
 <section id="apply" style="padding:120px 0;background:var(--white)">
   <div style="position:absolute;bottom:-40%;right:-15%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(8,145,178,.05) 0%,transparent 60%);pointer-events:none"></div>
@@ -1224,6 +1249,51 @@ applyLang(lang);
 
   setTimeout(bounce, 1000);
   setInterval(bounce, 2500);
+})();
+
+/* ── PROOF CARDS (scroll-driven sticky) ──────────────────── */
+(function(){
+  const outer = document.getElementById('proof-outer');
+  if (!outer) return;
+  const pCards = [...outer.querySelectorAll('.proof-card')];
+  const pDots  = [...outer.querySelectorAll('.pc-dot')];
+  const pCtr   = outer.querySelector('.pc-ctr');
+  const pPrev  = outer.querySelector('.pc-prev');
+  const pNext  = outer.querySelector('.pc-next');
+  const pBar   = document.getElementById('proofBar');
+  const N = pCards.length;
+  let cur = -1;
+
+  function show(n) {
+    if (n === cur) return;
+    if (cur >= 0) pCards[cur].classList.remove('pc-active');
+    cur = n;
+    pCards[cur].classList.add('pc-active');
+    pDots.forEach((d, i) => d.classList.toggle('on', i === cur));
+    if (pCtr) pCtr.textContent = String(cur + 1).padStart(2,'0') + ' / ' + String(N).padStart(2,'0');
+    if (pPrev) pPrev.disabled = cur === 0;
+    if (pNext) pNext.disabled = cur === N - 1;
+    if (pBar) pBar.style.width = ((cur + 1) / N * 100) + '%';
+  }
+
+  function cardIdx() {
+    const rect = outer.getBoundingClientRect();
+    const scrolled = Math.max(0, -rect.top);
+    const max = outer.offsetHeight - window.innerHeight;
+    if (max <= 0) return 0;
+    return Math.min(N - 1, Math.floor((scrolled / max) * N));
+  }
+
+  function scrollToCard(n) {
+    const max = outer.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: outer.offsetTop + (n / N) * max, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', () => show(cardIdx()), { passive: true });
+  if (pPrev) pPrev.addEventListener('click', () => scrollToCard(Math.max(0, cur - 1)));
+  if (pNext) pNext.addEventListener('click', () => scrollToCard(Math.min(N - 1, cur + 1)));
+  pDots.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i)));
+  show(0);
 })();
 </script>
 </body>
