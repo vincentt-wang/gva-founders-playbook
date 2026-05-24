@@ -126,8 +126,8 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .hero-glow-2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(8,145,178,.07) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 14s ease-in-out infinite reverse}
 @keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 .hero-grid{position:absolute;inset:0;pointer-events:none;overflow:hidden;mask-image:radial-gradient(ellipse 86% 76% at 50% 50%,black 38%,transparent 100%)}
-.hero-grid::before{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(8,145,178,.08) 59px,rgba(8,145,178,.08) 60px);animation:stripe-drift 24s linear infinite}
-.hero-grid::after{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(8,145,178,.13) 59px,rgba(8,145,178,.13) 61px);animation:stripe-drift 24s linear infinite;filter:blur(4px)}
+.hero-grid::before{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(255,185,65,.09) 59px,rgba(255,185,65,.09) 60px);animation:stripe-drift 24s linear infinite}
+.hero-grid::after{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(255,215,110,.16) 59px,rgba(255,215,110,.16) 61px);animation:stripe-drift 24s linear infinite;filter:blur(4px)}
 @keyframes stripe-drift{to{transform:translate(84.85px,84.85px)}}
 .hero-guide{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:320px;height:150px;overflow:visible;pointer-events:none;z-index:2}
 .hero-guide path{stroke-dasharray:5 10;animation:guide-flow 2.4s linear infinite}
