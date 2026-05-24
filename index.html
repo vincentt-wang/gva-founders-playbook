@@ -163,18 +163,20 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 #about>.container{position:relative;z-index:1}
 #pain{padding:120px 0;background:var(--warn-bg)}
 .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3.5rem;counter-reset:pain-count;position:relative}
-.pain-card{background:var(--white);border:1px solid rgba(8,145,178,.14);border-top:3px solid var(--teal);border-radius:var(--r-card);padding:2.5rem 2rem 2rem;box-shadow:0 2px 20px rgba(8,145,178,.07);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);position:relative;overflow:hidden;counter-increment:pain-count;cursor:default}
-.pain-card::after{content:counter(pain-count,decimal-leading-zero);position:absolute;top:.6rem;right:1.25rem;font-family:var(--fd);font-size:3.8rem;font-weight:900;line-height:1;color:rgba(8,145,178,.07);pointer-events:none;letter-spacing:-.04em}
-.pain-card:hover{transform:translateY(-7px);box-shadow:0 16px 48px rgba(8,145,178,.16),0 0 0 1px rgba(8,145,178,.18)}
-.pain-ico{width:52px;height:52px;background:rgba(8,145,178,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:all .3s var(--ease)}
-.pain-card:hover .pain-ico{background:rgba(8,145,178,.2);box-shadow:0 0 18px rgba(8,145,178,.28)}
-.pain-ico svg{width:26px;height:26px;color:var(--teal)}
+.pain-card{background:var(--white);border:1px solid rgba(255,185,65,.22);border-top:3px solid rgba(255,170,50,.8);border-radius:var(--r-card);padding:2.5rem 2rem 2rem;box-shadow:0 2px 20px rgba(255,165,40,.07);transition:transform .4s var(--ease),box-shadow .4s var(--ease);position:relative;overflow:hidden;counter-increment:pain-count;cursor:default}
+.pain-card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,185,65,.16) 0%,rgba(255,218,112,.08) 42%,transparent 70%);opacity:0;transition:opacity .45s var(--ease);pointer-events:none}
+.pain-card::after{content:counter(pain-count,decimal-leading-zero);position:absolute;top:.6rem;right:1.25rem;font-family:var(--fd);font-size:3.8rem;font-weight:900;line-height:1;color:rgba(255,175,55,.12);pointer-events:none;letter-spacing:-.04em}
+.pain-card:hover::before,.pain-card.bouncing::before{opacity:1}
+.pain-card:hover{transform:translateY(-7px);box-shadow:0 16px 48px rgba(255,160,35,.2),0 0 0 1px rgba(255,185,65,.32)}
+.pain-card.bouncing{animation:card-bounce .7s ease!important;transition:none!important;box-shadow:0 18px 52px rgba(255,160,35,.24),0 0 0 1px rgba(255,185,65,.38)}
+.pain-ico{width:52px;height:52px;background:rgba(255,185,65,.13);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:all .3s var(--ease)}
+.pain-card:hover .pain-ico,.pain-card.bouncing .pain-ico{background:rgba(255,185,65,.24);box-shadow:0 0 20px rgba(255,160,35,.35)}
+.pain-ico svg{width:26px;height:26px;color:rgb(208,132,22)}
 .pain-card h3{font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:.75rem;letter-spacing:-.01em;color:var(--text)}
 .pain-card p{font-size:.92rem;color:var(--text2);line-height:1.72}
-.water-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(8,145,178,.42);transform:scale(0);pointer-events:none;animation:water-ring-out 1.15s cubic-bezier(0,.5,.5,1) forwards}
+.water-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(255,185,65,.48);transform:scale(0);pointer-events:none;animation:water-ring-out 1.15s cubic-bezier(0,.5,.5,1) forwards}
 @keyframes water-ring-out{to{transform:scale(10);opacity:0;border-width:.3px}}
 @keyframes card-bounce{0%,100%{transform:translateY(0)}28%{transform:translateY(-14px)}52%{transform:translateY(-6px)}74%{transform:translateY(-10px)}}
-.pain-card.bouncing{animation:card-bounce .7s ease!important;transition:none!important}
 
 /* ── PILLARS ──────────────────────────────────────────────── */
 #pillars{padding:120px 0;background:var(--white)}
