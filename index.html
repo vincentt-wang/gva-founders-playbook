@@ -126,9 +126,9 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .hero-glow-1{position:absolute;top:-20%;right:-10%;width:70vw;height:70vw;background:radial-gradient(ellipse,rgba(6,182,212,.1) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 10s ease-in-out infinite}
 .hero-glow-2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(8,145,178,.07) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 14s ease-in-out infinite reverse}
 @keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-.hero-grid{position:absolute;inset:0;pointer-events:none;overflow:hidden;mask-image:radial-gradient(ellipse 86% 76% at 50% 50%,black 38%,transparent 100%)}
-.hero-grid::before{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(255,185,65,.09) 59px,rgba(255,185,65,.09) 60px);animation:stripe-drift 24s linear infinite}
-.hero-grid::after{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 59px,rgba(255,215,110,.16) 59px,rgba(255,215,110,.16) 61px);animation:stripe-drift 24s linear infinite;filter:blur(4px)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;overflow:hidden;mask-image:radial-gradient(ellipse 92% 84% at 50% 48%,black 45%,transparent 100%)}
+.hero-grid::before{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 58px,rgba(255,158,32,.28) 58px,rgba(255,158,32,.28) 60px);animation:stripe-drift 24s linear infinite}
+.hero-grid::after{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 55px,rgba(255,120,10,.20) 55px,rgba(255,120,10,.20) 63px);animation:stripe-drift 24s linear infinite;filter:blur(16px)}
 @keyframes stripe-drift{to{transform:translate(84.85px,84.85px)}}
 
 .hero-inner{position:relative;z-index:2;text-align:center}
@@ -256,24 +256,17 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .mm-n{font-family:var(--fd);font-weight:800;font-size:2.8rem;line-height:1;color:#fff;letter-spacing:-.04em;margin-bottom:.35rem}
 .mm-l{font-size:.82rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
 
-/* ── SOCIAL PROOF ─────────────────────────────────────────── */
-#proof{position:sticky;top:0;height:100vh;background:var(--off);overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0}
-.logos{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin:3rem 0}
-.logo-badge{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 24px;font-family:var(--fd);font-weight:800;font-size:.88rem;letter-spacing:.04em;color:var(--text3);transition:all .25s;white-space:nowrap}
-.logo-badge:hover{color:var(--text2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-.tcard{max-width:680px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:2.75rem;box-shadow:var(--shadow-sm)}
-.tcard-q{font-family:var(--fd);font-size:4rem;line-height:.8;color:rgba(8,145,178,.2);margin-bottom:1rem}
-.tcard-text{font-size:1.1rem;color:var(--text);line-height:1.75;margin-bottom:1.75rem;font-style:italic}
-.tcard-author{display:flex;align-items:center;gap:1rem}
-.tcard-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--border2);object-fit:cover}
-.tcard-info h5{font-family:var(--fd);font-weight:700;font-size:.95rem}
-.tcard-info p{font-size:.82rem;color:var(--text2)}
-/* ── PROOF (YC-style) ──────────────────────────────────────────── */
-#proof{padding:100px 0;background:var(--off)}
-.pn-hd{text-align:center;margin-bottom:3.5rem}
-.pn-list{display:flex;flex-direction:column;gap:1.25rem;max-width:1100px;margin:0 auto;padding:0 1.5rem}
-.pn-card{display:grid;grid-template-columns:2fr .85fr 2fr;min-height:310px;border-radius:20px;overflow:hidden;background:var(--white);box-shadow:0 2px 28px rgba(0,0,0,.07);opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-.pn-card.pn-vis{opacity:1;transform:none}
+/* ── PROOF (sticky scroll-driven) ────────────────────────── */
+#proof{position:relative;background:var(--off)}
+.pn-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;background:var(--off)}
+.pn-hd{text-align:center;padding:2rem 0 .75rem;flex-shrink:0}
+.pn-list{position:relative;flex:1;width:100%;max-width:1100px;margin:0 auto;overflow:hidden}
+.pn-card{position:absolute;top:0;bottom:0;left:1.5rem;right:1.5rem;display:grid;grid-template-columns:2fr .85fr 2fr;grid-template-rows:1fr;border-radius:20px;overflow:hidden;background:var(--white);box-shadow:0 2px 28px rgba(0,0,0,.07);opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.pn-card.pn-active{opacity:1;transform:none}
+.pn-card.pn-past{opacity:0;transform:translateY(-24px)}
+.pn-progress{flex-shrink:0;display:flex;gap:8px;padding:.85rem 0;align-items:center}
+.pn-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.15);transition:background .3s,transform .3s}
+.pn-dot.on{background:var(--teal);transform:scale(1.3)}
 .pn-photo{position:relative;overflow:hidden;background:#d8e4ec}
 .pn-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%) brightness(.9)}
 .pn-photo-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,30,.72) 0%,rgba(6,15,30,.08) 52%,transparent 100%)}
@@ -296,7 +289,10 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .pn-metric{font-family:var(--fd);font-weight:900;font-size:2.2rem;letter-spacing:-.04em;color:#fff;margin-top:auto;padding-top:1.25rem;line-height:1}
 .pn-metric-sub{font-size:.72rem;color:rgba(255,255,255,.38);margin-top:.25rem}
 @media(max-width:820px){
-  .pn-card{grid-template-columns:1fr;min-height:unset}
+  #proof{height:auto!important}
+  .pn-sticky{position:static;height:auto;overflow:visible}
+  .pn-card{position:static;opacity:1;transform:none;left:0;right:0;bottom:auto;margin-bottom:1rem;grid-template-columns:1fr;min-height:unset}
+  .pn-progress{display:none}
   .pn-photo{min-height:220px}
   .pn-center{border:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:flex-start;padding:1rem 1.25rem;gap:.3rem .75rem;text-align:left}
   .pn-case-n{width:100%}
@@ -382,7 +378,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 /* ── CONNECTING LINE ANIMATION ────────────────────────────── */
 .section-connector{display:none}
-.pillars-mtn{position:absolute;bottom:0;left:0;width:100%;pointer-events:none;z-index:0;opacity:.9}
+#pillars-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 #pillars>.container{position:relative;z-index:1}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
@@ -542,11 +538,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- ══════════════════════ PILLARS ════════════════════════════ -->
 <section id="pillars" style="padding:120px 0 160px;background:var(--white);position:relative;overflow:hidden">
-  <svg class="pillars-mtn" viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <path d="M0,260 L140,170 L300,220 L460,130 L600,195 L760,90 L920,165 L1080,75 L1220,145 L1440,100 L1440,340 L0,340Z" fill="rgba(8,145,178,.04)"/>
-    <path d="M0,280 L120,195 L280,240 L420,165 L570,220 L720,130 L880,200 L1040,115 L1200,185 L1360,150 L1440,165 L1440,340 L0,340Z" fill="rgba(8,145,178,.055)"/>
-    <path d="M0,300 L100,225 L250,265 L390,200 L530,245 L680,175 L830,230 L990,160 L1140,215 L1300,185 L1440,200 L1440,340 L0,340Z" fill="rgba(8,145,178,.07)"/>
-  </svg>
+  <canvas id="pillars-canvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="pillars-inner">
       <div class="reveal">
@@ -756,7 +748,8 @@ footer{background:#0B1623;padding:72px 0 0}
 <div class="divider"></div>
 
 <!-- ════════════════════ PROOF ════════════════════════════════ -->
-<section id="proof">
+<section id="proof" style="height:500vh">
+  <div class="pn-sticky">
   <div class="pn-hd reveal">
     <div class="eyebrow" data-en="Cohort Alumni" data-zh="校友成果">Cohort Alumni</div>
     <h2 class="section-h" data-en="Built on Evidence, Not Hype." data-zh="建立在真實證據上，不是炒作">Built on Evidence, Not Hype.</h2>
@@ -900,6 +893,15 @@ footer{background:#0B1623;padding:72px 0 0}
         <div class="pn-metric">US + SG<div class="pn-metric-sub" data-en="Market Entry · Pre-A Bridge" data-zh="美國 + 新加坡 · Pre-A 橋接">Market Entry · Pre-A Bridge</div></div>
       </div>
     </div>
+  </div>
+  <div class="pn-progress">
+    <div class="pn-dot on"></div>
+    <div class="pn-dot"></div>
+    <div class="pn-dot"></div>
+    <div class="pn-dot"></div>
+    <div class="pn-dot"></div>
+    <div class="pn-dot"></div>
+  </div>
   </div>
 </section>
 
@@ -1416,17 +1418,126 @@ applyLang(lang);
   setInterval(bounce, 2500);
 })();
 
-/* ── PROOF CARDS (scroll-reveal) ────────────────────────── */
+/* ── PROOF CARDS (sticky scroll-driven) ─────────────────── */
 (function(){
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('pn-vis'); obs.unobserve(e.target); }
+  const section = document.getElementById('proof');
+  if (!section) return;
+  const cards = [...section.querySelectorAll('.pn-card')];
+  const dots  = [...section.querySelectorAll('.pn-dot')];
+  const N = cards.length;
+  let cur = -1;
+  function update() {
+    const range = section.offsetHeight - window.innerHeight;
+    if (range <= 0) return;
+    const pct = Math.max(0, Math.min(1, -section.getBoundingClientRect().top / range));
+    const idx = Math.min(N - 1, Math.floor(pct * N));
+    if (idx === cur) return;
+    cards.forEach((c, i) => {
+      c.classList.toggle('pn-active', i === idx);
+      c.classList.toggle('pn-past',   i <  idx);
     });
-  }, {threshold: 0.12});
-  document.querySelectorAll('.pn-card').forEach((c, i) => {
-    c.style.transitionDelay = (i * 0.08) + 's';
-    obs.observe(c);
+    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    cur = idx;
+  }
+  window.addEventListener('scroll', update, {passive: true});
+  update();
+})();
+
+/* ── PILLARS CANVAS (mountain + sea) ────────────────────── */
+(function(){
+  const canvas = document.getElementById('pillars-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const section = document.getElementById('pillars');
+  let W = 0, H = 0, t = 0;
+  let mx = -9999, my = -9999;
+  let active = false;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.offsetWidth; H = canvas.offsetHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  section.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mx = e.clientX - r.left; my = e.clientY - r.top;
   });
+  section.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+  new IntersectionObserver(entries => { active = entries[0].isIntersecting; }, {threshold:0}).observe(section);
+
+  const MTN_STEP = 5, SEA_STEP = 7, MTN_R = 200, SEA_R = 170;
+
+  function mtnY(x, base, phase, li) {
+    const y = base
+      - Math.abs(Math.sin(x * 0.0040 + phase + li * 1.3)) * H * 0.095
+      - Math.abs(Math.sin(x * 0.0091 + phase * 1.4 + li * 0.8)) * H * 0.050
+      - Math.abs(Math.sin(x * 0.020  + phase * 0.7 + li * 1.6)) * H * 0.024;
+    const d = Math.hypot(x - mx, y - my);
+    if (d < MTN_R) { const f = (1 - d / MTN_R) ** 2; return y + (y > my ? 1 : -1) * f * 42; }
+    return y;
+  }
+
+  function seaY(x, base, phase) {
+    const y = base
+      + Math.sin(x * 0.0078 + phase)         * H * 0.016
+      + Math.sin(x * 0.0142 - phase * 0.65)  * H * 0.010
+      + Math.sin(x * 0.0235 + phase * 1.3)   * H * 0.005;
+    const d = Math.hypot(x - mx, y - my);
+    if (d < SEA_R) { const f = (1 - d / SEA_R) ** 2; return y - f * 28; }
+    return y;
+  }
+
+  function drawLine(pts, step, smooth, alpha, glowA) {
+    ctx.beginPath();
+    ctx.moveTo(0, pts[0]);
+    if (smooth) {
+      for (let i = 0; i < pts.length - 1; i++) {
+        const x0 = i * step, x1 = (i + 1) * step;
+        ctx.quadraticCurveTo(x0, pts[i], (x0 + x1) / 2, (pts[i] + pts[i + 1]) / 2);
+      }
+      ctx.lineTo((pts.length - 1) * step, pts[pts.length - 1]);
+    } else {
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(i * step, pts[i]);
+    }
+    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = `rgba(8,145,178,${alpha})`;
+    ctx.shadowBlur = 14; ctx.shadowColor = `rgba(8,145,178,${glowA})`;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  const LAYERS = [
+    {m:'mtn', base:.34, p0:0,   spd:.24, a:.13, g:.38},
+    {m:'mtn', base:.43, p0:1.9, spd:.17, a:.20, g:.52},
+    {m:'mtn', base:.51, p0:3.7, spd:.12, a:.28, g:.68},
+    {m:'sea', base:.70, p0:0,   spd:.88, a:.16, g:.44},
+    {m:'sea', base:.79, p0:2.2, spd:1.12,a:.24, g:.60},
+    {m:'sea', base:.88, p0:4.4, spd:1.36,a:.32, g:.76},
+  ];
+
+  function loop() {
+    requestAnimationFrame(loop);
+    if (!active) return;
+    ctx.clearRect(0, 0, W, H);
+    t += 0.016;
+    LAYERS.forEach((L, li) => {
+      const isSea = L.m === 'sea';
+      const step = isSea ? SEA_STEP : MTN_STEP;
+      const count = Math.ceil(W / step) + 2;
+      const phase = L.p0 + t * L.spd;
+      const base  = L.base * H;
+      const pts = isSea
+        ? Array.from({length: count}, (_, i) => seaY(i * step, base, phase))
+        : Array.from({length: count}, (_, i) => mtnY(i * step, base, phase, li));
+      drawLine(pts, step, isSea, L.a, L.g);
+    });
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  loop();
 })();
 </script>
 </body>
