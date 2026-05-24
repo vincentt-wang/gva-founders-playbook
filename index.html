@@ -259,7 +259,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 #proof{background:#F9F8F5;overflow:hidden;height:100vh;position:sticky;top:0}
 .pn-sticky{position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column}
 .pn-vbar{position:absolute;right:clamp(14px,2.2vw,28px);top:50%;transform:translateY(-50%);width:2px;height:100px;background:rgba(8,145,178,.18);border-radius:2px;z-index:2}
-.pn-vbar-fill{position:absolute;top:0;left:0;width:100%;border-radius:2px;background:var(--teal);transition:height .4s cubic-bezier(.4,0,.2,1);height:0}
+.pn-vbar-fill{position:absolute;top:0;left:0;width:100%;border-radius:2px;background:var(--teal);height:0}
 .pn-hd{text-align:center;padding:calc(68px + .8rem) 0 .2rem;flex-shrink:0}
 .pn-hd .section-h{color:var(--text);font-size:clamp(1.6rem,3.2vw,2.4rem);margin-bottom:0}
 .pn-hd .eyebrow{color:var(--teal)}
@@ -1535,20 +1535,16 @@ applyLang(lang);
   const SCROLL_PER_STEP = 200;
   const vbarFill = document.getElementById('pn-vbar-fill');
 
-  function updateProgress(idx){
-    if(vbarFill) vbarFill.style.height = `${(idx / N) * 100}%`;
-  }
-
   function go(idx){
     idx = Math.max(0, Math.min(N, idx));
     if(idx === cur) return;
     cur = idx;
     paintFrame(idx);
     updateWheel(idx);
-    updateProgress(idx);
   }
 
-  paintFrame(0); updateWheel(0); updateProgress(0);
+  paintFrame(0); updateWheel(0);
+  if(vbarFill) vbarFill.style.height = '0%';
 
   // Click name items → scroll to matching rail position
   nameItems.forEach((el, i) => {
@@ -1561,11 +1557,26 @@ applyLang(lang);
     }
   });
 
-  // Scroll-position driven — continuous, proportional, both directions
+  // Scroll-position driven: discrete case switch + continuous float + continuous progress
   window.addEventListener('scroll', () => {
     const scrolled = -rail.getBoundingClientRect().top;
     if(scrolled < 0) return;
-    go(Math.min(N, Math.floor(scrolled / SCROLL_PER_STEP)));
+
+    const rawFrac  = scrolled / SCROLL_PER_STEP;
+    const idx      = Math.min(N, Math.floor(rawFrac));
+    const stepFrac = rawFrac - Math.floor(rawFrac); // 0→1 within each step
+
+    go(idx);
+
+    // Float: sin curve so motion starts and ends at 0 each step (no boundary snap)
+    const floatY = Math.sin(stepFrac * Math.PI) * -18;
+    nameT.style.transform = `translateY(${nameTy(cur) + floatY}px)`;
+
+    // Progress bar: continuous, tied to absolute scroll position
+    if(vbarFill){
+      const pct = Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100);
+      vbarFill.style.height = `${pct}%`;
+    }
   }, { passive: true });
 })();
 
