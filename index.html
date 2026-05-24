@@ -121,15 +121,13 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
   min-height:100vh;display:flex;align-items:center;
   padding:140px 0 100px;
   position:relative;overflow:hidden;
-  background:var(--white);
+  background:linear-gradient(160deg,#f8feff 0%,#ecf7fb 45%,#f4fafb 100%);
 }
 .hero-glow-1{position:absolute;top:-20%;right:-10%;width:70vw;height:70vw;background:radial-gradient(ellipse,rgba(6,182,212,.1) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 10s ease-in-out infinite}
 .hero-glow-2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(8,145,178,.07) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 14s ease-in-out infinite reverse}
 @keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-.hero-grid{position:absolute;inset:0;pointer-events:none;overflow:hidden;mask-image:radial-gradient(ellipse 88% 80% at 50% 46%,black 40%,transparent 100%)}
-.hero-grid::before{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 58px,rgba(240,195,75,.15) 58px,rgba(240,195,75,.15) 60px);animation:stripe-drift 24s linear infinite}
-.hero-grid::after{content:'';position:absolute;inset:-200px;background:repeating-linear-gradient(-45deg,transparent,transparent 55px,rgba(255,180,55,.08) 55px,rgba(255,180,55,.08) 63px);animation:stripe-drift 24s linear infinite;filter:blur(8px)}
-@keyframes stripe-drift{to{transform:translate(84.85px,84.85px)}}
+.hero-grid{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#hero-canvas{width:100%;height:100%;display:block;mask-image:radial-gradient(ellipse 88% 80% at 50% 46%,black 40%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 88% 80% at 50% 46%,black 40%,transparent 100%)}
 
 .hero-inner{position:relative;z-index:2;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(8,145,178,.25);border-radius:24px;padding:7px 18px;background:rgba(8,145,178,.05);margin-bottom:2.5rem}
@@ -256,51 +254,51 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .mm-n{font-family:var(--fd);font-weight:800;font-size:2.8rem;line-height:1;color:#fff;letter-spacing:-.04em;margin-bottom:.35rem}
 .mm-l{font-size:.82rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
 
-/* ── PROOF (sticky scroll-driven) ────────────────────────── */
-#proof{position:relative;background:var(--off)}
-.pn-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;background:var(--off)}
-.pn-hd{text-align:center;padding:2rem 0 .75rem;flex-shrink:0}
-.pn-list{position:relative;flex:1;width:100%;max-width:1100px;margin:0 auto;overflow:hidden}
-.pn-card{position:absolute;top:0;bottom:0;left:.5rem;right:.5rem;display:grid;grid-template-columns:1.5fr 1.1fr 1.5fr;grid-template-rows:1fr;border-radius:20px;overflow:hidden;background:var(--white);box-shadow:0 4px 40px rgba(0,0,0,.10);opacity:0;transform:translateY(110%);transition:opacity .5s var(--ease),transform .6s cubic-bezier(.4,0,.2,1);pointer-events:none}
-.pn-card.pn-active  {opacity:1;transform:translateY(0);pointer-events:auto}
-.pn-card.pn-next    {opacity:.25;transform:translateY(calc(100% - 36px));pointer-events:none}
-.pn-card.pn-prev    {opacity:.25;transform:translateY(calc(-100% + 36px));pointer-events:none}
-.pn-card.pn-far     {opacity:0;transform:translateY(110%);pointer-events:none}
-.pn-card.pn-far-up  {opacity:0;transform:translateY(-110%);pointer-events:none}
-.pn-progress{flex-shrink:0;display:flex;gap:8px;padding:.85rem 0;align-items:center}
-.pn-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.15);transition:background .3s,transform .3s}
-.pn-dot.on{background:var(--teal);transform:scale(1.3)}
-.pn-photo{position:relative;overflow:hidden;background:#d8e4ec}
-.pn-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%) brightness(.9)}
-.pn-photo-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,30,.72) 0%,rgba(6,15,30,.08) 52%,transparent 100%)}
-.pn-who{position:absolute;top:1.1rem;left:1.25rem;font-family:var(--fd);font-weight:700;font-size:.72rem;color:#fff;background:rgba(0,0,0,.38);border-radius:7px;padding:3px 9px;backdrop-filter:blur(8px)}
-.pn-photo-txt{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.5rem}
-.pn-lbl{font-family:var(--fd);font-size:.58rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
-.pn-lbl-b{color:rgba(255,255,255,.42)}
-.pn-lbl-b::before{content:'';width:10px;height:1px;background:rgba(255,255,255,.25);flex-shrink:0}
-.pn-lbl-a{color:var(--teal-3)}
-.pn-lbl-a::before{content:'';width:10px;height:1px;background:rgba(34,211,238,.4);flex-shrink:0}
-.pn-quote{font-size:.85rem;line-height:1.65;margin:0;font-style:italic}
-.pn-photo-txt .pn-quote{color:rgba(255,255,255,.88)}
-.pn-outcome .pn-quote{color:rgba(255,255,255,.62)}
-.pn-center{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.75rem .85rem;border-left:1px solid var(--border);border-right:1px solid var(--border);background:#fff;gap:.3rem;text-align:center}
-.pn-case-n{font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--text3)}
-.pn-brand{font-family:var(--fd);font-weight:900;font-size:1.55rem;letter-spacing:-.025em;color:var(--text);line-height:1.15}
-.pn-sector{font-size:.85rem;color:var(--text3);margin-top:.15rem}
-.pn-divider{width:24px;height:1px;background:var(--border);margin:.5rem auto}
-.pn-outcome{display:flex;flex-direction:column;padding:1.75rem 1.85rem;background:linear-gradient(145deg,#060f1e 0%,#0b2445 60%,#072240 100%)}
-.pn-metric{font-family:var(--fd);font-weight:900;font-size:2.2rem;letter-spacing:-.04em;color:#fff;margin-top:auto;padding-top:1.25rem;line-height:1}
-.pn-metric-sub{font-size:.72rem;color:rgba(255,255,255,.38);margin-top:.25rem}
-@media(max-width:820px){
-  .pn-card{grid-template-columns:1fr;grid-template-rows:36% auto 1fr}
-  .pn-photo{min-height:unset}
-  .pn-center{border:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-direction:row;flex-wrap:wrap;justify-content:flex-start;padding:.85rem 1.1rem;gap:.25rem .6rem;text-align:left}
-  .pn-case-n{width:100%}
-  .pn-divider{display:none}
-  .pn-outcome{padding:1rem 1.25rem}
-  .pn-metric{font-size:1.55rem;margin-top:.75rem;padding-top:.75rem}
+/* ── PROOF (YC-style, cream bg, wheel-driven crossfade) ─── */
+#proof-rail{position:relative;height:calc(100vh + 1500px)}
+#proof{background:#F9F8F5;overflow:hidden;height:100vh;position:sticky;top:0}
+.pn-sticky{position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.pn-vbar{position:absolute;right:clamp(14px,2.2vw,28px);top:50%;transform:translateY(-50%);width:2px;height:100px;background:rgba(8,145,178,.18);border-radius:2px;z-index:2}
+.pn-vbar-fill{position:absolute;top:0;left:0;width:100%;border-radius:2px;background:var(--teal);transition:height .4s cubic-bezier(.4,0,.2,1);height:0}
+.pn-hd{text-align:center;padding:calc(68px + .8rem) 0 .2rem;flex-shrink:0}
+.pn-hd .section-h{color:var(--text);font-size:clamp(1.6rem,3.2vw,2.4rem);margin-bottom:0}
+.pn-hd .eyebrow{color:var(--teal)}
+.pn-stage{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.05fr 1fr;overflow:hidden}
+.pn-left-zone,.pn-right-zone,.pn-name-zone{overflow:hidden;min-height:0;position:relative}
+.pn-name-zone{border-left:1px solid rgba(0,0,0,.08);border-right:1px solid rgba(0,0,0,.08)}
+/* Fixed single frame per side — YC style: label ABOVE image */
+.pn-frame{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;padding:.8rem 2rem 1.2rem;gap:.5rem}
+.pn-img-tag{font-family:var(--fb);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.2rem}
+.pn-img-tag.after{color:var(--teal)}
+.pn-img-sq{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden;flex-shrink:0;max-width:min(340px,46vh)}
+.pn-img-sq img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.pn-img-sq.before img{filter:grayscale(100%) brightness(.58) contrast(1.1)}
+.pn-img-sq.after  img{filter:none}
+.pn-img-quote{font-size:.92rem;line-height:1.6;color:var(--text2);font-style:normal;margin:.4rem 0 0;align-self:flex-start}
+.pn-img-who{font-family:var(--fb);font-size:.78rem;font-weight:400;color:var(--text3);letter-spacing:.02em;align-self:flex-start;margin-top:.1rem}
+.pn-img-who{font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--text3);letter-spacing:.05em;align-self:flex-start}
+/* Center picker wheel */
+.pn-name-track{display:flex;flex-direction:column;will-change:transform;transition:transform .58s cubic-bezier(.4,0,.2,1)}
+.pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transition:opacity .42s ease,transform .42s ease;transform-origin:center}
+.pn-name-brand{font-family:var(--fd);font-weight:900;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.04em;color:var(--text);line-height:1;white-space:nowrap}
+.pn-name-metric{font-family:var(--fd);font-weight:700;font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:-.02em;background:linear-gradient(135deg,var(--teal-3),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.3rem;line-height:1;transition:opacity .35s}
+.pn-name-sub{font-size:.88rem;color:var(--text3);margin-top:.2rem;letter-spacing:.03em;transition:opacity .35s}
+/* Footer panels */
+.pn-footer-img-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:1.5rem;height:100%}
+.pn-footer-logo-grid{display:flex;flex-wrap:wrap;gap:.4rem .5rem;justify-content:center;max-width:220px}
+.pn-flogo{background:rgba(0,0,0,.03);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-family:var(--fd);font-weight:700;font-size:.7rem;letter-spacing:.04em;color:var(--text3);white-space:nowrap}
+.pn-footer-ctr-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1.5rem;height:auto;text-align:center}
+.pn-total{font-family:var(--fd);font-weight:900;font-size:clamp(3.2rem,7.5vw,6.5rem);letter-spacing:-.05em;color:var(--text);line-height:1}
+.pn-total-sub{font-size:.86rem;color:var(--text3);letter-spacing:.06em;margin-top:.35rem}
+.pn-browse{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.5rem;border:1px solid rgba(8,145,178,.32);border-radius:24px;padding:10px 22px;font-family:var(--fd);font-weight:700;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);background:rgba(8,145,178,.06);transition:background .25s,border-color .25s;text-decoration:none}
+.pn-browse:hover{background:rgba(8,145,178,.14);border-color:var(--teal)}
+@media(max-width:760px){
+  .pn-stage{grid-template-columns:0 1fr 0}
+  .pn-left-zone,.pn-right-zone{display:none}
+  .pn-name-zone{border:none}
+  .pn-name-item{height:90px}
+  .pn-name-brand{font-size:clamp(1.6rem,7vw,2.2rem)}
 }
-@media(max-width:480px){.pn-metric{font-size:1.5rem}}
 /* ── LOGO WALL ──────────────────────────────────────────── */
 .logo-strip{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
 .logo-strip-track{display:flex;gap:1.25rem;width:max-content;animation:ls-roll 32s linear infinite}
@@ -443,7 +441,7 @@ footer{background:#0B1623;padding:72px 0 0}
 <section id="hero">
   <div class="hero-glow-1"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-grid"><canvas id="hero-canvas"></canvas></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-badge" data-en="Pre-Accelerator · Taiwan to Global" data-zh="前加速計畫 · 台灣出海">Pre-Accelerator · Taiwan to Global</div>
@@ -748,162 +746,78 @@ footer{background:#0B1623;padding:72px 0 0}
 <div class="divider"></div>
 
 <!-- ════════════════════ PROOF ════════════════════════════════ -->
-<section id="proof" style="height:500vh">
+<div id="proof-rail">
+<section id="proof">
   <div class="pn-sticky">
-  <div class="pn-hd reveal">
-    <div class="eyebrow" data-en="Cohort Alumni" data-zh="校友成果">Cohort Alumni</div>
-    <h2 class="section-h" data-en="Built on Evidence, Not Hype." data-zh="建立在真實證據上，不是炒作">Built on Evidence, Not Hype.</h2>
-  </div>
-  <div class="pn-list">
-    <!-- Card 01 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=44" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">James Lin · CEO</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;Rejected by 6 US investors. My technical pitch never landed with them.&rdquo;" data-zh="「被 6 家美國投資人拒絕。技術 pitch 他們就是聽不進去。」">"Rejected by 6 US investors. My technical pitch never landed with them."</p>
+    <div class="pn-hd reveal">
+      <div class="eyebrow" data-en="Cohort Alumni" data-zh="校友成果">Cohort Alumni</div>
+      <h2 class="section-h" data-en="Built on Evidence, Not Hype." data-zh="建立在真實證據上，不是炒作">Built on Evidence, Not Hype.</h2>
+    </div>
+    <div class="pn-stage" id="pn-stage">
+      <!-- LEFT: fixed frame, content swapped by JS -->
+      <div class="pn-left-zone">
+        <div class="pn-frame" id="pn-left-frame">
+          <div class="pn-img-tag" data-en="During GVA" data-zh="GVA 計畫中">During GVA</div>
+          <div class="pn-img-sq before"><img id="pn-left-img" src="https://i.pravatar.cc/600?img=44" alt="" loading="lazy"></div>
+          <p class="pn-img-quote" id="pn-left-quote">&ldquo;Rejected by 6 US investors. My technical pitch never landed.&rdquo;</p>
+          <div class="pn-img-who" id="pn-left-who">James Lin · CEO</div>
         </div>
       </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 01" data-zh="案例 01">Case Study 01</div>
-        <div class="pn-brand">NeuroPulse</div>
-        <div class="pn-sector">Biomedical · Deep Tech</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days of completing the program." data-zh="8 週重塑敘事架構，計畫結束後 90 天以完成融資，投資方 Sequora Capital。">Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days of completing the program.</p>
-        <div class="pn-metric">$1.8M<div class="pn-metric-sub" data-en="Seed Round · Sequora Capital" data-zh="種子輪 · Sequora Capital">Seed Round · Sequora Capital</div></div>
-      </div>
-    </div>
-    <!-- Card 02 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=45" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">Amy Chen · Co-Founder</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;Genuinely differentiated product. Zero ability to explain why it should matter to investors.&rdquo;" data-zh="「產品真的有差異化，但完全不知道怎麼解釋它為什麼重要。」">"Genuinely differentiated product. Zero ability to explain why it should matter to investors."</p>
+      <!-- CENTER: picker wheel -->
+      <div class="pn-name-zone">
+        <div class="pn-name-track" id="pn-names">
+          <div class="pn-name-item">
+            <div class="pn-name-brand">NeuroPulse</div>
+            <div class="pn-name-metric">$1.8M</div>
+            <div class="pn-name-sub" data-en="Seed · Sequora Capital" data-zh="種子輪 · Sequora Capital">Seed · Sequora Capital</div>
+          </div>
+          <div class="pn-name-item">
+            <div class="pn-name-brand">FluxGrid</div>
+            <div class="pn-name-metric">NorthStar W25</div>
+            <div class="pn-name-sub" data-en="NorthStar VC · Batch W25" data-zh="NorthStar VC · W25 梯次">NorthStar VC · Batch W25</div>
+          </div>
+          <div class="pn-name-item">
+            <div class="pn-name-brand">HelixFlow</div>
+            <div class="pn-name-metric">$12M</div>
+            <div class="pn-name-sub" data-en="Series A · NexusHub" data-zh="A 輪 · NexusHub 領投">Series A · NexusHub</div>
+          </div>
+          <div class="pn-name-item">
+            <div class="pn-name-brand">LumenX</div>
+            <div class="pn-name-metric">4 Terms</div>
+            <div class="pn-name-sub" data-en="4 Term Sheets · 6 Weeks" data-zh="4 份 Term Sheet · 6 週內">4 Term Sheets · 6 Weeks</div>
+          </div>
+          <div class="pn-name-item">
+            <div class="pn-name-brand">CogniBase</div>
+            <div class="pn-name-metric">$240K ARR</div>
+            <div class="pn-name-sub" data-en="First Enterprise Contract" data-zh="首家企業客戶">First Enterprise Contract</div>
+          </div>
+          <div class="pn-name-item">
+            <div class="pn-name-brand">Meridian Labs</div>
+            <div class="pn-name-metric">US + SG</div>
+            <div class="pn-name-sub" data-en="Market Entry · Pre-A Bridge" data-zh="美國 + 新加坡 · Pre-A 橋接">Market Entry · Pre-A Bridge</div>
+          </div>
+          <!-- Footer center -->
+          <div class="pn-name-item pn-footer-ctr-panel">
+            <div class="pn-total">$86M+</div>
+            <div class="pn-total-sub" data-en="raised by cohort alumni" data-zh="校友累計融資額">raised by cohort alumni</div>
+            <a href="#apply" class="pn-browse" data-en="Apply to Next Cohort →" data-zh="申請下一期 →">Apply to Next Cohort →</a>
+          </div>
         </div>
       </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 02" data-zh="案例 02">Case Study 02</div>
-        <div class="pn-brand">FluxGrid</div>
-        <div class="pn-sector">Energy · Hardware</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="First post-program pitch led to a second meeting. Accepted into NorthStar VC Batch W25." data-zh="計畫後首場 pitch 直接進入第二次會議，成功入選 NorthStar VC Batch W25。">First post-program pitch led to a second meeting. Accepted into NorthStar VC Batch W25.</p>
-        <div class="pn-metric">NStar W25<div class="pn-metric-sub" data-en="NorthStar VC · Batch W25" data-zh="NorthStar VC · W25 梯次">NorthStar VC · Batch W25</div></div>
-      </div>
-    </div>
-    <!-- Card 03 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=46" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">Marcus Huang · CEO</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;Three years of building. Two failed fundraises. Team starting to fracture.&rdquo;" data-zh="「三年建設，兩次募資失敗，團隊開始分裂。」">"Three years of building. Two failed fundraises. Team starting to fracture."</p>
+      <!-- RIGHT: fixed frame, content swapped by JS -->
+      <div class="pn-right-zone">
+        <div class="pn-frame" id="pn-right-frame">
+          <div class="pn-img-tag after" data-en="Now" data-zh="現在">Now</div>
+          <div class="pn-img-sq after"><img id="pn-right-img" src="https://i.pravatar.cc/600?img=44" alt="" loading="lazy"></div>
+          <p class="pn-img-quote" id="pn-right-quote">Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days.</p>
+          <div class="pn-img-who" id="pn-right-who">NeuroPulse · Biomedical Deep Tech</div>
         </div>
       </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 03" data-zh="案例 03">Case Study 03</div>
-        <div class="pn-brand">HelixFlow</div>
-        <div class="pn-sector">Biotech · SaaS</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="Reconstructed the VC narrative from scratch. $12M Series A closed, led by NexusHub." data-zh="從零重建 VC 敘事架構，$12M Series A 順利完成，由 NexusHub 領投。">Reconstructed the VC narrative from scratch. $12M Series A closed, led by NexusHub.</p>
-        <div class="pn-metric">$12M<div class="pn-metric-sub" data-en="Series A · NexusHub" data-zh="A 輪 · NexusHub 領投">Series A · NexusHub</div></div>
-      </div>
     </div>
-    <!-- Card 04 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=47" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">Chris Kuo · CEO</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;Four warm intros from strong connectors. Four passes — no explanation why.&rdquo;" data-zh="「四個強力引薦，四個 pass，沒有任何解釋原因。」">"Four warm intros from strong connectors. Four passes — no explanation why."</p>
-        </div>
-      </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 04" data-zh="案例 04">Case Study 04</div>
-        <div class="pn-brand">LumenX</div>
-        <div class="pn-sector">Photonics · Hardware</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="Rewrote the pitch post-cohort. Received 4 term sheets within 6 weeks." data-zh="計畫後重寫 pitch，6 週內收到 4 份 term sheet。">Rewrote the pitch post-cohort. Received 4 term sheets within 6 weeks.</p>
-        <div class="pn-metric">4 Terms<div class="pn-metric-sub" data-en="4 Term Sheets · 6 Weeks" data-zh="4 份 Term Sheet · 6 週內">4 Term Sheets · 6 Weeks</div></div>
-      </div>
-    </div>
-    <!-- Card 05 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=48" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">Daniel Wu · Founder</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;VCs liked the technology. Then they asked about the model. I had no real answer.&rdquo;" data-zh="「VC 喜歡這個技術，然後問到商業模式，我給不出真正的答案。」">"VCs liked the technology. Then they asked about the model. I had no real answer."</p>
-        </div>
-      </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 05" data-zh="案例 05">Case Study 05</div>
-        <div class="pn-brand">CogniBase</div>
-        <div class="pn-sector">AI · Enterprise SaaS</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="Built a credible financial model. First enterprise contract closed at $240K ARR." data-zh="建立可信財務模型，首家企業客戶帶來 $240K ARR。">Built a credible financial model. First enterprise contract closed at $240K ARR.</p>
-        <div class="pn-metric">$240K ARR<div class="pn-metric-sub" data-en="First Enterprise Contract" data-zh="首家企業客戶">First Enterprise Contract</div></div>
-      </div>
-    </div>
-    <!-- Card 06 -->
-    <div class="pn-card">
-      <div class="pn-photo">
-        <img src="https://i.pravatar.cc/460?img=49" alt="" loading="lazy">
-        <div class="pn-photo-ov"></div>
-        <div class="pn-who">Jennifer Liu · CEO</div>
-        <div class="pn-photo-txt">
-          <div class="pn-lbl pn-lbl-b" data-en="Before" data-zh="之前">Before</div>
-          <p class="pn-quote" data-en="&ldquo;Strong traction in Taiwan. Couldn't explain why any of it translated globally.&rdquo;" data-zh="「台灣牽引力很強，但沒辦法向美國投資人解釋為什麼能全球複製。」">"Strong traction in Taiwan. Couldn't explain why any of it translated globally."</p>
-        </div>
-      </div>
-      <div class="pn-center">
-        <div class="pn-case-n" data-en="Case Study 06" data-zh="案例 06">Case Study 06</div>
-        <div class="pn-brand">Meridian Labs</div>
-        <div class="pn-sector">Climate Tech · B2B</div>
-        <div class="pn-divider"></div>
-      </div>
-      <div class="pn-outcome">
-        <div class="pn-lbl pn-lbl-a" data-en="After" data-zh="之後">After</div>
-        <p class="pn-quote" data-en="Reframed the market story. Closed US partnership and pre-Series A bridge in Singapore." data-zh="重新框架市場故事，完成美國合作協議與新加坡 Pre-Series A 橋接輪。">Reframed the market story. Closed US partnership and pre-Series A bridge in Singapore.</p>
-        <div class="pn-metric">US + SG<div class="pn-metric-sub" data-en="Market Entry · Pre-A Bridge" data-zh="美國 + 新加坡 · Pre-A 橋接">Market Entry · Pre-A Bridge</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="pn-progress">
-    <div class="pn-dot on"></div>
-    <div class="pn-dot"></div>
-    <div class="pn-dot"></div>
-    <div class="pn-dot"></div>
-    <div class="pn-dot"></div>
-    <div class="pn-dot"></div>
-  </div>
+    <div class="pn-vbar"><div class="pn-vbar-fill" id="pn-vbar-fill"></div></div>
   </div>
 </section>
+</div>
 
 <div class="divider"></div>
 
@@ -1431,36 +1345,147 @@ applyLang(lang);
   setInterval(bounce, 2500);
 })();
 
-/* ── PROOF CARDS (sticky scroll-driven + peek) ───────────── */
+/* ── PROOF (scroll-driven sticky rail) ──────────────────── */
 (function(){
-  const section = document.getElementById('proof');
-  if (!section) return;
-  const cards = [...section.querySelectorAll('.pn-card')];
-  const dots  = [...section.querySelectorAll('.pn-dot')];
-  const N = cards.length;
-  const STATES = ['pn-active','pn-next','pn-prev','pn-far','pn-far-up'];
-  let cur = -1;
-  function applyIdx(idx) {
-    if (idx === cur) return;
-    cards.forEach((c, i) => {
-      c.classList.remove(...STATES);
-      if      (i === idx)   c.classList.add('pn-active');
-      else if (i === idx+1) c.classList.add('pn-next');
-      else if (i === idx-1) c.classList.add('pn-prev');
-      else if (i > idx)     c.classList.add('pn-far');
-      else                  c.classList.add('pn-far-up');
+  const rail  = document.getElementById('proof-rail');
+  const sec   = document.getElementById('proof');
+  if(!sec || !rail) return;
+  const nameT = document.getElementById('pn-names');
+  const lf    = document.getElementById('pn-left-frame');
+  const rf    = document.getElementById('pn-right-frame');
+  const lImg  = document.getElementById('pn-left-img');
+  const rImg  = document.getElementById('pn-right-img');
+  const lQ    = document.getElementById('pn-left-quote');
+  const rQ    = document.getElementById('pn-right-quote');
+  const lW    = document.getElementById('pn-left-who');
+  const rW    = document.getElementById('pn-right-who');
+  if(!nameT||!lf||!rf) return;
+
+  const nameItems = [...nameT.querySelectorAll('.pn-name-item')];
+  const N = 6; // 6 cases (idx 0–5) + footer (idx 6)
+  let cur = 0;
+
+  const CASES = [
+    { img:44,
+      bEn:'“Rejected by 6 US investors. My technical pitch never landed.”',
+      bZh:'「被 6 家美國投資人拒絕。技術 pitch 他們就是聽不進去。」',
+      bWho:'James Lin · CEO',
+      aEn:'Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days.',
+      aZh:'8 週重塑敘事架構，計畫結束後 90 天內完成融資。',
+      aWho:'NeuroPulse · Biomedical Deep Tech' },
+    { img:45,
+      bEn:'“Differentiated product. Zero ability to explain why it mattered.”',
+      bZh:'「產品真的有差異化，但完全不知道怎麼解釋它為什麼重要。」',
+      bWho:'Amy Chen · Co-Founder',
+      aEn:'First post-program pitch led to a second meeting. Accepted into NorthStar VC W25.',
+      aZh:'計畫後首場 pitch 直接進入第二次會議，入選 NorthStar VC W25。',
+      aWho:'FluxGrid · Energy Hardware' },
+    { img:46,
+      bEn:'“Three years building. Two failed fundraises. Team starting to fracture.”',
+      bZh:'「三年建設，兩次募資失敗，團隊開始分裂。」',
+      bWho:'Marcus Huang · CEO',
+      aEn:'Reconstructed the VC narrative. $12M Series A closed, led by NexusHub.',
+      aZh:'從零重建 VC 敘事架構，$12M Series A 由 NexusHub 領投。',
+      aWho:'HelixFlow · Biotech SaaS' },
+    { img:47,
+      bEn:'“Four warm intros. Four passes—no explanation why.”',
+      bZh:'「四個強力引薦，四個 pass，沒有任何解釋原因。」',
+      bWho:'Chris Kuo · CEO',
+      aEn:'Rewrote the pitch post-cohort. Received 4 term sheets within 6 weeks.',
+      aZh:'計畫後重寫 pitch，6 週內收到 4 份 term sheet。',
+      aWho:'LumenX · Photonics' },
+    { img:48,
+      bEn:'“VCs liked the tech. Then they asked about the model. I had no real answer.”',
+      bZh:'「VC 喜歡這個技術，然後問到商業模式，我給不出真正的答案。」',
+      bWho:'Daniel Wu · Founder',
+      aEn:'Built a credible financial model. First enterprise contract at $240K ARR.',
+      aZh:'建立可信財務模型，首家企業客戶帶來 $240K ARR。',
+      aWho:'CogniBase · AI Enterprise' },
+    { img:49,
+      bEn:'“Strong traction in Taiwan. No way to explain why it translated globally.”',
+      bZh:'「台灣牽引力很強，但沒辦法向美國投資人解釋為什麼能全球複製。」',
+      bWho:'Jennifer Liu · CEO',
+      aEn:'Reframed the market story. US partnership and pre-Series A bridge in Singapore.',
+      aZh:'重新框架市場故事，完成美國合作協議與新加坡 Pre-A 橋接輪。',
+      aWho:'Meridian Labs · Climate Tech' }
+  ];
+
+  function nameTy(idx){
+    const zoneH = nameT.parentElement.clientHeight;
+    if(!nameT.children[idx]) return 0;
+    const el = nameT.children[idx];
+    return zoneH / 2 - (el.offsetTop + el.offsetHeight / 2);
+  }
+
+  const OPACS  = [1, 0.28, 0.12, 0.05, 0];
+  const SCALES = [1, 0.74, 0.60, 0.50, 0.42];
+
+  function updateWheel(idx){
+    nameT.style.transform = `translateY(${nameTy(idx)}px)`;
+    nameItems.forEach((el, i) => {
+      const d = Math.min(Math.abs(i - idx), OPACS.length - 1);
+      el.style.opacity   = OPACS[d].toString();
+      el.style.transform = `scale(${SCALES[d]})`;
+      const metric = el.querySelector('.pn-name-metric');
+      const sub    = el.querySelector('.pn-name-sub');
+      if(metric) metric.style.opacity = i === idx ? '1' : '0';
+      if(sub)    sub.style.opacity    = i === idx ? '1' : '0';
     });
-    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+  }
+
+  function paintFrame(idx){
+    const isFooter = idx >= N;
+    lf.style.opacity = isFooter ? '0.22' : '1';
+    rf.style.opacity = isFooter ? '0.22' : '1';
+    if(isFooter) return;
+    const c = CASES[idx];
+    const zh = (typeof lang !== 'undefined' && lang === 'zh');
+    lImg.src = `https://i.pravatar.cc/600?img=${c.img}`;
+    rImg.src = `https://i.pravatar.cc/600?img=${c.img}`;
+    lQ.textContent = zh ? c.bZh : c.bEn;
+    rQ.textContent = zh ? c.aZh : c.aEn;
+    lW.textContent = c.bWho;
+    rW.textContent = c.aWho;
+  }
+
+  // Preload all images for instant switch
+  CASES.forEach(c => { const img = new Image(); img.src = `https://i.pravatar.cc/600?img=${c.img}`; });
+
+  const SCROLL_PER_STEP = 200;
+  const vbarFill = document.getElementById('pn-vbar-fill');
+
+  function updateProgress(idx){
+    if(vbarFill) vbarFill.style.height = `${(idx / N) * 100}%`;
+  }
+
+  function go(idx){
+    idx = Math.max(0, Math.min(N, idx));
+    if(idx === cur) return;
     cur = idx;
+    paintFrame(idx);
+    updateWheel(idx);
+    updateProgress(idx);
   }
-  function update() {
-    const range = section.offsetHeight - window.innerHeight;
-    if (range <= 0) return;
-    const pct = Math.max(0, Math.min(1, -section.getBoundingClientRect().top / range));
-    applyIdx(Math.min(N - 1, Math.floor(pct * N)));
-  }
-  window.addEventListener('scroll', update, {passive: true});
-  update();
+
+  paintFrame(0); updateWheel(0); updateProgress(0);
+
+  // Click name items → scroll to matching rail position
+  nameItems.forEach((el, i) => {
+    if(i < N){
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => {
+        const railAbsTop = rail.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: railAbsTop + i * SCROLL_PER_STEP, behavior: 'smooth' });
+      });
+    }
+  });
+
+  // Scroll-position driven — continuous, proportional, both directions
+  window.addEventListener('scroll', () => {
+    const scrolled = -rail.getBoundingClientRect().top;
+    if(scrolled < 0) return;
+    go(Math.min(N, Math.floor(scrolled / SCROLL_PER_STEP)));
+  }, { passive: true });
 })();
 
 /* ── PILLARS CANVAS (mountain + sea) ────────────────────── */
@@ -1471,6 +1496,7 @@ applyLang(lang);
   const section = document.getElementById('pillars');
   let W = 0, H = 0, t = 0;
   let mx = -9999, my = -9999;
+  let smx = -9999, smy = 0; // smoothed mouse — ~2.5s latency
   let active = false;
 
   function resize() {
@@ -1484,28 +1510,38 @@ applyLang(lang);
     const r = canvas.getBoundingClientRect();
     mx = e.clientX - r.left; my = e.clientY - r.top;
   });
-  section.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+  section.addEventListener('mouseleave', () => { mx = -9999; my = -9999; smx = -9999; });
   new IntersectionObserver(entries => { active = entries[0].isIntersecting; }, {threshold:0}).observe(section);
 
   const MTN_STEP = 5, SEA_STEP = 7, MTN_R = 200, SEA_R = 170;
 
   function mtnY(x, base, phase, li) {
-    const y = base
+    let y = base
       - Math.abs(Math.sin(x * 0.0040 + phase + li * 1.3)) * H * 0.095
       - Math.abs(Math.sin(x * 0.0091 + phase * 1.4 + li * 0.8)) * H * 0.050
       - Math.abs(Math.sin(x * 0.020  + phase * 0.7 + li * 1.6)) * H * 0.024;
-    const d = Math.hypot(x - mx, y - my);
-    if (d < MTN_R) { const f = (1 - d / MTN_R) ** 2; return y + (y > my ? 1 : -1) * f * 42; }
+    if (smx > -9999) {
+      const dx = x - smx;
+      const localF = Math.exp(-(dx * dx) / 10000);
+      y += (smy - y) * localF * 0.62;
+      const waveEnv = Math.exp(-(dx * dx) / (W * W * 0.45));
+      y += waveEnv * Math.cos(dx * 0.021 + t * 3.8) * 24;
+    }
     return y;
   }
 
   function seaY(x, base, phase) {
-    const y = base
+    let y = base
       + Math.sin(x * 0.0078 + phase)         * H * 0.016
       + Math.sin(x * 0.0142 - phase * 0.65)  * H * 0.010
       + Math.sin(x * 0.0235 + phase * 1.3)   * H * 0.005;
-    const d = Math.hypot(x - mx, y - my);
-    if (d < SEA_R) { const f = (1 - d / SEA_R) ** 2; return y - f * 28; }
+    if (smx > -9999) {
+      const dx = x - smx;
+      const localF = Math.exp(-(dx * dx) / 10000);
+      y += (smy - y) * localF * 0.52;
+      const waveEnv = Math.exp(-(dx * dx) / (W * W * 0.45));
+      y += waveEnv * Math.sin(dx * 0.019 - t * 4.5) * 18;
+    }
     return y;
   }
 
@@ -1542,6 +1578,11 @@ applyLang(lang);
     if (!active) return;
     ctx.clearRect(0, 0, W, H);
     t += 0.016;
+    if (mx > -9999) {
+      if (smx < -9000) { smx = mx; smy = my; } // snap on first entry
+      smx += (mx - smx) * 0.007;
+      smy += (my - smy) * 0.007;
+    } else { smx = -9999; }
     LAYERS.forEach((L, li) => {
       const isSea = L.m === 'sea';
       const step = isSea ? SEA_STEP : MTN_STEP;
@@ -1557,6 +1598,140 @@ applyLang(lang);
 
   resize();
   window.addEventListener('resize', resize);
+  loop();
+})();
+
+/* ── HERO CANVAS (diagonal planks → energy ball) ────────── */
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const hero = document.getElementById('hero');
+  let W=0, H=0, dt=0;
+  let mx=-9999, my=-9999, vmx=0, vmy=0;
+  let mouseIn=false, mA=0; // 0→1 mouse-presence blend
+
+  function resize(){
+    const dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = canvas.offsetWidth; H = canvas.offsetHeight;
+    canvas.width  = W*dpr; canvas.height = H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  hero.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    const nx = e.clientX - r.left, ny = e.clientY - r.top;
+    if(!mouseIn){ vmx=nx; vmy=ny; } // snap on first entry
+    mx=nx; my=ny; mouseIn=true;
+  });
+  hero.addEventListener('mouseleave', () => { mouseIn=false; mx=-9999; });
+
+  const GAP    = 76;    // spacing between planks
+  const PW     = 9;     // line width
+  const SPEED  = 0.22;  // drift per frame
+  const STEP   = 6;     // sample interval along plank
+  const BASE_A = 0.038; // resting line opacity (very faint)
+  const BR     = 200;   // ball pull radius (px)
+  const BR2    = BR * BR;
+
+  // Idle wave (heartbeat sweep left→right every 2.5s when no mouse)
+  const PULSE_INTERVAL = 2500;
+  const PULSE_DURATION = 1100;
+  const PULSE_W2 = 150 * 150; // gaussian spread²
+  const PULSE_AMP = 20;
+  let pulseT = -1;
+
+  function loop(){
+    requestAnimationFrame(loop);
+    ctx.clearRect(0, 0, W, H);
+    dt += SPEED;
+
+    // Fade mouse presence in/out
+    mA += ((mouseIn ? 1 : 0) - mA) * 0.072;
+    if(mouseIn){ vmx += (mx-vmx)*0.10; vmy += (my-vmy)*0.10; }
+
+    // Idle heartbeat wave — only when mouse is away
+    const now = performance.now();
+    if(!mouseIn && mA < 0.01){
+      if(pulseT < 0 || now - pulseT > PULSE_INTERVAL) pulseT = now;
+    }
+    const pAge = pulseT > 0 ? now - pulseT : PULSE_DURATION + 1;
+    const hasPulse = !mouseIn && mA < 0.01 && pAge < PULSE_DURATION;
+    const pProg = hasPulse ? pAge / PULSE_DURATION : 0;
+    const pulseX = hasPulse ? (W + 320) * pProg - 160 : -9999;
+    const pulseEnv = hasPulse ? Math.sin(pProg * Math.PI) : 0;
+
+    const dmod = dt % GAP;
+    const D0   = -PW - 220, D1 = W + H + PW + 220;
+    const hasM = mA > 0.01;
+
+    // Lines dim as they gather into the ball
+    const lineA = BASE_A * (1 - mA * 0.78);
+
+    ctx.lineWidth = PW;
+    ctx.shadowBlur = 0;
+
+    for(let d = D0; d < D1; d += GAP){
+      const D = d + dmod;
+      ctx.beginPath();
+      let first = true;
+      for(let x = -220; x <= W+220; x += STEP){
+        const y0 = D - x;
+        let px = x, py = y0;
+        if(hasM){
+          const dx = x - vmx, dy = y0 - vmy;
+          const pull = Math.exp(-(dx*dx + dy*dy) / BR2) * mA;
+          px = x  + (vmx - x)  * pull;
+          py = y0 + (vmy - y0) * pull;
+        }
+        if(hasPulse){
+          const pdx = x - pulseX;
+          py += Math.exp(-(pdx*pdx) / PULSE_W2) * pulseEnv * PULSE_AMP;
+        }
+        if(first){ ctx.moveTo(px,py); first=false; }
+        else ctx.lineTo(px,py);
+      }
+      ctx.strokeStyle = `rgba(8,145,178,${lineA})`;
+      ctx.stroke();
+    }
+
+    // Glowing energy ball at cursor
+    if(hasM){
+      const a = mA;
+
+      // Wide outer corona
+      const g0 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,160);
+      g0.addColorStop(0,   `rgba(6,182,212,${0.14*a})`);
+      g0.addColorStop(0.5, `rgba(6,182,212,${0.04*a})`);
+      g0.addColorStop(1,   'rgba(6,182,212,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,160,0,Math.PI*2);
+      ctx.fillStyle=g0; ctx.fill();
+
+      // Mid glow ring
+      const g1 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,56);
+      g1.addColorStop(0,    `rgba(34,211,238,${0.50*a})`);
+      g1.addColorStop(0.55, `rgba(6,182,212,${0.22*a})`);
+      g1.addColorStop(1,    'rgba(8,145,178,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,56,0,Math.PI*2);
+      ctx.fillStyle=g1; ctx.fill();
+
+      // Bright inner core
+      const g2 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,18);
+      g2.addColorStop(0,   `rgba(255,255,255,${0.92*a})`);
+      g2.addColorStop(0.5, `rgba(120,220,255,${0.75*a})`);
+      g2.addColorStop(1,   'rgba(6,182,212,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,18,0,Math.PI*2);
+      ctx.fillStyle=g2; ctx.fill();
+
+      // Hard pinpoint
+      ctx.beginPath(); ctx.arc(vmx,vmy,3,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${a})`;
+      ctx.fill();
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
   loop();
 })();
 </script>
