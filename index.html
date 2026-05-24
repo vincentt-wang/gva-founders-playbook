@@ -386,7 +386,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media(max-width:900px){
-  .global-inner{grid-template-columns:1fr}
+  .global-inner{grid-template-columns:1fr;gap:2.5rem}
   .curriculum-inner{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .pillars-inner{grid-template-columns:1fr;gap:2.5rem}
@@ -400,6 +400,12 @@ footer{background:#0B1623;padding:72px 0 0}
   .meth-metrics{gap:2rem}
   .hero-h1{font-size:clamp(3rem,10vw,5rem)}
   .pillars-grid{grid-template-columns:1fr}
+  #global{padding:60px 0 70px!important}
+  .globe-wrap{max-width:min(100%,320px);margin:0 auto}
+  #globe-canvas{width:100%;height:auto;aspect-ratio:1/1}
+  .globe-glow{inset:-12px}
+  .city-legend{gap:.5rem}
+  .city-tag{font-size:.73rem;padding:3px 9px}
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
