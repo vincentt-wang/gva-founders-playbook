@@ -278,8 +278,8 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .pn-img-who{font-family:var(--fb);font-size:.78rem;font-weight:400;color:var(--text3);letter-spacing:.02em;align-self:flex-start;margin-top:.1rem}
 .pn-img-who{font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--text3);letter-spacing:.05em;align-self:flex-start}
 /* Center picker wheel */
-.pn-name-track{display:flex;flex-direction:column;will-change:transform;transition:transform .58s cubic-bezier(.4,0,.2,1)}
-.pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transition:opacity .42s ease,transform .42s ease;transform-origin:center}
+.pn-name-track{display:flex;flex-direction:column;will-change:transform}
+.pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transform-origin:center}
 .pn-name-brand{font-family:var(--fd);font-weight:900;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.04em;color:var(--text);line-height:1;white-space:nowrap}
 .pn-name-metric{font-family:var(--fd);font-weight:700;font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:-.02em;background:linear-gradient(135deg,var(--teal-3),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.3rem;line-height:1;transition:opacity .35s}
 .pn-name-sub{font-size:.88rem;color:var(--text3);margin-top:.2rem;letter-spacing:.03em;transition:opacity .35s}
@@ -1527,23 +1527,14 @@ applyLang(lang);
     }
   });
 
-  // Scroll-driven: YC-style 1:1 proportional name wheel + threshold image swap
-  window.addEventListener('scroll', () => {
-    const scrolled = -rail.getBoundingClientRect().top;
-    if(scrolled < 0) return;
-
+  function updateProof(scrolled){
     const rawFrac = scrolled / SCROLL_PER_STEP;
     const idx     = Math.min(N, Math.floor(rawFrac));
-
-    go(idx); // image swap only at step threshold
-
-    // Name wheel: linear interpolation between adjacent resting positions — direct 1:1 with scroll
-    const a  = Math.min(N - 1, Math.floor(rawFrac));
-    const b  = Math.min(N, a + 1);
-    const f  = rawFrac - a;
+    go(idx);
+    const a = Math.min(N - 1, Math.floor(rawFrac));
+    const b = Math.min(N, a + 1);
+    const f = rawFrac - a;
     nameT.style.transform = `translateY(${nameTy(a) + (nameTy(b) - nameTy(a)) * f}px)`;
-
-    // Opacity + scale: smooth fractional interpolation as items pass through center
     nameItems.forEach((el, i) => {
       const dist = Math.abs(i - rawFrac);
       const d0   = Math.min(Math.floor(dist), OPACS.length - 1);
@@ -1556,9 +1547,30 @@ applyLang(lang);
       if(metric) metric.style.opacity = dist < 0.5 ? '1' : '0';
       if(sub)    sub.style.opacity    = dist < 0.5 ? '1' : '0';
     });
-
-    // Progress bar: continuous
     if(vbarFill) vbarFill.style.height = `${Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100)}%`;
+  }
+
+  // scroll: desktop + mobile momentum scrolling after finger lifts
+  window.addEventListener('scroll', () => {
+    const scrolled = -rail.getBoundingClientRect().top;
+    if(scrolled < 0) return;
+    updateProof(scrolled);
+  }, { passive: true });
+
+  // touchmove: zero-latency — bypasses scroll event delay on mobile
+  let tStartY = 0, tStartScrolled = 0, touchInSection = false;
+  window.addEventListener('touchstart', e => {
+    const s = -rail.getBoundingClientRect().top;
+    touchInSection = s >= 0 && s <= N * SCROLL_PER_STEP;
+    if(!touchInSection) return;
+    tStartY = e.touches[0].clientY;
+    tStartScrolled = s;
+  }, { passive: true });
+  window.addEventListener('touchmove', e => {
+    if(!touchInSection) return;
+    const delta   = tStartY - e.touches[0].clientY;
+    const scrolled = Math.max(0, Math.min(N * SCROLL_PER_STEP, tStartScrolled + delta));
+    updateProof(scrolled);
   }, { passive: true });
 })();
 
