@@ -303,6 +303,8 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
   .pn-name-brand{font-size:clamp(1.5rem,6.5vw,2rem)}
   .pn-vbar{display:none}
   .pn-mobile-card{display:flex;flex:1;min-height:0}
+  .pn-m-img-wrap{width:min(110px,26vw);aspect-ratio:1/1;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .pn-m-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:none}
 }
 /* ── LOGO WALL ──────────────────────────────────────────── */
 .logo-strip{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
@@ -829,6 +831,7 @@ footer{background:#0B1623;padding:72px 0 0}
       </div>
     </div>
     <div class="pn-mobile-card">
+      <div class="pn-m-img-wrap"><img id="pn-m-img" src="https://i.pravatar.cc/600?img=44" alt=""></div>
       <p class="pn-img-quote" id="pn-m-quote"></p>
       <div class="pn-img-who" id="pn-m-who"></div>
     </div>
@@ -1487,8 +1490,9 @@ applyLang(lang);
     });
   }
 
-  const mQ = document.getElementById('pn-m-quote');
-  const mW = document.getElementById('pn-m-who');
+  const mQ   = document.getElementById('pn-m-quote');
+  const mW   = document.getElementById('pn-m-who');
+  const mImg = document.getElementById('pn-m-img');
 
   function paintFrame(idx){
     const isFooter = idx >= N;
@@ -1503,8 +1507,9 @@ applyLang(lang);
     rQ.textContent = zh ? c.aZh : c.aEn;
     lW.textContent = c.bWho;
     rW.textContent = c.aWho;
-    if(mQ) mQ.textContent = zh ? c.aZh : c.aEn;
-    if(mW) mW.textContent = c.aWho;
+    if(mQ)   mQ.textContent  = zh ? c.aZh : c.aEn;
+    if(mW)   mW.textContent  = c.aWho;
+    if(mImg) mImg.src = `https://i.pravatar.cc/600?img=${c.img}`;
   }
 
   // Preload all images for instant switch
@@ -1512,6 +1517,15 @@ applyLang(lang);
 
   const SCROLL_PER_STEP = 200;
   const vbarFill = document.getElementById('pn-vbar-fill');
+
+  // Pre-cache element refs and layout positions — avoids per-frame DOM queries and reflows
+  const metricEls  = nameItems.map(el => el.querySelector('.pn-name-metric'));
+  const subEls     = nameItems.map(el => el.querySelector('.pn-name-sub'));
+  let   nameTyCache = [];
+  function rebuildCache(){ nameTyCache = nameItems.map((_, i) => nameTy(i)); }
+  rebuildCache();
+  setTimeout(rebuildCache, 300); // re-run after fonts settle
+  window.addEventListener('resize', rebuildCache, {passive:true});
 
   function go(idx){
     idx = Math.max(0, Math.min(N, idx));
@@ -1541,7 +1555,7 @@ applyLang(lang);
     const a = Math.min(N - 1, Math.floor(rawFrac));
     const b = Math.min(N, a + 1);
     const f = rawFrac - a;
-    nameT.style.transform = `translateY(${nameTy(a) + (nameTy(b) - nameTy(a)) * f}px)`;
+    nameT.style.transform = `translateY(${nameTyCache[a] + (nameTyCache[b] - nameTyCache[a]) * f}px)`;
     nameItems.forEach((el, i) => {
       const dist = Math.abs(i - rawFrac);
       const d0   = Math.min(Math.floor(dist), OPACS.length - 1);
@@ -1549,10 +1563,8 @@ applyLang(lang);
       const fr   = dist - Math.floor(dist);
       el.style.opacity   = (OPACS[d0]  * (1 - fr) + OPACS[d1]  * fr).toFixed(3);
       el.style.transform = `scale(${(SCALES[d0] * (1 - fr) + SCALES[d1] * fr).toFixed(3)})`;
-      const metric = el.querySelector('.pn-name-metric');
-      const sub    = el.querySelector('.pn-name-sub');
-      if(metric) metric.style.opacity = dist < 0.5 ? '1' : '0';
-      if(sub)    sub.style.opacity    = dist < 0.5 ? '1' : '0';
+      if(metricEls[i]) metricEls[i].style.opacity = dist < 0.5 ? '1' : '0';
+      if(subEls[i])    subEls[i].style.opacity    = dist < 0.5 ? '1' : '0';
     });
     if(vbarFill) vbarFill.style.height = `${Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100)}%`;
   }
@@ -1566,6 +1578,7 @@ applyLang(lang);
 
   // touchmove: zero-latency — bypasses scroll event delay on mobile
   let tStartY = 0, tStartScrolled = 0, touchInSection = false;
+  let rafId = 0, pendingScrolled = 0;
   window.addEventListener('touchstart', e => {
     const s = -rail.getBoundingClientRect().top;
     touchInSection = s >= 0 && s <= N * SCROLL_PER_STEP;
@@ -1575,9 +1588,9 @@ applyLang(lang);
   }, { passive: true });
   window.addEventListener('touchmove', e => {
     if(!touchInSection) return;
-    const delta   = tStartY - e.touches[0].clientY;
-    const scrolled = Math.max(0, Math.min(N * SCROLL_PER_STEP, tStartScrolled + delta));
-    updateProof(scrolled);
+    const delta = tStartY - e.touches[0].clientY;
+    pendingScrolled = Math.max(0, Math.min(N * SCROLL_PER_STEP, tStartScrolled + delta));
+    if(!rafId) rafId = requestAnimationFrame(() => { rafId = 0; updateProof(pendingScrolled); });
   }, { passive: true });
 })();
 
