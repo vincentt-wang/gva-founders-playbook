@@ -402,6 +402,7 @@ footer{background:#0B1623;padding:72px 0 0}
   .pillars-grid{grid-template-columns:1fr}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
 
@@ -1164,67 +1165,37 @@ applyLang(lang);
     }
   }
 
-  // Country outline polygons [lat, lon] — simplified for globe projection scale
-  const COUNTRIES=[
-    // Taiwan
-    {pts:[[25.3,121.5],[24.9,121.9],[24.4,121.9],[23.9,121.7],
-          [23.3,121.3],[22.7,121.0],[22.0,120.5],[22.4,120.1],
-          [23.2,120.0],[24.0,120.3],[24.8,120.9],[25.3,121.5]]},
-    // Japan — Hokkaido
-    {pts:[[41.5,141.4],[42.0,140.3],[42.9,140.4],[44.0,142.0],
-          [44.1,144.5],[43.5,145.7],[43.0,145.5],[42.0,143.0],[41.5,141.4]]},
-    // Japan — Honshu
-    {pts:[[33.9,130.9],[34.3,132.0],[34.7,135.2],[35.0,136.7],
-          [35.5,136.0],[36.1,136.4],[36.8,137.3],[37.8,138.7],
-          [38.7,141.2],[40.6,141.6],[41.3,141.1],[41.0,140.2],
-          [40.0,140.0],[39.8,141.7],[38.5,141.2],[37.5,140.5],
-          [36.5,138.0],[35.7,136.2],[35.3,135.0],[34.5,133.0],
-          [33.7,131.5],[33.9,130.9]]},
-    // Japan — Kyushu
-    {pts:[[33.5,130.5],[32.5,130.1],[31.5,130.5],[31.2,131.0],
-          [31.7,131.5],[32.7,131.5],[33.5,130.8],[33.5,130.5]]},
-    // Japan — Shikoku
-    {pts:[[34.4,133.0],[34.4,134.5],[33.5,134.7],[33.0,133.2],[34.4,133.0]]},
-    // USA continental
-    {pts:[[48.5,-124.7],[42.0,-124.3],[37.8,-122.5],[34.4,-120.6],
-          [32.5,-117.2],[32.5,-114.8],[31.3,-108.5],[29.8,-104.6],
-          [29.5,-97.0],[26.1,-97.3],
-          [25.0,-80.4],
-          [30.4,-81.4],[34.7,-77.9],[36.8,-76.0],[40.7,-74.0],
-          [41.8,-70.0],[44.8,-66.9],[47.5,-67.9],
-          [45.0,-71.5],[42.5,-79.8],[42.5,-83.1],
-          [41.7,-87.5],[46.1,-91.6],[46.6,-96.8],[49.0,-97.2],
-          [49.0,-124.7],[48.5,-124.7]]},
-    // UK — Great Britain
-    {pts:[[51.0,-5.7],[50.1,-5.4],[50.0,-3.5],[50.5,-0.6],
-          [51.3,1.2],[52.4,1.7],[53.0,0.3],[53.4,-0.1],
-          [54.5,-1.5],[55.0,-2.0],[55.5,-3.0],[57.0,-2.5],
-          [57.6,-1.8],[58.7,-3.1],[59.0,-5.0],[58.1,-6.0],
-          [57.0,-5.5],[56.5,-6.2],[56.0,-5.5],[55.0,-4.5],
-          [54.5,-3.5],[54.0,-3.4],[53.2,-4.7],[52.0,-5.2],
-          [51.5,-5.1],[51.0,-5.7]]},
-    // SE Asia — Malay Peninsula (open line)
-    {pts:[[6.0,102.0],[5.5,102.5],[5.0,103.0],[4.5,103.5],
-          [4.0,103.5],[3.5,103.4],[3.0,103.3],[2.5,103.7],
-          [2.0,103.9],[1.5,104.0],[1.3,103.8]],open:true},
-  ];
+  // World atlas country outlines — loaded from Natural Earth 110m via CDN
+  let worldFeatures = null;
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(r => r.json())
+    .then(topo => { worldFeatures = topojson.feature(topo, topo.objects.countries).features; })
+    .catch(() => {});
 
   function drawCountries(){
-    COUNTRIES.forEach(({pts,open})=>{
-      ctx.beginPath();
-      let first=true;
-      pts.forEach(([lat,lon])=>{
-        const p=proj(lat,lon);
-        if(!p.vis){first=true;return;}
-        const x=sx(p),y=sy(p);
-        if(first){ctx.moveTo(x,y);first=false;}else ctx.lineTo(x,y);
+    if(!worldFeatures) return;
+    ctx.strokeStyle = 'rgba(8,145,178,.38)';
+    ctx.lineWidth   = 0.7;
+    ctx.fillStyle   = 'rgba(8,145,178,.055)';
+    worldFeatures.forEach(feature => {
+      const geom  = feature.geometry;
+      if(!geom) return;
+      const polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
+      polys.forEach(poly => {
+        poly.forEach(ring => {
+          ctx.beginPath();
+          let first = true;
+          ring.forEach(([lon, lat]) => {          // GeoJSON: [lon, lat]
+            const p = proj(lat, lon);             // proj() expects (lat, lon)
+            if(!p.vis){ first = true; return; }
+            const x = sx(p), y = sy(p);
+            if(first){ ctx.moveTo(x, y); first = false; } else ctx.lineTo(x, y);
+          });
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        });
       });
-      if(!open) ctx.closePath();
-      ctx.fillStyle='rgba(8,145,178,.07)';
-      if(!open) ctx.fill();
-      ctx.strokeStyle='rgba(8,145,178,.48)';
-      ctx.lineWidth=1.3;
-      ctx.stroke();
     });
   }
 
@@ -1540,7 +1511,6 @@ applyLang(lang);
     if(idx === cur) return;
     cur = idx;
     paintFrame(idx);
-    updateWheel(idx);
   }
 
   paintFrame(0); updateWheel(0);
@@ -1557,26 +1527,38 @@ applyLang(lang);
     }
   });
 
-  // Scroll-position driven: discrete case switch + continuous float + continuous progress
+  // Scroll-driven: YC-style 1:1 proportional name wheel + threshold image swap
   window.addEventListener('scroll', () => {
     const scrolled = -rail.getBoundingClientRect().top;
     if(scrolled < 0) return;
 
-    const rawFrac  = scrolled / SCROLL_PER_STEP;
-    const idx      = Math.min(N, Math.floor(rawFrac));
-    const stepFrac = rawFrac - Math.floor(rawFrac); // 0→1 within each step
+    const rawFrac = scrolled / SCROLL_PER_STEP;
+    const idx     = Math.min(N, Math.floor(rawFrac));
 
-    go(idx);
+    go(idx); // image swap only at step threshold
 
-    // Float: sin curve so motion starts and ends at 0 each step (no boundary snap)
-    const floatY = Math.sin(stepFrac * Math.PI) * -18;
-    nameT.style.transform = `translateY(${nameTy(cur) + floatY}px)`;
+    // Name wheel: linear interpolation between adjacent resting positions — direct 1:1 with scroll
+    const a  = Math.min(N - 1, Math.floor(rawFrac));
+    const b  = Math.min(N, a + 1);
+    const f  = rawFrac - a;
+    nameT.style.transform = `translateY(${nameTy(a) + (nameTy(b) - nameTy(a)) * f}px)`;
 
-    // Progress bar: continuous, tied to absolute scroll position
-    if(vbarFill){
-      const pct = Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100);
-      vbarFill.style.height = `${pct}%`;
-    }
+    // Opacity + scale: smooth fractional interpolation as items pass through center
+    nameItems.forEach((el, i) => {
+      const dist = Math.abs(i - rawFrac);
+      const d0   = Math.min(Math.floor(dist), OPACS.length - 1);
+      const d1   = Math.min(d0 + 1, OPACS.length - 1);
+      const fr   = dist - Math.floor(dist);
+      el.style.opacity   = (OPACS[d0]  * (1 - fr) + OPACS[d1]  * fr).toFixed(3);
+      el.style.transform = `scale(${(SCALES[d0] * (1 - fr) + SCALES[d1] * fr).toFixed(3)})`;
+      const metric = el.querySelector('.pn-name-metric');
+      const sub    = el.querySelector('.pn-name-sub');
+      if(metric) metric.style.opacity = dist < 0.5 ? '1' : '0';
+      if(sub)    sub.style.opacity    = dist < 0.5 ? '1' : '0';
+    });
+
+    // Progress bar: continuous
+    if(vbarFill) vbarFill.style.height = `${Math.min(100, (scrolled / (N * SCROLL_PER_STEP)) * 100)}%`;
   }, { passive: true });
 })();
 
