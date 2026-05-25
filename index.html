@@ -420,7 +420,10 @@ footer{background:#0B1623;padding:72px 0 0}
   .footer-grid{grid-template-columns:1fr}
   .h-stat{padding:0 1.25rem}
   .meth-metrics{gap:2rem}
-  .hero-h1{font-size:clamp(3rem,10vw,5rem)}
+  .hero-h1{font-size:clamp(2rem,8.5vw,5rem)}
+  #hero{padding:96px 0 56px}
+  .hero-badge{white-space:normal;max-width:280px;text-align:center;justify-content:center}
+  #curriculum .section-h br{display:none}
   .pillars-grid{grid-template-columns:1fr}
   #global{padding:60px 0 70px!important}
   .globe-wrap{max-width:min(100%,320px);margin:0 auto}
@@ -2378,13 +2381,11 @@ applyLang(lang);
     ctx.clearRect(0,0,W,H);
     t+=.011;
     mA+=(1-mA)*.04;
-    if(!isMobile){
-      wt+=.0025;
-      const wx=W*(.5+.28*Math.sin(wt*.7+1.2)+.10*Math.sin(wt*1.73));
-      const wy=H*(.5+.22*Math.cos(wt*.5+.4)+.08*Math.cos(wt*1.37+2.1));
-      const tx=mouseIn?mx:wx, ty=mouseIn?my:wy;
-      vmx+=(tx-vmx)*.025; vmy+=(ty-vmy)*.025;
-    }
+    wt+=.0025;
+    const wx=W*(.5+.28*Math.sin(wt*.7+1.2)+.10*Math.sin(wt*1.73));
+    const wy=H*(.5+.22*Math.cos(wt*.5+.4)+.08*Math.cos(wt*1.37+2.1));
+    const tx=(!isMobile&&mouseIn)?mx:wx, ty=(!isMobile&&mouseIn)?my:wy;
+    vmx+=(tx-vmx)*.025; vmy+=(ty-vmy)*.025;
     const hasM=mA>.01;
 
     // ─ Update particle positions ──────────────────────────────
