@@ -1708,137 +1708,159 @@ applyLang(lang);
   loop();
 })();
 
-/* ── HERO CANVAS (diagonal planks → energy ball) ────────── */
+/* ── HERO CANVAS (mesh → sphere on hover) ─────────────────── */
 (function(){
   const canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   const hero = document.getElementById('hero');
-  let W=0, H=0, dt=0;
-  let mx=-9999, my=-9999, vmx=0, vmy=0;
-  let mouseIn=false, mA=0; // 0→1 mouse-presence blend
 
-  function resize(){
-    const dpr = Math.min(window.devicePixelRatio||1, 2);
-    W = canvas.offsetWidth; H = canvas.offsetHeight;
-    canvas.width  = W*dpr; canvas.height = H*dpr;
-    ctx.setTransform(dpr,0,0,dpr,0,0);
+  let W=0, H=0, t=0;
+  let mx=-9999, my=-9999, vmx=0, vmy=0;
+  let mouseIn=false, mA=0;
+
+  const SPACING = 52;    // grid cell size → dense mesh
+  const JITTER  = 10;    // random offset from grid node
+  const LINK_D  = 80;    // max connection distance
+  const LINK_D2 = LINK_D*LINK_D;
+  const MESH_A  = 0.044; // idle mesh opacity (very faint)
+  const PULL_R  = 230;   // mouse influence radius
+  const SPHER_R = 92;    // sphere convergence radius
+  const WIRE_BW = 36;    // half-band around sphere surface for wireframe layer
+
+  let pts=[], n=0;
+  let xs=new Float32Array(0), ys=new Float32Array(0), sd=new Float32Array(0);
+
+  function buildPts(){
+    pts=[];
+    const cols=Math.ceil(W/SPACING)+3, rows=Math.ceil(H/SPACING)+3;
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      const ox=(c-1)*SPACING+(Math.random()-.5)*JITTER*2;
+      const oy=(r-1)*SPACING+(Math.random()-.5)*JITTER*2;
+      pts.push({ox,oy,x:ox,y:oy,ph:Math.random()*Math.PI*2,sp:.3+Math.random()*.5,am:2+Math.random()*4.5});
+    }
+    n=pts.length;
+    xs=new Float32Array(n); ys=new Float32Array(n); sd=new Float32Array(n);
   }
 
-  hero.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    const nx = e.clientX - r.left, ny = e.clientY - r.top;
-    if(!mouseIn){ vmx=nx; vmy=ny; } // snap on first entry
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    W=canvas.offsetWidth; H=canvas.offsetHeight;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    buildPts();
+  }
+
+  hero.addEventListener('mousemove',e=>{
+    const r=canvas.getBoundingClientRect();
+    const nx=e.clientX-r.left, ny=e.clientY-r.top;
+    if(!mouseIn){vmx=nx;vmy=ny;}
     mx=nx; my=ny; mouseIn=true;
   });
-  hero.addEventListener('mouseleave', () => { mouseIn=false; mx=-9999; });
-
-  const GAP    = 76;    // spacing between planks
-  const PW     = 9;     // line width
-  const SPEED  = 0.22;  // drift per frame
-  const STEP   = 6;     // sample interval along plank
-  const BASE_A = 0.038; // resting line opacity (very faint)
-  const BR     = 200;   // ball pull radius (px)
-  const BR2    = BR * BR;
-
-  // Idle wave (heartbeat sweep left→right every 2.5s when no mouse)
-  const PULSE_INTERVAL = 2500;
-  const PULSE_DURATION = 1100;
-  const PULSE_W2 = 150 * 150; // gaussian spread²
-  const PULSE_AMP = 20;
-  let pulseT = -1;
+  hero.addEventListener('mouseleave',()=>{mouseIn=false; mx=-9999;});
 
   function loop(){
     requestAnimationFrame(loop);
-    ctx.clearRect(0, 0, W, H);
-    dt += SPEED;
+    ctx.clearRect(0,0,W,H);
+    t+=.011;
+    mA+=((mouseIn?1:0)-mA)*.06;
+    if(mouseIn){vmx+=(mx-vmx)*.1; vmy+=(my-vmy)*.1;}
+    const hasM=mA>.01;
 
-    // Fade mouse presence in/out
-    mA += ((mouseIn ? 1 : 0) - mA) * 0.072;
-    if(mouseIn){ vmx += (mx-vmx)*0.10; vmy += (my-vmy)*0.10; }
-
-    // Idle heartbeat wave — only when mouse is away
-    const now = performance.now();
-    if(!mouseIn && mA < 0.01){
-      if(pulseT < 0 || now - pulseT > PULSE_INTERVAL) pulseT = now;
-    }
-    const pAge = pulseT > 0 ? now - pulseT : PULSE_DURATION + 1;
-    const hasPulse = !mouseIn && mA < 0.01 && pAge < PULSE_DURATION;
-    const pProg = hasPulse ? pAge / PULSE_DURATION : 0;
-    const pulseX = hasPulse ? (W + 320) * pProg - 160 : -9999;
-    const pulseEnv = hasPulse ? Math.sin(pProg * Math.PI) : 0;
-
-    const dmod = dt % GAP;
-    const D0   = -PW - 220, D1 = W + H + PW + 220;
-    const hasM = mA > 0.01;
-
-    // Lines dim as they gather into the ball
-    const lineA = BASE_A * (1 - mA * 0.78);
-
-    ctx.lineWidth = PW;
-    ctx.shadowBlur = 0;
-
-    for(let d = D0; d < D1; d += GAP){
-      const D = d + dmod;
-      ctx.beginPath();
-      let first = true;
-      for(let x = -220; x <= W+220; x += STEP){
-        const y0 = D - x;
-        let px = x, py = y0;
-        if(hasM){
-          const dx = x - vmx, dy = y0 - vmy;
-          const pull = Math.exp(-(dx*dx + dy*dy) / BR2) * mA;
-          px = x  + (vmx - x)  * pull;
-          py = y0 + (vmy - y0) * pull;
+    // ─ Update particle positions ──────────────────────────────
+    for(let i=0;i<n;i++){
+      const p=pts[i];
+      const ix=p.ox+Math.sin(t*p.sp+p.ph)*p.am;
+      const iy=p.oy+Math.cos(t*p.sp*.72+p.ph+1.1)*p.am*.68;
+      let tx=ix, ty=iy;
+      if(hasM){
+        const dx=p.ox-vmx, dy=p.oy-vmy;
+        const dist2=dx*dx+dy*dy;
+        if(dist2<PULL_R*PULL_R && dist2>.25){
+          const dist=Math.sqrt(dist2);
+          const str=mA*Math.pow(1-dist/PULL_R,1.4)*1.18;
+          // Pull to sphere surface: target = mouse + unit_dir * SPHER_R
+          const sx=vmx+dx/dist*SPHER_R, sy=vmy+dy/dist*SPHER_R;
+          tx=ix+(sx-ix)*Math.min(str,1);
+          ty=iy+(sy-iy)*Math.min(str,1);
         }
-        if(hasPulse){
-          const pdx = x - pulseX;
-          py += Math.exp(-(pdx*pdx) / PULSE_W2) * pulseEnv * PULSE_AMP;
-        }
-        if(first){ ctx.moveTo(px,py); first=false; }
-        else ctx.lineTo(px,py);
       }
-      ctx.strokeStyle = `rgba(8,145,178,${lineA})`;
+      p.x+=(tx-p.x)*.12; p.y+=(ty-p.y)*.12;
+      xs[i]=p.x; ys[i]=p.y;
+    }
+
+    // ─ Precompute distances from cursor (sqrt once per pt) ───
+    if(hasM){
+      for(let i=0;i<n;i++){
+        const dx=xs[i]-vmx, dy=ys[i]-vmy;
+        sd[i]=Math.sqrt(dx*dx+dy*dy);
+      }
+    }
+
+    // ─ Layer 1: background mesh (batched, single stroke) ─────
+    const meshA=(MESH_A*(1-mA*.55)).toFixed(3);
+    ctx.lineWidth=.75;
+    ctx.strokeStyle=`rgba(8,145,178,${meshA})`;
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const ax=xs[i], ay=ys[i];
+      for(let j=i+1;j<n;j++){
+        const dx=ax-xs[j], dy=ay-ys[j];
+        if(dx*dx+dy*dy<LINK_D2){
+          ctx.moveTo(ax,ay); ctx.lineTo(xs[j],ys[j]);
+        }
+      }
+    }
+    ctx.stroke();
+
+    // ─ Layer 2: sphere wireframe (near-surface pts only) ─────
+    if(hasM){
+      const wireA=(.12*mA).toFixed(3);
+      const wireLinkD2=LINK_D2*1.9;
+      ctx.lineWidth=1.0;
+      ctx.strokeStyle=`rgba(8,145,178,${wireA})`;
+      ctx.beginPath();
+      for(let i=0;i<n;i++){
+        if(Math.abs(sd[i]-SPHER_R)>WIRE_BW) continue;
+        const ax=xs[i], ay=ys[i];
+        for(let j=i+1;j<n;j++){
+          if(Math.abs(sd[j]-SPHER_R)>WIRE_BW) continue;
+          const dx=ax-xs[j], dy=ay-ys[j];
+          if(dx*dx+dy*dy<wireLinkD2){
+            ctx.moveTo(ax,ay); ctx.lineTo(xs[j],ys[j]);
+          }
+        }
+      }
       ctx.stroke();
     }
 
-    // Glowing energy ball at cursor
+    // ─ Ball glow at cursor ────────────────────────────────────
     if(hasM){
-      const a = mA;
-
-      // Wide outer corona
-      const g0 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,160);
-      g0.addColorStop(0,   `rgba(6,182,212,${0.14*a})`);
-      g0.addColorStop(0.5, `rgba(6,182,212,${0.04*a})`);
-      g0.addColorStop(1,   'rgba(6,182,212,0)');
-      ctx.beginPath(); ctx.arc(vmx,vmy,160,0,Math.PI*2);
-      ctx.fillStyle=g0; ctx.fill();
-
-      // Mid glow ring
-      const g1 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,56);
-      g1.addColorStop(0,    `rgba(34,211,238,${0.50*a})`);
-      g1.addColorStop(0.55, `rgba(6,182,212,${0.22*a})`);
-      g1.addColorStop(1,    'rgba(8,145,178,0)');
-      ctx.beginPath(); ctx.arc(vmx,vmy,56,0,Math.PI*2);
-      ctx.fillStyle=g1; ctx.fill();
-
-      // Bright inner core
-      const g2 = ctx.createRadialGradient(vmx,vmy,0, vmx,vmy,18);
-      g2.addColorStop(0,   `rgba(255,255,255,${0.92*a})`);
-      g2.addColorStop(0.5, `rgba(120,220,255,${0.75*a})`);
-      g2.addColorStop(1,   'rgba(6,182,212,0)');
-      ctx.beginPath(); ctx.arc(vmx,vmy,18,0,Math.PI*2);
-      ctx.fillStyle=g2; ctx.fill();
-
-      // Hard pinpoint
-      ctx.beginPath(); ctx.arc(vmx,vmy,3,0,Math.PI*2);
-      ctx.fillStyle=`rgba(255,255,255,${a})`;
-      ctx.fill();
+      const a=mA;
+      // Ring halo at sphere radius
+      const rg=ctx.createRadialGradient(vmx,vmy,SPHER_R-18,vmx,vmy,SPHER_R+42);
+      rg.addColorStop(0,`rgba(6,182,212,${(.09*a).toFixed(3)})`);
+      rg.addColorStop(.5,`rgba(6,182,212,${(.04*a).toFixed(3)})`);
+      rg.addColorStop(1,'rgba(6,182,212,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,SPHER_R+42,0,Math.PI*2);
+      ctx.fillStyle=rg; ctx.fill();
+      // Inner core glow
+      const ig=ctx.createRadialGradient(vmx,vmy,0,vmx,vmy,44);
+      ig.addColorStop(0,`rgba(34,211,238,${(.30*a).toFixed(3)})`);
+      ig.addColorStop(1,'rgba(6,182,212,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,44,0,Math.PI*2);
+      ctx.fillStyle=ig; ctx.fill();
+      // Pinpoint
+      const pg=ctx.createRadialGradient(vmx,vmy,0,vmx,vmy,11);
+      pg.addColorStop(0,`rgba(255,255,255,${(.90*a).toFixed(3)})`);
+      pg.addColorStop(1,'rgba(6,182,212,0)');
+      ctx.beginPath(); ctx.arc(vmx,vmy,11,0,Math.PI*2);
+      ctx.fillStyle=pg; ctx.fill();
     }
   }
 
   resize();
-  window.addEventListener('resize', resize, {passive:true});
+  window.addEventListener('resize',resize,{passive:true});
   loop();
 })();
 </script>
