@@ -227,8 +227,9 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 /* ── CURRICULUM ───────────────────────────────────────────── */
 #curriculum{padding:120px 0;background:var(--white)}
 .curriculum-inner{display:grid;grid-template-columns:1fr 1.8fr;gap:5rem;align-items:start;margin-top:3.5rem}
-.acc-item{border:1px solid var(--border);border-radius:var(--r-card);margin-bottom:.75rem;background:var(--off);overflow:hidden;transition:border-color .3s}
-.acc-item:hover{border-color:rgba(8,145,178,.25)}
+.acc-item{border:1px solid var(--border);border-radius:var(--r-card);margin-bottom:.75rem;background:var(--off);overflow:hidden;transition:border-color .3s,box-shadow .3s,background .3s}
+.acc-item:hover{border-color:rgba(8,145,178,.38);box-shadow:0 3px 22px rgba(8,145,178,.1),inset -3px 0 0 var(--teal);background:var(--white)}
+.acc-item.open{border-color:rgba(8,145,178,.3);background:var(--white);box-shadow:0 4px 20px rgba(8,145,178,.09)}
 .acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;gap:1rem;background:none;text-align:left}
 .acc-left{display:flex;align-items:center;gap:1.25rem}
 .mod-tag{font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.1em;color:var(--teal);background:rgba(8,145,178,.1);border:1px solid rgba(8,145,178,.2);border-radius:6px;padding:4px 10px;white-space:nowrap}
@@ -759,6 +760,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- ══════════════════ PAIN / ABOUT ══════════════════════════ -->
 <section id="about" style="padding:120px 0;background:var(--warn-bg)">
+  <canvas class="about-canvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="reveal">
       <div class="eyebrow" data-en="The Founder's Wall" data-zh="創辦人的牆">The Founder's Wall</div>
@@ -1431,6 +1433,33 @@ function toggleAcc(item){
   document.querySelectorAll('.acc-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.acc-body').style.maxHeight='0'});
   if(!open){item.classList.add('open');body.style.maxHeight=inner.scrollHeight+'px'}
 }
+// ── CURRICULUM: HOVER AUTO-EXPAND ────────────────────────────
+(function(){
+  document.querySelectorAll('#curriculum .acc-item').forEach(function(item){
+    var openT=null, closeT=null, autoOpened=false;
+    item.addEventListener('mouseenter',function(){
+      clearTimeout(closeT);
+      if(item.classList.contains('open')) return;
+      openT=setTimeout(function(){
+        autoOpened=true;
+        toggleAcc(item);
+      },300);
+    });
+    item.addEventListener('mouseleave',function(){
+      clearTimeout(openT);
+      if(!autoOpened||!item.classList.contains('open')) return;
+      closeT=setTimeout(function(){
+        if(item.classList.contains('open')&&autoOpened){
+          toggleAcc(item); autoOpened=false;
+        }
+      },950);
+    });
+    item.addEventListener('click',function(){
+      clearTimeout(openT); clearTimeout(closeT); autoOpened=false;
+    });
+  });
+})();
+
 function toggleFaq(item){
   const body=item.querySelector('.fq-body'),inner=item.querySelector('.fq-inner'),open=item.classList.contains('open');
   document.querySelectorAll('.fq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.fq-body').style.maxHeight='0'});
@@ -1573,6 +1602,7 @@ applyLang(lang);
 
   let arcs=[],frame=0,nextTaipei=0,nextOther=0,cityScreenPos={},hoveredCity=null;
   let isDrag=false,dragX=0,dragY=0;
+  let sunX=-1,sunY=-1,sunActive=false;
   let lastDragEnd=0,returning=false,returnTargetLon=121.5;
   canvas.style.cursor='grab';
   canvas.addEventListener('mousedown',e=>{isDrag=true;returning=false;dragX=e.clientX;dragY=e.clientY;canvas.style.cursor='grabbing';e.preventDefault();},{passive:false});
@@ -1583,6 +1613,17 @@ applyLang(lang);
   canvas.addEventListener('touchend',()=>{isDrag=false;lastDragEnd=Date.now();});
   TAIPEI_ARCS.forEach((_,i)=>setTimeout(()=>arcs.push(new Arc(TAIPEI_ARCS[i][0],TAIPEI_ARCS[i][1])),i*400));
 
+  // Sun cursor — track mouse on canvas, scale to canvas coordinates
+  canvas.addEventListener('mousemove',e=>{
+    if(isDrag)return;
+    const r=canvas.getBoundingClientRect();
+    const sc=W/r.width;
+    sunX=(e.clientX-r.left)*sc; sunY=(e.clientY-r.top)*sc;
+    sunActive=true;
+    canvas.style.cursor='none';
+  },{passive:true});
+  canvas.addEventListener('mouseleave',()=>{sunActive=false;canvas.style.cursor=hoveredCity?'pointer':'grab';});
+
   function drawGlobe(){
     ctx.clearRect(0,0,W,H);
     // Clip to circle
@@ -1591,6 +1632,15 @@ applyLang(lang);
     const bg=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
     bg.addColorStop(0,'#F0FBFF');bg.addColorStop(1,'#E0F7FA');
     ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    // Sun illumination overlay (inside clip, follows mouse)
+    if(sunActive&&!isDrag){
+      const illum=ctx.createRadialGradient(sunX,sunY,0,sunX,sunY,R*1.75);
+      illum.addColorStop(0,'rgba(255,228,90,.22)');
+      illum.addColorStop(0.28,'rgba(255,200,70,.12)');
+      illum.addColorStop(0.62,'rgba(80,160,255,.04)');
+      illum.addColorStop(1,'rgba(0,0,50,.13)');
+      ctx.fillStyle=illum;ctx.fillRect(0,0,W,H);
+    }
     // Grid
     for(let lat=-75;lat<=75;lat+=30){
       ctx.beginPath();let f=true;
@@ -1613,6 +1663,28 @@ applyLang(lang);
     // Country outlines (drawn inside clip, rotate with globe)
     drawCountries();
     ctx.restore();
+    // Sun cursor — drawn outside clip so rays extend beyond globe edge
+    if(sunActive&&!isDrag){
+      const sa=frame*0.024;
+      const corona=ctx.createRadialGradient(sunX,sunY,0,sunX,sunY,34);
+      corona.addColorStop(0,'rgba(255,240,120,.95)');
+      corona.addColorStop(0.35,'rgba(255,185,40,.58)');
+      corona.addColorStop(0.7,'rgba(255,140,0,.18)');
+      corona.addColorStop(1,'rgba(255,120,0,0)');
+      ctx.beginPath();ctx.arc(sunX,sunY,34,0,Math.PI*2);ctx.fillStyle=corona;ctx.fill();
+      ctx.beginPath();ctx.arc(sunX,sunY,7,0,Math.PI*2);ctx.fillStyle='rgba(255,255,230,.98)';ctx.fill();
+      ctx.beginPath();ctx.arc(sunX,sunY,3.5,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+      ctx.lineCap='round';
+      for(let i=0;i<8;i++){
+        const ang=sa+i*Math.PI/4;
+        const r0=10,r1=18+Math.sin(sa*3+i*.8)*3.5;
+        const al=(0.7+0.25*Math.sin(sa*2.5+i)).toFixed(3);
+        ctx.beginPath();
+        ctx.moveTo(sunX+Math.cos(ang)*r0,sunY+Math.sin(ang)*r0);
+        ctx.lineTo(sunX+Math.cos(ang)*r1,sunY+Math.sin(ang)*r1);
+        ctx.strokeStyle=`rgba(255,215,50,${al})`;ctx.lineWidth=2.5;ctx.stroke();
+      }
+    }
     // Sphere outline
     ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
     ctx.strokeStyle='rgba(8,145,178,.35)';ctx.lineWidth=1.5;ctx.stroke();
@@ -1724,44 +1796,116 @@ applyLang(lang);
   loop();
 })();
 
-// ── ABOUT: WATER RIPPLE + AUTO CARD BOUNCE ────────────────
+// ── ABOUT: PHYSICS WAVE FIELD ────────────────────────────────
 (function(){
   const section = document.getElementById('about');
-  if(!section) return;
+  const cnv     = section && section.querySelector('.about-canvas');
+  if (!cnv) return;
+  const ctx2d = cnv.getContext('2d');
 
-  function waterRipple(x, y) {
-    [0, 180, 360].forEach(delay => {
-      const el = document.createElement('div'), s = 48;
-      el.className = 'water-ring';
-      el.style.cssText = `width:${s}px;height:${s}px;left:${x - s/2}px;top:${y - s/2}px;animation-delay:${delay}ms`;
-      section.appendChild(el);
-      setTimeout(() => el.remove(), 1300 + delay);
-    });
-  }
+  const CELL = 5;     // px per simulation cell
+  const DAMP = 0.988; // damping (>0.98 = long-lasting waves)
+  const C2   = 0.36;  // wave speed² (keep < 0.5 for stability)
 
-  // Mousemove water ripple (throttled)
-  let last = 0;
-  section.addEventListener('mousemove', e => {
-    if (Date.now() - last < 90) return;
-    last = Date.now();
+  let W, H, cols, rows, cur, prv, nxt, imgData;
+
+  function resize() {
     const r = section.getBoundingClientRect();
-    waterRipple(e.clientX - r.left, e.clientY - r.top);
-  });
-
-  // Auto card bounce every 2.5s, cycling through cards
-  const cards = [...section.querySelectorAll('.pain-card')];
-  if (!cards.length) return;
-  let idx = 0;
-
-  function bounce() {
-    const card = cards[idx];
-    const cr = card.getBoundingClientRect(), sr = section.getBoundingClientRect();
-    waterRipple(cr.left - sr.left + cr.width / 2, cr.top - sr.top + cr.height / 2);
-    idx = (idx + 1) % cards.length;
+    W = cnv.width  = Math.floor(r.width  || window.innerWidth);
+    H = cnv.height = Math.floor(r.height || 600);
+    cols = Math.ceil(W / CELL) + 2;
+    rows = Math.ceil(H / CELL) + 2;
+    cur  = new Float32Array(cols * rows);
+    prv  = new Float32Array(cols * rows);
+    nxt  = new Float32Array(cols * rows);
+    imgData = null;
   }
 
-  setTimeout(bounce, 1000);
-  setInterval(bounce, 2500);
+  function disturb(px, py, amp) {
+    const gx = Math.round(px / CELL);
+    const gy = Math.round(py / CELL);
+    const RAD = 5;
+    for (let dy = -RAD; dy <= RAD; dy++) {
+      for (let dx = -RAD; dx <= RAD; dx++) {
+        const nx = gx + dx, ny = gy + dy;
+        if (nx < 1 || nx >= cols-1 || ny < 1 || ny >= rows-1) continue;
+        const d2 = (dx*dx + dy*dy) / (RAD*RAD);
+        if (d2 > 1) continue;
+        cur[ny * cols + nx] += amp * Math.exp(-d2 * 3);
+      }
+    }
+  }
+
+  function tick() {
+    requestAnimationFrame(tick);
+
+    // Finite-difference wave equation: next = 2*cur - prev + c²*∇²cur, damped
+    for (let y = 1; y < rows-1; y++) {
+      for (let x = 1; x < cols-1; x++) {
+        const i   = y * cols + x;
+        const lap = cur[i-1] + cur[i+1] + cur[i-cols] + cur[i+cols] - 4*cur[i];
+        let v = (2*cur[i] - prv[i] + C2 * lap) * DAMP;
+        nxt[i] = v > 2 ? 2 : v < -2 ? -2 : v;
+      }
+    }
+    // Rotate buffers (zero allocation per frame)
+    const tmp = prv; prv = cur; cur = nxt; nxt = tmp;
+
+    // Render to imageData
+    if (!imgData || imgData.width !== W || imgData.height !== H) {
+      imgData = ctx2d.createImageData(W, H);
+    }
+    const d = imgData.data;
+    d.fill(0);
+
+    for (let gy = 0; gy < rows; gy++) {
+      for (let gx = 0; gx < cols; gx++) {
+        const h = cur[gy * cols + gx];
+        if (h > -0.04 && h < 0.04) continue;
+        const alpha = (h > 0 ? h : -h) * 52;
+        const a = alpha > 58 ? 58 : alpha | 0;
+        // positive wave: teal | negative: cyan (makes interference crests visible)
+        const rC = h > 0 ? 8   : 34;
+        const gC = h > 0 ? 145 : 211;
+        const bC = h > 0 ? 178 : 238;
+        const px0 = gx * CELL, py0 = gy * CELL;
+        for (let dy = 0; dy < CELL; dy++) {
+          const py = py0 + dy; if (py >= H) break;
+          const rb = py * W;
+          for (let dx = 0; dx < CELL; dx++) {
+            const px = px0 + dx; if (px >= W) break;
+            const idx = (rb + px) * 4;
+            d[idx] = rC; d[idx+1] = gC; d[idx+2] = bC; d[idx+3] = a;
+          }
+        }
+      }
+    }
+    ctx2d.putImageData(imgData, 0, 0);
+  }
+
+  // Mouse disturbance
+  let mt = 0;
+  section.addEventListener('mousemove', e => {
+    const now = Date.now(); if (now - mt < 55) return; mt = now;
+    const sr = section.getBoundingClientRect();
+    disturb(e.clientX - sr.left, e.clientY - sr.top, 0.95);
+  }, { passive: true });
+
+  // Auto pulses from card centers, cycling every 3.5s
+  const cards = [...section.querySelectorAll('.pain-card')];
+  let ci = 0;
+  function autoPulse() {
+    if (!cards.length) return;
+    const card = cards[ci % cards.length]; ci++;
+    const cr = card.getBoundingClientRect(), sr = section.getBoundingClientRect();
+    disturb(cr.left - sr.left + cr.width/2, cr.top - sr.top + cr.height/2, 1.8);
+  }
+
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+  setTimeout(autoPulse, 800);
+  setInterval(autoPulse, 3500);
+  requestAnimationFrame(tick);
 })();
 
 /* ── PROOF (scroll-driven sticky rail) ──────────────────── */
