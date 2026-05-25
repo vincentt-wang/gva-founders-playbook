@@ -427,30 +427,32 @@ footer{background:#0B1623;padding:72px 0 0}
 }
 
 /* ── PORTAL OVERLAY ───────────────────────────────────────────── */
-.portal-ov{position:fixed;inset:0;z-index:3000;background:rgba(6,15,30,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+/* ── PORTAL OVERLAY ─────────────────────────────────────────── */
+.portal-ov{position:fixed;inset:0;z-index:3000;background:linear-gradient(145deg,#04101f 0%,#071828 55%,#030d1c 100%);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);overflow-y:auto;padding:3rem 2rem}
+.portal-ov::before{content:'';position:absolute;top:-20%;left:-15%;width:60%;height:90%;background:radial-gradient(ellipse,rgba(8,145,178,.14) 0%,transparent 68%);pointer-events:none}
+.portal-ov::after{content:'';position:absolute;bottom:-20%;right:-8%;width:50%;height:75%;background:radial-gradient(ellipse,rgba(6,182,212,.08) 0%,transparent 68%);pointer-events:none}
 .portal-ov.open{opacity:1;pointer-events:all}
-.portal-topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
-.portal-brand{font-family:var(--fd);font-weight:800;font-size:.95rem;color:rgba(255,255,255,.85);letter-spacing:-.01em}
-.portal-brand span{color:var(--teal-3)}
-.portal-close-btn{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer;background:none;padding:0}
-.portal-close-btn:hover{border-color:rgba(255,255,255,.35);color:#fff}
+.portal-close-btn{position:absolute;top:1.5rem;right:1.75rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer;background:rgba(255,255,255,.06);padding:0;z-index:2}
+.portal-close-btn:hover{border-color:rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.11)}
 .portal-close-btn svg{width:16px;height:16px}
-.portal-scroll{flex:1;overflow-y:auto;display:flex;align-items:center;justify-content:center;padding:2.5rem 2rem}
-.portal-step{width:100%;max-width:880px;animation:pfade .35s ease both}
+.portal-step{position:relative;z-index:1;width:100%;max-width:1240px;display:flex;flex-direction:column;align-items:center;gap:3rem;animation:pfade .35s ease both}
+.portal-detail{max-width:800px;align-items:flex-start;gap:0}
 @keyframes pfade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.portal-eyebrow{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-3);margin-bottom:1rem}
-.portal-h{font-family:var(--fd);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem}
-.portal-sub{font-size:1rem;color:rgba(255,255,255,.52);line-height:1.72;max-width:560px;margin-bottom:2rem}
-.role-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem;margin-bottom:1.5rem}
-@media(max-width:640px){.role-grid{grid-template-columns:repeat(2,1fr)}}
-.role-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.6rem 1rem 1.35rem;text-align:center;cursor:pointer;transition:all .25s var(--ease)}
-.role-card:hover{background:rgba(8,145,178,.1);border-color:rgba(8,145,178,.4);transform:translateY(-3px)}
-.role-card-ico{width:44px;height:44px;border-radius:12px;background:rgba(8,145,178,.14);display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;transition:background .25s}
-.role-card:hover .role-card-ico{background:rgba(8,145,178,.28)}
-.role-card-ico svg{width:22px;height:22px;color:var(--teal-3)}
-.role-card-label{font-family:var(--fd);font-weight:700;font-size:.92rem;color:#fff;margin-bottom:.28rem}
-.role-card-desc{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.4}
-.portal-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-bottom:2rem}
+.portal-header{text-align:center;max-width:580px}
+.portal-eyebrow{font-family:var(--fd);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-3);margin-bottom:.9rem}
+.portal-h{font-family:var(--fd);font-weight:800;font-size:clamp(2rem,3.8vw,3.4rem);color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:.75rem}
+.portal-sub{font-size:1rem;color:rgba(255,255,255,.44);line-height:1.65;margin-bottom:0}
+.role-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;width:100%}
+@media(max-width:960px){.role-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.role-grid{grid-template-columns:repeat(2,1fr)}.portal-h{font-size:1.9rem}.portal-ov{padding:5rem 1.25rem 2rem}.portal-detail{padding-top:1rem}}
+.role-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:2.25rem 1.25rem 1.9rem;text-align:center;cursor:pointer;transition:all .25s var(--ease);display:flex;flex-direction:column;align-items:center}
+.role-card:hover{background:rgba(8,145,178,.11);border-color:rgba(8,145,178,.42);transform:translateY(-5px);box-shadow:0 14px 36px rgba(8,145,178,.2)}
+.role-card-ico{width:54px;height:54px;border-radius:14px;background:rgba(8,145,178,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.15rem;transition:background .25s}
+.role-card:hover .role-card-ico{background:rgba(8,145,178,.3)}
+.role-card-ico svg{width:24px;height:24px;color:var(--teal-3)}
+.role-card-label{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:.5rem;white-space:nowrap}
+.role-card-desc{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.5}
+.portal-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-bottom:2rem;width:100%}
 @media(max-width:620px){.portal-info-grid{grid-template-columns:1fr}}
 .portal-checklist{list-style:none;display:flex;flex-direction:column;gap:.6rem}
 .portal-checklist li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.62}
@@ -475,11 +477,15 @@ footer{background:#0B1623;padding:72px 0 0}
 .portal-input:focus{border-color:rgba(8,145,178,.55)}
 .portal-notice{background:rgba(8,145,178,.09);border:1px solid rgba(8,145,178,.22);border-radius:12px;padding:1rem 1.2rem;font-size:.86rem;color:rgba(255,255,255,.6);line-height:1.65;margin-top:1.25rem;max-width:420px}
 .portal-notice strong{color:var(--teal-3)}
+/* ── DEMO TOAST ──────────────────────────────────────────────── */
+#demoToast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:#0c1e33;border:1px solid rgba(8,145,178,.45);border-radius:12px;padding:.9rem 1.6rem;color:#fff;font-family:var(--fb);font-size:.9rem;z-index:9000;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,.4)}
 
 /* ── TEAM SECTION ─────────────────────────────────────────────── */
 #team{padding:120px 0;background:var(--white)}
+@media(max-width:768px){#team{padding:72px 0}#press{padding:56px 0}}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
-@media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.team-grid{grid-template-columns:1fr}}
 .team-card{background:var(--off);border:1px solid var(--border);border-radius:var(--r-card);padding:2rem 1.75rem;transition:all .3s var(--ease)}
 .team-card:hover{box-shadow:var(--shadow-md);transform:translateY(-5px);border-color:rgba(8,145,178,.2)}
 .team-avatar{width:68px;height:68px;border-radius:50%;overflow:hidden;margin-bottom:1.2rem;border:2px solid rgba(8,145,178,.18);flex-shrink:0}
@@ -503,7 +509,9 @@ footer{background:#0B1623;padding:72px 0 0}
 
 /* ── PRESS SECTION ────────────────────────────────────────────── */
 #press{padding:80px 0;background:var(--off)}
-.press-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.15rem;margin-top:2.5rem}
+.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:2.5rem}
+@media(max-width:900px){.press-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.press-grid{grid-template-columns:1fr}}
 .press-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-card);padding:1.6rem 1.6rem 1.4rem;transition:all .3s var(--ease)}
 .press-card:hover{box-shadow:var(--shadow-sm);border-color:rgba(8,145,178,.2);transform:translateY(-3px)}
 .press-outlet{font-family:var(--fd);font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:rgba(8,145,178,.08);border:1px solid rgba(8,145,178,.14);border-radius:5px;padding:3px 9px;display:inline-block;margin-bottom:1rem}
@@ -519,20 +527,18 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- ════════════════════ PORTAL OVERLAY ══════════════════════════ -->
 <div class="portal-ov" id="portalOv">
-  <div class="portal-topbar">
-    <div class="portal-brand">GVA · <span>Global Venture Accelerator</span></div>
-    <button class="portal-close-btn" onclick="closePortal()" aria-label="Close portal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="portal-scroll">
+  <button class="portal-close-btn" onclick="closePortal()" aria-label="Close portal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
 
-    <!-- STEP 0: Role Selector -->
-    <div class="portal-step" id="ps-select">
-      <div class="portal-eyebrow" data-en="Welcome" data-zh="歡迎">Welcome</div>
-      <h2 class="portal-h" data-en="Who are you joining us as?" data-zh="你的身份是？">Who are you joining us as?</h2>
-      <p class="portal-sub" data-en="Select your role to see the right next step." data-zh="選擇你的身份，查看適合你的下一步。">Select your role to see the right next step.</p>
-      <div class="role-grid">
+  <!-- STEP 0: Role Selector -->
+  <div class="portal-step" id="ps-select">
+    <div class="portal-header">
+      <div class="portal-eyebrow" data-en="GVA Stakeholder Portal" data-zh="GVA 利益相關人入口">GVA Stakeholder Portal</div>
+      <h2 class="portal-h" data-en="Who are you<br>joining us as?" data-zh="你的身份是？">Who are you<br>joining us as?</h2>
+      <p class="portal-sub" data-en="Select your role to access the right resources and next steps." data-zh="選擇你的身份，查看專屬資源與下一步。">Select your role to access the right resources and next steps.</p>
+    </div>
+    <div class="role-grid">
         <div class="role-card" onclick="showPortalStep('ps-founder')">
           <div class="role-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
           <div class="role-card-label" data-en="Founder" data-zh="創辦人">Founder</div>
@@ -561,8 +567,8 @@ footer{background:#0B1623;padding:72px 0 0}
       </div>
     </div>
 
-    <!-- STEP: Founder -->
-    <div class="portal-step" id="ps-founder" style="display:none">
+  <!-- STEP: Founder -->
+  <div class="portal-step portal-detail" id="ps-founder" style="display:none">
       <button class="portal-back" onclick="showPortalStep('ps-select')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg><span data-en="Back" data-zh="返回">Back</span></button>
       <div class="portal-eyebrow" data-en="Founder Application" data-zh="創辦人申請">Founder Application</div>
       <h2 class="portal-h" data-en="Before you apply —<br>here's what to expect." data-zh="申請前，先了解流程。">Before you apply —<br>here's what to expect.</h2>
@@ -592,13 +598,13 @@ footer{background:#0B1623;padding:72px 0 0}
         </div>
       </div>
       <div class="portal-btn-row">
-        <a href="mailto:apply@gva.tw" class="portal-btn" data-en="Start Application →" data-zh="開始申請 →">Start Application →</a>
+        <button onclick="showDemoNotice()" class="portal-btn" data-en="Start Application →" data-zh="開始申請 →">Start Application →</button>
         <button class="portal-btn-outline" onclick="closePortal()" data-en="Not ready yet" data-zh="我還沒準備好">Not ready yet</button>
       </div>
     </div>
 
-    <!-- STEP: Alumni -->
-    <div class="portal-step" id="ps-alumni" style="display:none">
+  <!-- STEP: Alumni -->
+  <div class="portal-step portal-detail" id="ps-alumni" style="display:none">
       <button class="portal-back" onclick="showPortalStep('ps-select')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg><span data-en="Back" data-zh="返回">Back</span></button>
       <div class="portal-eyebrow" data-en="Alumni Network" data-zh="校友網絡">Alumni Network</div>
       <h2 class="portal-h" data-en="Welcome back." data-zh="歡迎回來。">Welcome back.</h2>
@@ -611,8 +617,8 @@ footer{background:#0B1623;padding:72px 0 0}
       <div class="portal-notice"><strong data-en="Alumni portal launching Q3 2026." data-zh="校友入口平台將於 2026 年 Q3 上線。">Alumni portal launching Q3 2026.</strong><br><span data-en="Cohort graduates receive access credentials by email before launch." data-zh="完成梯次的校友將在上線前收到存取憑證。">Cohort graduates receive access credentials by email before launch.</span></div>
     </div>
 
-    <!-- STEP: Mentor -->
-    <div class="portal-step" id="ps-mentor" style="display:none">
+  <!-- STEP: Mentor -->
+  <div class="portal-step portal-detail" id="ps-mentor" style="display:none">
       <button class="portal-back" onclick="showPortalStep('ps-select')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg><span data-en="Back" data-zh="返回">Back</span></button>
       <div class="portal-eyebrow" data-en="Mentor Portal" data-zh="導師入口">Mentor Portal</div>
       <h2 class="portal-h" data-en="Scheduling &amp; cohort resources." data-zh="行程管理與梯次資源。">Scheduling &amp; cohort resources.</h2>
@@ -625,8 +631,8 @@ footer{background:#0B1623;padding:72px 0 0}
       <div class="portal-notice"><strong data-en="Mentor portal in development." data-zh="導師入口開發中。">Mentor portal in development.</strong><br><span data-en="Invited mentors are onboarded via email. Contact us if you haven't received your invite." data-zh="受邀導師將透過電子郵件完成入職。如尚未收到邀請，請聯繫我們。">Invited mentors are onboarded via email. Contact us if you haven't received your invite.</span></div>
     </div>
 
-    <!-- STEP: Investor -->
-    <div class="portal-step" id="ps-investor" style="display:none">
+  <!-- STEP: Investor -->
+  <div class="portal-step portal-detail" id="ps-investor" style="display:none">
       <button class="portal-back" onclick="showPortalStep('ps-select')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg><span data-en="Back" data-zh="返回">Back</span></button>
       <div class="portal-eyebrow" data-en="Investor Relations" data-zh="投資人關係">Investor Relations</div>
       <h2 class="portal-h" data-en="Deal flow,<br>before it's public." data-zh="在公開之前，<br>優先看到機會。">Deal flow,<br>before it's public.</h2>
@@ -642,11 +648,11 @@ footer{background:#0B1623;padding:72px 0 0}
         <div><div class="portal-form-label" data-en="Password" data-zh="密碼">Password</div><input class="portal-input" type="password" placeholder="••••••••"></div>
         <button class="portal-btn" onclick="portalComingSoon(this)" data-en="Access Portal" data-zh="進入入口">Access Portal</button>
       </div>
-      <div class="portal-notice"><strong data-en="Not yet a partner investor?" data-zh="還不是合作投資人？">Not yet a partner investor?</strong><br><span data-en="Apply for access at " data-zh="申請合作資格：">Apply for access at </span><a href="mailto:investors@gva.tw" style="color:var(--teal-3)">investors@gva.tw</a></div>
+      <div class="portal-notice"><strong data-en="Not yet a partner investor?" data-zh="還不是合作投資人？">Not yet a partner investor?</strong><br><span data-en="Apply for access at " data-zh="申請合作資格：">Apply for access at </span><a href="#" onclick="showDemoNotice();return false;" style="color:var(--teal-3)">investors@gva.tw</a></div>
     </div>
 
-    <!-- STEP: Staff -->
-    <div class="portal-step" id="ps-staff" style="display:none">
+  <!-- STEP: Staff -->
+  <div class="portal-step portal-detail" id="ps-staff" style="display:none">
       <button class="portal-back" onclick="showPortalStep('ps-select')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg><span data-en="Back" data-zh="返回">Back</span></button>
       <div class="portal-eyebrow" data-en="Internal Access" data-zh="內部人員入口">Internal Access</div>
       <h2 class="portal-h" data-en="Team login." data-zh="工作人員登入。">Team login.</h2>
@@ -659,7 +665,6 @@ footer{background:#0B1623;padding:72px 0 0}
       <div class="portal-notice"><strong data-en="Admin dashboard powered by Airtable + Notion." data-zh="後台由 Airtable + Notion 驅動。">Admin dashboard powered by Airtable + Notion.</strong><br><span data-en="Contact the program lead to request access credentials." data-zh="如需存取憑證，請聯繫計畫主持人。">Contact the program lead to request access credentials.</span></div>
     </div>
 
-  </div>
 </div>
 
 <!-- MOBILE MENU -->
@@ -667,7 +672,7 @@ footer{background:#0B1623;padding:72px 0 0}
   <button class="mob-close" onclick="closeMob()">✕</button>
   <a href="#about" onclick="closeMob()" data-en="About" data-zh="關於計畫">About</a>
   <a href="#curriculum" onclick="closeMob()" data-en="Curriculum" data-zh="課程">Curriculum</a>
-  <a href="#apply" onclick="closeMob()" data-en="Apply" data-zh="申請">Apply</a>
+  <a href="#" onclick="closeMob();showDemoNotice();return false;" data-en="Apply" data-zh="申請">Apply</a>
   <button class="btn-lang" onclick="toggleLang();closeMob()" id="mobLangBtn">中文</button>
 </div>
 
@@ -1053,7 +1058,7 @@ footer{background:#0B1623;padding:72px 0 0}
           <div class="pn-name-item pn-footer-ctr-panel">
             <div class="pn-total">$86M+</div>
             <div class="pn-total-sub" data-en="raised by cohort alumni" data-zh="校友累計融資額">raised by cohort alumni</div>
-            <a href="#apply" class="pn-browse" data-en="Apply to Next Cohort →" data-zh="申請下一期 →">Apply to Next Cohort →</a>
+            <a href="#" onclick="showDemoNotice();return false;" class="pn-browse" data-en="Apply to Next Cohort →" data-zh="申請下一期 →">Apply to Next Cohort →</a>
           </div>
         </div>
       </div>
@@ -1188,6 +1193,11 @@ footer{background:#0B1623;padding:72px 0 0}
         <div class="press-quote" data-en="GVA's expedition model — live immersions in Silicon Valley and Singapore — gives cohort founders access to deal rooms that most Asian founders never see." data-zh="GVA 的現地考察模式——在矽谷和新加坡的沉浸式體驗——讓梯次創辦人進入多數亞洲創辦人從未踏足的交易現場。">GVA's expedition model — live immersions in Silicon Valley and Singapore — gives cohort founders access to deal rooms that most Asian founders never see.</div>
         <div class="press-meta" data-en="December 2025 · Accelerator Deep Dive" data-zh="2025 年 12 月 · 加速器深度報導">December 2025 · Accelerator Deep Dive</div>
       </div>
+      <div class="press-card">
+        <div class="press-outlet">Nikkei Asia</div>
+        <div class="press-quote" data-en="GVA's cohort model is quietly becoming the most efficient bridge between Taiwan's deep-tech founding talent and the international capital markets that fund at scale." data-zh="GVA 的梯次模式，正悄悄成為連結台灣深科技創業人才與國際資本市場最有效率的橋梁。">GVA's cohort model is quietly becoming the most efficient bridge between Taiwan's deep-tech founding talent and the international capital markets that fund at scale.</div>
+        <div class="press-meta" data-en="November 2025 · Cross-Border Startup Series" data-zh="2025 年 11 月 · 跨境新創系列報導">November 2025 · Cross-Border Startup Series</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1261,10 +1271,10 @@ footer{background:#0B1623;padding:72px 0 0}
     <h2 class="apply-h" data-en="Your raise starts<br><span>with one step.</span>" data-zh="每一輪募資<br><span>都從這一步開始</span>">Your raise starts<br><span>with one step.</span></h2>
     <p class="apply-sub" data-en="12 founders per cohort. No pitch decks required — just tell us who you are and what you're building." data-zh="每期 12 位創辦人。不需要 pitch deck，只要告訴我們你是誰、在做什麼。">12 founders per cohort. No pitch decks required — just tell us who you are and what you're building.</p>
     <div class="apply-btn-wrap">
-      <a href="mailto:apply@gva-founders.com" class="btn-apply" data-en="Apply Now" data-zh="立即申請">
+      <button onclick="showDemoNotice()" class="btn-apply" data-en="Apply Now" data-zh="立即申請">
         Apply Now
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+      </button>
     </div>
     <div class="apply-stats">
       <div class="apply-stat">
@@ -1345,7 +1355,7 @@ footer{background:#0B1623;padding:72px 0 0}
           <li><a href="#pillars" data-en="The Three Systems" data-zh="三大系統">The Three Systems</a></li>
           <li><a href="#curriculum" data-en="Curriculum" data-zh="課程架構">Curriculum</a></li>
           <li><a href="#global" data-en="Global Network" data-zh="全球網絡">Global Network</a></li>
-          <li><a href="#apply" data-en="Apply Now" data-zh="立即申請">Apply Now</a></li>
+          <li><a href="#" onclick="showDemoNotice();return false;" data-en="Apply Now" data-zh="立即申請">Apply Now</a></li>
         </ul>
       </div>
       <div class="ft-nav">
@@ -2263,6 +2273,33 @@ document.addEventListener('keydown', function(e){
     if(ov && ov.classList.contains('open')) closePortal();
   }
 });
+
+function showDemoNotice(){
+  const lang = document.documentElement.getAttribute('data-lang') || 'en';
+  const msg = lang === 'zh'
+    ? '此為 Demo 展示網站，目前尚未對外開放申請。'
+    : 'This is a demo site. Applications are not yet open.';
+  var el = document.getElementById('demoToast');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'demoToast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.opacity = '0';
+  el.style.transform = 'translateX(-50%) translateY(20px)';
+  clearTimeout(el._tid);
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(-50%) translateY(0)';
+    });
+  });
+  el._tid = setTimeout(function(){
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 3200);
+}
 </script>
 </body>
 </html>
