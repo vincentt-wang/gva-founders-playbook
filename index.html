@@ -208,7 +208,9 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .pillar-card:hover .p-detail{opacity:1;transform:none}
 
 /* ── GLOBE SECTION ────────────────────────────────────────── */
-#global{padding:120px 0;background:linear-gradient(180deg,var(--white) 0%,var(--teal-pale) 40%,var(--white) 100%)}
+#global{padding:120px 0;background:linear-gradient(180deg,var(--white) 0%,var(--teal-pale) 40%,var(--white) 100%);position:relative;overflow:hidden}
+#globe-sun-ov{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity .55s ease;background:radial-gradient(circle 480px at var(--gsx,50%) var(--gsy,50%),rgba(255,218,70,.15) 0%,rgba(255,172,35,.08) 30%,rgba(255,130,0,.03) 60%,transparent 100%)}
+#globe-sun-ov.on{opacity:1}
 .global-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
 .global-text{}
 .globe-wrap{display:flex;justify-content:center;align-items:center;position:relative}
@@ -849,6 +851,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- ════════════════════ GLOBE / GLOBAL ══════════════════════ -->
 <section id="global" style="padding:120px 0;background:linear-gradient(180deg,var(--white) 0%,var(--teal-pale) 40%,var(--white) 100%)">
+  <div id="globe-sun-ov" aria-hidden="true"></div>
   <div class="container">
     <div class="global-inner">
       <div class="reveal">
@@ -1613,16 +1616,29 @@ applyLang(lang);
   canvas.addEventListener('touchend',()=>{isDrag=false;lastDragEnd=Date.now();});
   TAIPEI_ARCS.forEach((_,i)=>setTimeout(()=>arcs.push(new Arc(TAIPEI_ARCS[i][0],TAIPEI_ARCS[i][1])),i*400));
 
-  // Sun cursor — track mouse on canvas, scale to canvas coordinates
-  canvas.addEventListener('mousemove',e=>{
-    if(isDrag)return;
-    const r=canvas.getBoundingClientRect();
-    const sc=W/r.width;
-    sunX=(e.clientX-r.left)*sc; sunY=(e.clientY-r.top)*sc;
-    sunActive=true;
-    canvas.style.cursor='none';
-  },{passive:true});
-  canvas.addEventListener('mouseleave',()=>{sunActive=false;canvas.style.cursor=hoveredCity?'pointer':'grab';});
+  // Sun glow — tracks mouse across the entire #global section
+  const globeSec = document.getElementById('global');
+  const sunOv    = document.getElementById('globe-sun-ov');
+  if(globeSec){
+    globeSec.addEventListener('mousemove',e=>{
+      const sr = globeSec.getBoundingClientRect();
+      // Update section overlay position (%)
+      const pctX = ((e.clientX - sr.left) / sr.width  * 100).toFixed(2) + '%';
+      const pctY = ((e.clientY - sr.top)  / sr.height * 100).toFixed(2) + '%';
+      globeSec.style.setProperty('--gsx', pctX);
+      globeSec.style.setProperty('--gsy', pctY);
+      if(sunOv) sunOv.classList.add('on');
+      // Update canvas illumination (map from viewport to canvas space)
+      const cr = canvas.getBoundingClientRect();
+      sunX = (e.clientX - cr.left) * (W / cr.width);
+      sunY = (e.clientY - cr.top)  * (H / cr.height);
+      sunActive = true;
+    },{passive:true});
+    globeSec.addEventListener('mouseleave',()=>{
+      sunActive = false;
+      if(sunOv) sunOv.classList.remove('on');
+    });
+  }
 
   function drawGlobe(){
     ctx.clearRect(0,0,W,H);
@@ -1663,28 +1679,6 @@ applyLang(lang);
     // Country outlines (drawn inside clip, rotate with globe)
     drawCountries();
     ctx.restore();
-    // Sun cursor — drawn outside clip so rays extend beyond globe edge
-    if(sunActive&&!isDrag){
-      const sa=frame*0.024;
-      const corona=ctx.createRadialGradient(sunX,sunY,0,sunX,sunY,34);
-      corona.addColorStop(0,'rgba(255,240,120,.95)');
-      corona.addColorStop(0.35,'rgba(255,185,40,.58)');
-      corona.addColorStop(0.7,'rgba(255,140,0,.18)');
-      corona.addColorStop(1,'rgba(255,120,0,0)');
-      ctx.beginPath();ctx.arc(sunX,sunY,34,0,Math.PI*2);ctx.fillStyle=corona;ctx.fill();
-      ctx.beginPath();ctx.arc(sunX,sunY,7,0,Math.PI*2);ctx.fillStyle='rgba(255,255,230,.98)';ctx.fill();
-      ctx.beginPath();ctx.arc(sunX,sunY,3.5,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
-      ctx.lineCap='round';
-      for(let i=0;i<8;i++){
-        const ang=sa+i*Math.PI/4;
-        const r0=10,r1=18+Math.sin(sa*3+i*.8)*3.5;
-        const al=(0.7+0.25*Math.sin(sa*2.5+i)).toFixed(3);
-        ctx.beginPath();
-        ctx.moveTo(sunX+Math.cos(ang)*r0,sunY+Math.sin(ang)*r0);
-        ctx.lineTo(sunX+Math.cos(ang)*r1,sunY+Math.sin(ang)*r1);
-        ctx.strokeStyle=`rgba(255,215,50,${al})`;ctx.lineWidth=2.5;ctx.stroke();
-      }
-    }
     // Sphere outline
     ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
     ctx.strokeStyle='rgba(8,145,178,.35)';ctx.lineWidth=1.5;ctx.stroke();
