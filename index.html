@@ -435,6 +435,8 @@ footer{background:#0B1623;padding:72px 0 0}
 .portal-ov::before{content:'';position:absolute;top:-20%;left:-15%;width:60%;height:90%;background:radial-gradient(ellipse,rgba(8,145,178,.14) 0%,transparent 68%);pointer-events:none}
 .portal-ov::after{content:'';position:absolute;bottom:-20%;right:-8%;width:50%;height:75%;background:radial-gradient(ellipse,rgba(6,182,212,.08) 0%,transparent 68%);pointer-events:none}
 .portal-ov.open{opacity:1;pointer-events:all}
+.portal-lang-btn{position:absolute;top:1.5rem;left:1.75rem;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:6px 14px;background:rgba(255,255,255,.06);cursor:pointer;transition:all .2s;z-index:2}
+.portal-lang-btn:hover{color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.11)}
 .portal-close-btn{position:absolute;top:1.5rem;right:1.75rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer;background:rgba(255,255,255,.06);padding:0;z-index:2}
 .portal-close-btn:hover{border-color:rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.11)}
 .portal-close-btn svg{width:16px;height:16px}
@@ -473,12 +475,12 @@ footer{background:#0B1623;padding:72px 0 0}
 .portal-back{display:flex;align-items:center;gap:.45rem;font-family:var(--fd);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.32);cursor:pointer;background:none;border:none;transition:color .2s;padding:0;margin-bottom:1.75rem}
 .portal-back:hover{color:rgba(255,255,255,.65)}
 .portal-back svg{width:14px;height:14px}
-.portal-form{display:flex;flex-direction:column;gap:.85rem;max-width:380px}
-.portal-form-label{font-size:.75rem;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.35);margin-bottom:-.5rem}
+.portal-form{display:flex;flex-direction:column;gap:1.2rem;max-width:420px}
+.portal-form-label{font-size:.75rem;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.35);margin-bottom:.35rem}
 .portal-input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:12px 15px;font-size:.92rem;color:#fff;font-family:var(--fb);transition:border-color .2s;outline:none;width:100%}
 .portal-input::placeholder{color:rgba(255,255,255,.22)}
 .portal-input:focus{border-color:rgba(8,145,178,.55)}
-.portal-notice{background:rgba(8,145,178,.09);border:1px solid rgba(8,145,178,.22);border-radius:12px;padding:1rem 1.2rem;font-size:.86rem;color:rgba(255,255,255,.6);line-height:1.65;margin-top:1.25rem;max-width:420px}
+.portal-notice{background:rgba(8,145,178,.09);border:1px solid rgba(8,145,178,.22);border-radius:12px;padding:1rem 1.2rem;font-size:.86rem;color:rgba(255,255,255,.6);line-height:1.65;margin-top:1.5rem;max-width:420px;width:100%}
 .portal-notice strong{color:var(--teal-3)}
 /* ── DEMO TOAST ──────────────────────────────────────────────── */
 #demoToast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:#0c1e33;border:1px solid rgba(8,145,178,.45);border-radius:12px;padding:.9rem 1.6rem;color:#fff;font-family:var(--fb);font-size:.9rem;z-index:9000;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,.4)}
@@ -530,6 +532,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- ════════════════════ PORTAL OVERLAY ══════════════════════════ -->
 <div class="portal-ov" id="portalOv">
+  <button class="portal-lang-btn" id="portalLangBtn" onclick="toggleLang()" aria-label="Toggle language">中文</button>
   <button class="portal-close-btn" onclick="closePortal()" aria-label="Close portal">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
@@ -1436,6 +1439,75 @@ function toggleAcc(item){
   document.querySelectorAll('.acc-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.acc-body').style.maxHeight='0'});
   if(!open){item.classList.add('open');body.style.maxHeight=inner.scrollHeight+'px'}
 }
+// ── CURRICULUM: PARTICLE NETWORK BACKGROUND ──────────────────
+(function(){
+  const sec = document.getElementById('curriculum');
+  if(!sec) return;
+  const cnv = document.createElement('canvas');
+  cnv.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0';
+  sec.style.position='relative'; sec.style.overflow='hidden';
+  sec.insertBefore(cnv, sec.firstChild);
+  const cont = sec.querySelector('.container');
+  if(cont){cont.style.position='relative';cont.style.zIndex='1';}
+  const ctx=cnv.getContext('2d');
+  let W=0,H=0,mx=-9999,my=-9999;
+  const N=42;
+  const pts=[];
+  const xs=new Float32Array(N), ys=new Float32Array(N);
+  const LINK_D=145, LINK_D2=LINK_D*LINK_D, MX_R=280;
+
+  function init(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    W=cnv.offsetWidth; H=cnv.offsetHeight;
+    cnv.width=W*dpr; cnv.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(!pts.length){
+      for(let i=0;i<N;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*1.8,vy:(Math.random()-.5)*1.8,b:0});
+    }
+  }
+
+  sec.addEventListener('mousemove',e=>{const r=sec.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;},{passive:true});
+  sec.addEventListener('mouseleave',()=>{mx=-9999;my=-9999;});
+
+  function loop(){
+    requestAnimationFrame(loop);
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<N;i++){
+      const p=pts[i];
+      const dx=mx-p.x, dy=my-p.y, d2=dx*dx+dy*dy;
+      if(d2<MX_R*MX_R&&d2>1){const d=Math.sqrt(d2),str=.020*(1-d/MX_R);p.vx+=dx/d*str;p.vy+=dy/d*str;}
+      p.vx*=.965; p.vy*=.965;
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
+      if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20;
+      if(d2<MX_R*MX_R) p.b=Math.min(1,p.b+.14);
+      xs[i]=p.x; ys[i]=p.y;
+    }
+    // Lines
+    for(let i=0;i<N;i++){
+      for(let j=i+1;j<N;j++){
+        const dx=xs[i]-xs[j],dy=ys[i]-ys[j];
+        if(dx*dx+dy*dy>LINK_D2)continue;
+        const bright=Math.max(pts[i].b,pts[j].b);
+        ctx.lineWidth=.7+bright*.6;
+        ctx.strokeStyle=`rgba(8,145,178,${(.055+bright*.165).toFixed(3)})`;
+        ctx.beginPath();ctx.moveTo(xs[i],ys[i]);ctx.lineTo(xs[j],ys[j]);ctx.stroke();
+      }
+    }
+    // Nodes
+    for(let i=0;i<N;i++){
+      const b=pts[i].b;
+      const r=2+b*2, a=.28+b*.57;
+      ctx.beginPath();ctx.arc(xs[i],ys[i],r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(8,145,178,${a.toFixed(2)})`;ctx.fill();
+    }
+  }
+
+  init();
+  window.addEventListener('resize',init,{passive:true});
+  loop();
+})();
+
 // ── CURRICULUM: HOVER AUTO-EXPAND ────────────────────────────
 (function(){
   document.querySelectorAll('#curriculum .acc-item').forEach(function(item){
@@ -1483,6 +1555,7 @@ function applyLang(l){
   });
   document.getElementById('langBtn').textContent=l==='zh'?'EN':'中文';
   if(document.getElementById('mobLangBtn'))document.getElementById('mobLangBtn').textContent=l==='zh'?'EN':'中文';
+  const plb=document.getElementById('portalLangBtn');if(plb)plb.textContent=l==='zh'?'EN':'中文';
 }
 function toggleLang(){applyLang(lang==='en'?'zh':'en')}
 applyLang(lang);
@@ -1605,7 +1678,9 @@ applyLang(lang);
 
   let arcs=[],frame=0,nextTaipei=0,nextOther=0,cityScreenPos={},hoveredCity=null;
   let isDrag=false,dragX=0,dragY=0;
-  let sunX=-1,sunY=-1,sunActive=false;
+  let sunX=W*.72,sunY=H*.22,sunActive=true;
+  let tSunPctX=72,tSunPctY=22,vSunPctX=72,vSunPctY=22;
+  let tSunCvX=W*.72,tSunCvY=H*.22,vSunCvX=W*.72,vSunCvY=H*.22;
   let lastDragEnd=0,returning=false,returnTargetLon=121.5;
   canvas.style.cursor='grab';
   canvas.addEventListener('mousedown',e=>{isDrag=true;returning=false;dragX=e.clientX;dragY=e.clientY;canvas.style.cursor='grabbing';e.preventDefault();},{passive:false});
@@ -1620,23 +1695,33 @@ applyLang(lang);
   const globeSec = document.getElementById('global');
   const sunOv    = document.getElementById('globe-sun-ov');
   if(globeSec){
+    const gMobile = matchMedia('(pointer:coarse)').matches;
+    function sunDefault(){
+      tSunPctX=72; tSunPctY=22;
+      tSunCvX=W*.72; tSunCvY=H*.22;
+      if(sunOv) sunOv.classList.add('on');
+      sunActive=true;
+    }
+    if(gMobile){
+      tSunPctX=65; tSunPctY=28; vSunPctX=65; vSunPctY=28;
+      tSunCvX=W*.65; tSunCvY=H*.28; vSunCvX=W*.65; vSunCvY=H*.28;
+      if(sunOv) sunOv.classList.add('on');
+      sunActive=true;
+    } else {
+      sunDefault();
+    }
     globeSec.addEventListener('mousemove',e=>{
       const sr = globeSec.getBoundingClientRect();
-      // Update section overlay position (%)
-      const pctX = ((e.clientX - sr.left) / sr.width  * 100).toFixed(2) + '%';
-      const pctY = ((e.clientY - sr.top)  / sr.height * 100).toFixed(2) + '%';
-      globeSec.style.setProperty('--gsx', pctX);
-      globeSec.style.setProperty('--gsy', pctY);
-      if(sunOv) sunOv.classList.add('on');
-      // Update canvas illumination (map from viewport to canvas space)
+      tSunPctX = (e.clientX - sr.left) / sr.width  * 100;
+      tSunPctY = (e.clientY - sr.top)  / sr.height * 100;
       const cr = canvas.getBoundingClientRect();
-      sunX = (e.clientX - cr.left) * (W / cr.width);
-      sunY = (e.clientY - cr.top)  * (H / cr.height);
-      sunActive = true;
+      tSunCvX = (e.clientX - cr.left) * (W / cr.width);
+      tSunCvY = (e.clientY - cr.top)  * (H / cr.height);
+      if(sunOv) sunOv.classList.add('on');
+      sunActive=true;
     },{passive:true});
     globeSec.addEventListener('mouseleave',()=>{
-      sunActive = false;
-      if(sunOv) sunOv.classList.remove('on');
+      if(!gMobile) sunDefault();
     });
   }
 
@@ -1742,6 +1827,11 @@ applyLang(lang);
     arcs.forEach(a=>a.update());
     if(frame%120===0){const p=TAIPEI_ARCS[nextTaipei++%TAIPEI_ARCS.length];arcs.push(new Arc(p[0],p[1]));}
     if(frame%300===0){const p=OTHER_ARCS[nextOther++%OTHER_ARCS.length];arcs.push(new Arc(p[0],p[1]));}
+    // Lerp sun position toward target (~2s at 60fps, factor 0.025)
+    vSunPctX+=(tSunPctX-vSunPctX)*.025; vSunPctY+=(tSunPctY-vSunPctY)*.025;
+    vSunCvX +=(tSunCvX -vSunCvX )*.025; vSunCvY +=(tSunCvY -vSunCvY )*.025;
+    if(globeSec){globeSec.style.setProperty('--gsx',vSunPctX.toFixed(2)+'%');globeSec.style.setProperty('--gsy',vSunPctY.toFixed(2)+'%');}
+    sunX=vSunCvX; sunY=vSunCvY;
     drawGlobe();
     // Tooltip content (only update when city changes)
     if(hoveredCity!==prevHov){
@@ -1878,11 +1968,18 @@ applyLang(lang);
   }
 
   // Mouse disturbance
-  let mt = 0;
+  let mt = 0, mpx = -999, mpy = -999, mouseInSec = false;
+  section.addEventListener('mouseenter', () => { mouseInSec = false; });
+  section.addEventListener('mouseleave', () => { mouseInSec = false; });
   section.addEventListener('mousemove', e => {
     const now = Date.now(); if (now - mt < 55) return; mt = now;
     const sr = section.getBoundingClientRect();
-    disturb(e.clientX - sr.left, e.clientY - sr.top, 0.95);
+    const cx = e.clientX - sr.left, cy = e.clientY - sr.top;
+    if (!mouseInSec) { mouseInSec = true; mpx = cx; mpy = cy; return; }
+    const dx = cx - mpx, dy = cy - mpy;
+    if (dx*dx + dy*dy < 100) return;
+    mpx = cx; mpy = cy;
+    disturb(cx, cy, 0.60);
   }, { passive: true });
 
   // Auto pulses from card centers, cycling every 3.5s
@@ -2226,7 +2323,7 @@ applyLang(lang);
 
   let W=0, H=0, t=0;
   let mx=-9999, my=-9999, vmx=0, vmy=0;
-  let mouseIn=false, mA=0;
+  let mouseIn=false, mA=0, wt=0;
 
   const SPACING = 52;    // grid cell size → dense mesh
   const JITTER  = 10;    // random offset from grid node
@@ -2258,22 +2355,30 @@ applyLang(lang);
     canvas.width=W*dpr; canvas.height=H*dpr;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     buildPts();
+    vmx=W/2; vmy=H/2;
   }
 
   hero.addEventListener('mousemove',e=>{
     const r=canvas.getBoundingClientRect();
-    const nx=e.clientX-r.left, ny=e.clientY-r.top;
-    if(!mouseIn){vmx=nx;vmy=ny;}
-    mx=nx; my=ny; mouseIn=true;
+    mx=e.clientX-r.left; my=e.clientY-r.top; mouseIn=true;
   });
   hero.addEventListener('mouseleave',()=>{mouseIn=false; mx=-9999;});
+
+  let isMobile=matchMedia('(pointer:coarse)').matches;
+  matchMedia('(pointer:coarse)').addEventListener('change',e=>{isMobile=e.matches;});
 
   function loop(){
     requestAnimationFrame(loop);
     ctx.clearRect(0,0,W,H);
     t+=.011;
-    mA+=((mouseIn?1:0)-mA)*.06;
-    if(mouseIn){vmx+=(mx-vmx)*.1; vmy+=(my-vmy)*.1;}
+    mA+=(1-mA)*.04;
+    if(!isMobile){
+      wt+=.0025;
+      const wx=W*(.5+.28*Math.sin(wt*.7+1.2)+.10*Math.sin(wt*1.73));
+      const wy=H*(.5+.22*Math.cos(wt*.5+.4)+.08*Math.cos(wt*1.37+2.1));
+      const tx=mouseIn?mx:wx, ty=mouseIn?my:wy;
+      vmx+=(tx-vmx)*.025; vmy+=(ty-vmy)*.025;
+    }
     const hasM=mA>.01;
 
     // ─ Update particle positions ──────────────────────────────
@@ -2394,7 +2499,6 @@ function showPortalStep(stepId){
   });
   const target = document.getElementById(stepId);
   if(target) target.style.display = 'flex';
-  const lang = document.documentElement.getAttribute('data-lang') || 'en';
   if(typeof applyLang === 'function') applyLang(lang);
 }
 
