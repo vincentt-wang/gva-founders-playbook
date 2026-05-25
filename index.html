@@ -1455,6 +1455,7 @@ function toggleAcc(item){
   const N=42;
   const pts=[];
   const xs=new Float32Array(N), ys=new Float32Array(N);
+  const linked=new Uint8Array(N*N);
   const LINK_D=145, LINK_D2=LINK_D*LINK_D, MX_R=280;
 
   function init(){
@@ -1463,7 +1464,7 @@ function toggleAcc(item){
     cnv.width=W*dpr; cnv.height=H*dpr;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     if(!pts.length){
-      for(let i=0;i<N;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*1.8,vy:(Math.random()-.5)*1.8,b:0});
+      for(let i=0;i<N;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*2.4,vy:(Math.random()-.5)*2.4,b:0});
     }
   }
 
@@ -1476,7 +1477,7 @@ function toggleAcc(item){
     for(let i=0;i<N;i++){
       const p=pts[i];
       const dx=mx-p.x, dy=my-p.y, d2=dx*dx+dy*dy;
-      if(d2<MX_R*MX_R&&d2>1){const d=Math.sqrt(d2),str=.020*(1-d/MX_R);p.vx+=dx/d*str;p.vy+=dy/d*str;}
+      if(d2<MX_R*MX_R&&d2>1){const d=Math.sqrt(d2),str=.032*(1-d/MX_R);p.vx+=dx/d*str;p.vy+=dy/d*str;}
       p.vx*=.965; p.vy*=.965;
       p.x+=p.vx; p.y+=p.vy;
       if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
@@ -1484,11 +1485,15 @@ function toggleAcc(item){
       if(d2<MX_R*MX_R) p.b=Math.min(1,p.b+.14);
       xs[i]=p.x; ys[i]=p.y;
     }
-    // Lines
+    // Register new connections + draw all permanent links
     for(let i=0;i<N;i++){
       for(let j=i+1;j<N;j++){
-        const dx=xs[i]-xs[j],dy=ys[i]-ys[j];
-        if(dx*dx+dy*dy>LINK_D2)continue;
+        const idx=i*N+j;
+        if(!linked[idx]){
+          const dx=xs[i]-xs[j],dy=ys[i]-ys[j];
+          if(dx*dx+dy*dy<LINK_D2) linked[idx]=1;
+          else continue;
+        }
         const bright=Math.max(pts[i].b,pts[j].b);
         ctx.lineWidth=.7+bright*.6;
         ctx.strokeStyle=`rgba(8,145,178,${(.055+bright*.165).toFixed(3)})`;
