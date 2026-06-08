@@ -60,7 +60,7 @@
 /* ── RESET ────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--white);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.65;overflow-x:hidden}
+body{background:var(--white);color:var(--text);font-family:var(--fb);font-size:20px;line-height:1.65;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 img{max-width:100%;display:block}
@@ -88,13 +88,13 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .logo:hover .lm-bar:nth-child(3){width:20px;transform:translateY(2px)}
 .logo:hover .lm-bar:nth-child(2){width:14px}
 .logo-text{font-family:var(--fd);font-weight:800;font-size:.95rem;letter-spacing:-.01em;color:var(--text);white-space:nowrap}
-.logo-tag{font-family:var(--fd);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:rgba(8,145,178,.1);border:1px solid rgba(8,145,178,.22);border-radius:4px;padding:2px 6px;align-self:center;white-space:nowrap}
+.logo-tag{font-family:var(--fb);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:rgba(8,145,178,.1);border:1px solid rgba(8,145,178,.22);border-radius:4px;padding:2px 8px;align-self:center;white-space:nowrap}
 
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-links a{font-size:.875rem;font-weight:500;color:var(--text2);transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--teal)}
 .nav-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
-.btn-lang{font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;transition:all .2s;font-family:var(--fd)}
+.btn-lang{font-size:.85rem;font-weight:700;letter-spacing:.08em;color:var(--text3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;transition:all .2s;font-family:var(--fb)}
 .btn-lang:hover{color:var(--teal);border-color:var(--teal)}
 .btn-nav{font-family:var(--fd);font-weight:700;font-size:.875rem;padding:9px 22px;border-radius:var(--r-btn);background:var(--teal);color:#fff;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap;animation:btn-pulse 3s ease-in-out infinite 2s;border:none;cursor:pointer;display:inline-flex;align-items:center}
 .btn-nav:hover{background:var(--teal-2);transform:translateY(-1px);box-shadow:0 6px 22px rgba(8,145,178,.42);animation:none}
@@ -113,7 +113,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* ── SECTION LABELS & TITLES ──────────────────────────────── */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.25rem}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.85rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1.25rem}
 .eyebrow::before{content:'';width:20px;height:2px;background:var(--teal);border-radius:2px;flex-shrink:0}
 .section-h{font-family:var(--fd);font-weight:800;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.1;letter-spacing:-.01em;color:var(--text);margin-bottom:1.25rem}
 .section-p{font-size:1.05rem;color:var(--text2);line-height:1.75;max-width:580px}
@@ -136,7 +136,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
   min-height:100vh;display:flex;align-items:center;
   padding:140px 0 100px;
   position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#f8feff 0%,#ecf7fb 45%,#f4fafb 100%);
+  background:linear-gradient(160deg,#051824 0%,#071f30 55%,#040f1a 100%);
 }
 .hero-glow-1{position:absolute;top:-20%;right:-10%;width:70vw;height:70vw;background:radial-gradient(ellipse,rgba(6,182,212,.1) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 10s ease-in-out infinite}
 .hero-glow-2{position:absolute;bottom:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse,rgba(8,145,178,.07) 0%,transparent 62%);pointer-events:none;animation:glow-pulse 14s ease-in-out infinite reverse}
@@ -258,12 +258,12 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .reveal.d2.vis .acc-item:nth-child(8){animation:acc-fade-in .45s ease both .60s}
 
 /* ── METHODOLOGY ──────────────────────────────────────────── */
-#methodology{padding:120px 0;background:var(--teal);position:relative;overflow:hidden;text-align:center}
-#methodology::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:200%;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none}
-#methodology .eyebrow{color:rgba(255,255,255,.7)}
-#methodology .eyebrow::before{background:rgba(255,255,255,.5)}
+#methodology{padding:120px 0;background:#060f1e;position:relative;overflow:hidden;text-align:center}
+#methodology::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:200%;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(8,145,178,.1) 0%,transparent 60%);pointer-events:none}
+#methodology .eyebrow{color:var(--teal-3)}
+#methodology .eyebrow::before{background:var(--teal-3)}
 #methodology .section-h{color:#fff;font-size:clamp(2.2rem,4.5vw,4rem)}
-#methodology .section-p{color:rgba(255,255,255,.75);margin:0 auto 3rem}
+#methodology .section-p{color:rgba(255,255,255,.62);margin:0 auto 3rem}
 .btn-meth{display:inline-flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;padding:18px 36px;border-radius:var(--r-btn);background:#fff;color:var(--teal);position:relative;overflow:hidden;transition:all .3s var(--ease);box-shadow:0 8px 30px rgba(0,0,0,.15)}
 .btn-meth::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(8,145,178,.12) 50%,transparent 62%);transform:translateX(-100%);transition:transform .6s ease}
 .btn-meth:hover::after{transform:translateX(100%)}
@@ -294,8 +294,7 @@ nav.scrolled{background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);-webkit
 .pn-img-sq.before img{filter:grayscale(100%) brightness(.58) contrast(1.1)}
 .pn-img-sq.after  img{filter:none}
 .pn-img-quote{font-size:.92rem;line-height:1.6;color:var(--text2);font-style:normal;margin:.4rem 0 0;align-self:flex-start}
-.pn-img-who{font-family:var(--fb);font-size:.78rem;font-weight:400;color:var(--text3);letter-spacing:.02em;align-self:flex-start;margin-top:.1rem}
-.pn-img-who{font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--text3);letter-spacing:.05em;align-self:flex-start}
+.pn-img-who{font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--text3);letter-spacing:.05em;align-self:flex-start;margin-top:.1rem}
 /* Center picker wheel */
 .pn-name-track{display:flex;flex-direction:column;will-change:transform}
 .pn-name-item{flex-shrink:0;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;transform-origin:center;will-change:opacity,transform}
@@ -401,7 +400,6 @@ footer{background:#0B1623;padding:72px 0 0}
 .footer-bottom{padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;font-size:.78rem;color:rgba(255,255,255,.25)}
 
 /* ── CONNECTING LINE ANIMATION ────────────────────────────── */
-.section-connector{display:none}
 #pillars-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 #pillars>.container{position:relative;z-index:1}
 
@@ -527,6 +525,136 @@ footer{background:#0B1623;padding:72px 0 0}
 .press-quote{font-size:.92rem;color:var(--text2);line-height:1.72;font-style:italic;margin-bottom:.9rem;position:relative;padding-left:1.1rem}
 .press-quote::before{content:'\201C';position:absolute;left:0;top:-.1rem;font-size:1.5rem;color:var(--teal);line-height:1;font-style:normal}
 .press-meta{font-size:.76rem;color:var(--text3);letter-spacing:.02em}
+
+/* ── HERO DARK THEME ─────────────────────────────────────────── */
+.hero-h1{color:#fff}
+.hero-sub{color:rgba(255,255,255,.62)}
+.h-stat-n{color:#fff}
+.h-stat-l{color:rgba(255,255,255,.38)}
+.h-stat{border-right-color:rgba(255,255,255,.1)}
+.scroll-cue-line{background:linear-gradient(to bottom,rgba(255,255,255,.45),transparent)}
+.scroll-cue-dot{border-color:rgba(255,255,255,.45)}
+.hero-ctas .btn-outline{border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.75)}
+.hero-ctas .btn-outline:hover{border-color:var(--teal-3);color:#fff;transform:translateY(-2px)}
+
+/* ── NAV HERO-NAV (transparent over dark hero) ───────────────── */
+nav.hero-nav .logo-text{color:#fff}
+nav.hero-nav .lm-bar{background:rgba(255,255,255,.85)}
+nav.hero-nav .nav-links a{color:rgba(255,255,255,.65)}
+nav.hero-nav .nav-links a:hover{color:#fff}
+nav.hero-nav .btn-lang{color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.2)}
+nav.hero-nav .btn-lang:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
+
+/* ── FONT SIZE OVERRIDES (min target ~16px) ──────────────────── */
+.mod-tag{font-size:.85rem}
+.acc-inner{font-size:.95rem}
+.acc-trigger h4{font-size:1rem}
+.pain-card p{font-size:1rem}
+.pillar-card p{font-size:1rem}
+.p-detail{font-size:.9rem}
+.gt-name{font-size:.9rem}
+.gt-desc{font-size:.85rem}
+.city-tag{font-size:.85rem}
+.pn-img-tag{font-size:.85rem}
+.pn-img-quote{font-size:1rem}
+.pn-img-who{font-size:.85rem;font-weight:600}
+.pn-name-sub{font-size:.9rem}
+.pn-total-sub{font-size:.9rem}
+.pn-browse{font-size:.85rem}
+.mm-l{font-size:.88rem}
+.portal-eyebrow{font-size:.85rem}
+.portal-form-label{font-size:.85rem}
+.portal-checklist li{font-size:.95rem}
+.portal-notice{font-size:.9rem}
+.portal-stat-l{font-size:.85rem}
+.portal-tl-label{font-size:.85rem}
+.role-card-desc{font-size:.88rem}
+.press-quote{font-size:1rem}
+.press-meta{font-size:.85rem}
+.press-outlet{font-size:.85rem}
+.team-bio{font-size:.95rem}
+.team-role{font-size:.85rem;letter-spacing:.04em}
+.advisor-name{font-size:.9rem}
+.advisor-tag{font-size:.85rem}
+.ls-badge{font-size:.95rem}
+.marquee-item{font-size:.88rem}
+.ft-nav a{font-size:.9rem}
+.ft-tagline{font-size:.9rem}
+.footer-bottom{font-size:.85rem}
+.apply-eyebrow{font-size:.85rem}
+.apply-stat-l{font-size:.88rem}
+.video-cap{font-size:1rem}
+.fq-trigger h4{font-size:1rem}
+.fq-inner{font-size:.95rem}
+.prog-fmt-item span{font-size:.95rem}
+.section-p{font-size:1.05rem}
+.hero-badge{font-size:.85rem}
+.pn-flogo{font-size:.85rem}
+.ft-nav h5{font-size:.85rem}
+.advisors-eyebrow{font-size:.85rem}
+.h-stat-l{font-size:.85rem}
+.portal-lang-btn,.portal-back{font-size:.85rem}
+.logo-tag{font-size:.8rem}
+.vph-title,.vph-dur{font-size:.85rem}
+
+/* ── DARK SECTION VARIANT ─────────────────────────────────────── */
+.section--dark{background:#060f1e!important}
+.section--dark .eyebrow{color:var(--teal-3)}
+.section--dark .eyebrow::before{background:var(--teal-3)}
+.section--dark .section-h{color:#fff}
+.section--dark .section-p{color:rgba(255,255,255,.62)}
+/* Pillar cards on dark */
+.section--dark .pillar-card{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,.2)}
+.section--dark .pillar-card:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.35);box-shadow:0 16px 40px rgba(0,0,0,.28)}
+.section--dark .pillar-card h3{color:#fff}
+.section--dark .pillar-card p{color:rgba(255,255,255,.72)}
+.section--dark .p-num{color:rgba(255,255,255,.1)}
+.section--dark .p-ico{background:rgba(8,145,178,.22)}
+.section--dark .pillar-card:hover .p-ico{background:rgba(8,145,178,.38)}
+.section--dark .p-detail{color:var(--teal-3)}
+.section--dark .pillar-card::before{background:linear-gradient(90deg,var(--teal-3),var(--teal))}
+/* Accordion on dark */
+.section--dark .acc-item{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.section--dark .acc-item:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.18);box-shadow:0 4px 20px rgba(0,0,0,.2),inset -3px 0 0 var(--teal-3)}
+.section--dark .acc-item.open{background:rgba(255,255,255,.16);border-color:rgba(8,145,178,.5);box-shadow:0 4px 20px rgba(8,145,178,.12),inset -3px 0 0 var(--teal-3)}
+.section--dark .acc-trigger h4{color:rgba(255,255,255,.9)}
+.section--dark .acc-chev{color:rgba(255,255,255,.35)}
+.section--dark .acc-item.open .acc-chev{color:var(--teal-3)}
+.section--dark .acc-inner{color:rgba(255,255,255,.65)}
+.section--dark .acc-inner li::before{color:var(--teal-3)}
+.section--dark .mod-tag{background:rgba(8,145,178,.22);border-color:rgba(8,145,178,.38);color:var(--teal-3)}
+.section--dark [style*="background:var(--off)"]{background:rgba(255,255,255,.11)!important;border-color:rgba(255,255,255,.18)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.section--dark [style*="background:var(--off)"] [style*="color:var(--text3)"]{color:rgba(255,255,255,.45)!important}
+.section--dark [style*="background:var(--off)"] [style*="color:var(--text2)"]{color:rgba(255,255,255,.72)!important}
+.section--dark .prog-fmt-item span{color:rgba(255,255,255,.72)}
+.section--dark .prog-fmt-icon{color:var(--teal-3)}
+/* Press cards on dark */
+.section--dark .press-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+.section--dark .press-card:hover{border-color:rgba(8,145,178,.38);transform:translateY(-3px);box-shadow:0 8px 28px rgba(8,145,178,.12)}
+.section--dark .press-outlet{background:rgba(8,145,178,.18);border-color:rgba(8,145,178,.32);color:var(--teal-3)}
+.section--dark .press-quote{color:rgba(255,255,255,.72)}
+.section--dark .press-quote::before{color:var(--teal-3)}
+.section--dark .press-meta{color:rgba(255,255,255,.33)}
+/* Methodology btn-meth pulse */
+@keyframes meth-pulse{
+  0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.22),0 0 0 0 rgba(255,210,50,.7),0 0 22px rgba(255,190,35,0)}
+  50%{box-shadow:0 14px 44px rgba(0,0,0,.3),0 0 0 18px rgba(255,210,50,0),0 0 60px rgba(255,195,40,.55),0 0 100px rgba(255,160,20,.2)}
+}
+.btn-meth{animation:meth-pulse 2.2s ease-in-out infinite}
+.btn-meth:hover{animation:none;transform:translateY(-3px);box-shadow:0 18px 50px rgba(0,0,0,.28),0 0 50px rgba(255,200,50,.6)}
+/* Press card sequential glow */
+@keyframes press-glow{
+  0%,17%,100%{border-color:rgba(255,255,255,.1);box-shadow:none;background:rgba(255,255,255,.04)}
+  8%{border-color:rgba(8,145,178,.75);box-shadow:0 0 28px rgba(8,145,178,.32),0 0 56px rgba(8,145,178,.1);background:rgba(8,145,178,.1)}
+}
+.section--dark .press-grid .press-card:nth-child(1){animation:press-glow 9s ease-in-out infinite 0s}
+.section--dark .press-grid .press-card:nth-child(2){animation:press-glow 9s ease-in-out infinite 1.5s}
+.section--dark .press-grid .press-card:nth-child(3){animation:press-glow 9s ease-in-out infinite 3s}
+.section--dark .press-grid .press-card:nth-child(4){animation:press-glow 9s ease-in-out infinite 4.5s}
+.section--dark .press-grid .press-card:nth-child(5){animation:press-glow 9s ease-in-out infinite 6s}
+.section--dark .press-grid .press-card:nth-child(6){animation:press-glow 9s ease-in-out infinite 7.5s}
+.section--dark .press-card:hover{animation:none}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
@@ -688,7 +816,7 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="logo" href="#">
+  <a class="logo" href="#hero">
     <div class="logo-mark" aria-hidden="true">
       <div class="lm-bar"></div>
       <div class="lm-bar"></div>
@@ -725,29 +853,29 @@ footer{background:#0B1623;padding:72px 0 0}
         <span data-en="The launchpad for" data-zh="為出海創辦人">The launchpad for</span><br>
         <em><span data-en="founders going global." data-zh="打造的起飛平台">founders going global.</span></em>
       </h1>
-      <p class="hero-sub" data-en="An elite program for high-growth founders scaling across international borders. We bridge regional innovation and global markets through the Founders Playbook, a curated community, and immersive expeditions." data-zh="為高速成長的出海創辦人打造的精英計畫。透過 Founders Playbook、精選同儕社群與現地考察，連結區域創新與全球市場。">
-        An elite program for high-growth founders scaling across international borders. We bridge regional innovation and global markets through the Founders Playbook, a curated community, and immersive expeditions.
+      <p class="hero-sub" data-en="An elite pre-accelerator for Taiwan's most ambitious founders. 12 weeks, real VC meetings, and a fundraising strategy built for global capital markets." data-zh="為台灣最有野心的創辦人打造的精英計畫。12 週、真實 VC 會面，以及在全球資本市場都能奏效的募資策略。">
+        An elite pre-accelerator for Taiwan's most ambitious founders. 12 weeks, real VC meetings, and a fundraising strategy built for global capital markets.
       </p>
       <div class="hero-ctas">
         <button onclick="openPortal('ps-founder')" class="btn-primary" data-en="Apply for the Next Cohort →" data-zh="申請加入下一期 →">Apply for the Next Cohort →</button>
-        <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-outline" data-en="Explore the Methodology" data-zh="探索完整方法論">Explore the Methodology</a>
+        <a href="#team" class="btn-outline" data-en="Meet the Mentors" data-zh="認識導師團隊">Meet the Mentors</a>
       </div>
       <div class="hero-stats">
         <div class="h-stat">
-          <div class="h-stat-n"><span class="cnt" data-target="3">3</span></div>
-          <div class="h-stat-l" data-en="Continents in Network" data-zh="洲際網絡">Continents in Network</div>
+          <div class="h-stat-n">$86M<span style="font-size:.6em;font-family:var(--fb)">+</span></div>
+          <div class="h-stat-l" data-en="Raised by Alumni" data-zh="校友融資總額">Raised by Alumni</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-n">50<span style="font-size:.8em;font-family:var(--fb)">+</span></div>
-          <div class="h-stat-l" data-en="Serial Founder Mentors" data-zh="連續創業導師">Serial Founder Mentors</div>
+          <div class="h-stat-n">8<span style="font-size:.6em;font-family:var(--fb)">%</span></div>
+          <div class="h-stat-l" data-en="Acceptance Rate" data-zh="錄取率">Acceptance Rate</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-n"><span class="cnt" data-target="12">12</span></div>
-          <div class="h-stat-l" data-en="Tech-Hub Expeditions" data-zh="科技中心考察">Tech-Hub Expeditions</div>
+          <div class="h-stat-n">50<span style="font-size:.6em;font-family:var(--fb)">+</span></div>
+          <div class="h-stat-l" data-en="VC Partners" data-zh="創投合作夥伴">VC Partners</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-n"><span class="cnt" data-target="8">8</span></div>
-          <div class="h-stat-l" data-en="Core Modules" data-zh="核心模組">Core Modules</div>
+          <div class="h-stat-n"><span class="cnt" data-target="15">15</span></div>
+          <div class="h-stat-l" data-en="Spots per Cohort" data-zh="每期名額">Spots per Cohort</div>
         </div>
       </div>
     </div>
@@ -791,7 +919,7 @@ footer{background:#0B1623;padding:72px 0 0}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
         </div>
         <h3 data-en="Pitch deck built for local, rejected globally" data-zh="為本土設計的 Pitch Deck，全球場館全軍覆沒">Pitch deck built for local, rejected globally</h3>
-        <p data-en="NexusHub calls you strong. NorthStar VC passes immediately. Different frameworks, different expectations." data-zh="NexusHub 說你很強，NorthStar VC 直接 pass。框架不同，語言不同，預期不同。">Appwork calls you strong. YCC passes immediately. Different frameworks, different expectations.</p>
+        <p data-en="AppWorks calls you promising. Sequoia passes in round one. Different frameworks, different pattern-matches." data-zh="AppWorks 說你很有潛力，Sequoia 第一輪就 pass。框架不同，配對邏輯不同。">AppWorks calls you promising. Sequoia passes in round one. Different frameworks, different pattern-matches.</p>
       </div>
       <div class="pain-card reveal d3">
         <div class="pain-ico">
@@ -804,15 +932,9 @@ footer{background:#0B1623;padding:72px 0 0}
   </div>
 </section>
 
-<!-- CONNECTOR -->
-<div class="section-connector">
-  <svg class="connector-svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
-    <path class="connector-path" d="M0,30 C360,0 720,60 1080,30 S1440,0 1440,30"/>
-  </svg>
-</div>
 
 <!-- ══════════════════════ PILLARS ════════════════════════════ -->
-<section id="pillars" style="padding:120px 0 160px;background:var(--white);position:relative;overflow:hidden">
+<section id="pillars" class="section--dark" style="padding:120px 0 160px;background:var(--white);position:relative;overflow:hidden">
   <canvas id="pillars-canvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="pillars-inner">
@@ -892,17 +1014,17 @@ footer{background:#0B1623;padding:72px 0 0}
 <div class="divider"></div>
 
 <!-- ══════════════════ CURRICULUM ════════════════════════════ -->
-<section id="curriculum" style="padding:120px 0;background:var(--white)">
+<section id="curriculum" class="section--dark" style="padding:120px 0;background:var(--white)">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow" data-en="The Curriculum" data-zh="課程架構">The Curriculum</div>
-      <h2 class="section-h" style="font-size:clamp(2.2rem,3.8vw,3.4rem)" data-en="Eight Modules. <br>One Outcome: <br>Your First Term Sheet." data-zh="八個模組。 <br>一個目標： <br>你的第一張 Term Sheet。">Eight Modules. <br>One Outcome: <br>Your First Term Sheet.</h2>
+      <h2 class="section-h" style="font-size:clamp(2.2rem,3.8vw,3.4rem)" data-en="Eight Modules.<br>One Outcome:<br>Investor-Ready." data-zh="八個模組。<br>一個目標：<br>讓 VC 看懂你。">Eight Modules.<br>One Outcome:<br>Investor-Ready.</h2>
     </div>
     <div class="curriculum-inner">
       <div class="reveal d1" style="position:sticky;top:100px">
         <p class="section-p" data-en="Each module maps to a critical friction point in the global fundraising journey. Build the narrative, the model, and the confidence — in sequence." data-zh="每個模組對應出海募資路上一個關鍵的卡關點。按順序建立敘事、財務模型和信心。">Each module maps to a critical friction point in the global fundraising journey. Build the narrative, the model, and the confidence — in sequence.</p>
         <div style="margin-top:2rem;padding:1.5rem;background:var(--off);border-radius:16px;border:1px solid var(--border)">
-          <div style="font-family:var(--fd);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem" data-en="Program Format" data-zh="課程形式">Program Format</div>
+          <div style="font-family:var(--fb);font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem" data-en="Program Format" data-zh="課程形式">Program Format</div>
           <div style="display:flex;flex-direction:column;gap:.15rem">
             <div class="prog-fmt-item">
               <svg class="prog-fmt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -921,6 +1043,26 @@ footer{background:#0B1623;padding:72px 0 0}
               <span data-en="English + Chinese bilingual" data-zh="中英雙語">English + Chinese bilingual</span>
             </div>
           </div>
+          <!-- WHAT YOU'LL BUILD -->
+          <div style="margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border)">
+            <div style="font-family:var(--fb);font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem" data-en="What You'll Build" data-zh="你將帶走什麼">What You'll Build</div>
+            <div style="display:flex;flex-direction:column;gap:.55rem">
+              <div style="display:flex;align-items:flex-start;gap:.6rem">
+                <svg style="width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--teal)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span style="font-size:.9rem;color:var(--text2)" data-en="Investor-grade pitch narrative" data-zh="投資人等級的 Pitch 敘事">Investor-grade pitch narrative</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:.6rem">
+                <svg style="width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--teal)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span style="font-size:.9rem;color:var(--text2)" data-en="VC-grade financial model" data-zh="VC 級別財務模型">VC-grade financial model</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:.6rem">
+                <svg style="width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--teal)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span style="font-size:.9rem;color:var(--text2)" data-en="Warm introductions to global VCs" data-zh="全球 VC 溫暖引薦">Warm introductions to global VCs</span>
+              </div>
+            </div>
+          </div>
+          <!-- APPLY CTA -->
+          <button onclick="openPortal('ps-founder')" class="btn-primary" style="width:100%;justify-content:center;margin-top:1.4rem;font-size:.95rem;padding:13px 20px" data-en="Apply Now →" data-zh="立即申請 →">Apply Now →</button>
         </div>
       </div>
       <div class="reveal d2">
@@ -989,26 +1131,6 @@ footer{background:#0B1623;padding:72px 0 0}
           </ul></div></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ════════════════ METHODOLOGY BRIDGE ══════════════════════ -->
-<section id="methodology" style="padding:120px 0">
-  <div class="container" style="position:relative;z-index:2;text-align:center">
-    <div class="reveal">
-      <div class="eyebrow" data-en="The Framework" data-zh="方法論">The Framework</div>
-      <h2 class="section-h" style="color:#fff;font-size:clamp(2.2rem,5vw,4.5rem);max-width:760px;margin:0 auto 1.25rem" data-en="The Framework Powering Every Module." data-zh="驅動每個模組的<br>核心方法論">The Framework<br>Powering Every Module.</h2>
-      <p class="section-p" style="color:rgba(255,255,255,.7);margin:0 auto 3rem" data-en="Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum." data-zh="每個模組都建立在嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整方法論。">Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum.</p>
-      <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-meth" data-en="Explore the Full Methodology →" data-zh="探索完整方法論教材 →">Explore the Full Methodology →</a>
-    </div>
-    <div class="meth-metrics reveal">
-      <div class="mm"><div class="mm-n"><span class="cnt" data-target="8">8</span></div><div class="mm-l" data-en="Core Modules" data-zh="核心模組">Core Modules</div></div>
-      <div class="mm"><div class="mm-n"><span class="cnt" data-target="3">3</span></div><div class="mm-l" data-en="Continents in Network" data-zh="洲際網絡">Continents in Network</div></div>
-      <div class="mm"><div class="mm-n">50<span style="font-size:.7em;font-family:var(--fb)">+</span></div><div class="mm-l" data-en="Serial Founder Mentors" data-zh="連續創業導師">Serial Founder Mentors</div></div>
-      <div class="mm"><div class="mm-n"><span class="cnt" data-target="12">12</span></div><div class="mm-l" data-en="Tech-Hub Expeditions" data-zh="科技中心考察">Tech-Hub Expeditions</div></div>
     </div>
   </div>
 </section>
@@ -1096,6 +1218,26 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <div class="divider"></div>
 
+<!-- ════════════════ METHODOLOGY BRIDGE ══════════════════════ -->
+<section id="methodology" style="padding:120px 0">
+  <div class="container" style="position:relative;z-index:2;text-align:center">
+    <div class="reveal">
+      <div class="eyebrow" data-en="The Framework" data-zh="方法論">The Framework</div>
+      <h2 class="section-h" style="color:#fff;font-size:clamp(2.2rem,5vw,4.5rem);max-width:760px;margin:0 auto 1.25rem" data-en="The Framework Powering Every Module." data-zh="驅動每個模組的<br>核心方法論">The Framework<br>Powering Every Module.</h2>
+      <p class="section-p" style="color:rgba(255,255,255,.7);margin:0 auto 3rem" data-en="Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum." data-zh="每個模組都建立在嚴謹、經過實戰驗證的策略框架上。探索驅動這套課程的完整方法論。">Every module is grounded in a rigorous, field-tested strategic framework. Explore the full methodology that powers this curriculum.</p>
+      <a href="https://vincentt-wang.github.io/marketing-strategy-course/" target="_blank" class="btn-meth" data-en="Explore the Full Methodology →" data-zh="探索完整方法論教材 →">Explore the Full Methodology →</a>
+    </div>
+    <div class="meth-metrics reveal">
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="8">8</span></div><div class="mm-l" data-en="Core Modules" data-zh="核心模組">Core Modules</div></div>
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="3">3</span></div><div class="mm-l" data-en="Continents in Network" data-zh="洲際網絡">Continents in Network</div></div>
+      <div class="mm"><div class="mm-n">50<span style="font-size:.7em;font-family:var(--fb)">+</span></div><div class="mm-l" data-en="Serial Founder Mentors" data-zh="連續創業導師">Serial Founder Mentors</div></div>
+      <div class="mm"><div class="mm-n"><span class="cnt" data-target="12">12</span></div><div class="mm-l" data-en="Tech-Hub Expeditions" data-zh="科技中心考察">Tech-Hub Expeditions</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ════════════════════ TEAM ════════════════════════════════ -->
 <section id="team">
   <div class="container">
@@ -1105,32 +1247,31 @@ footer{background:#0B1623;padding:72px 0 0}
     </div>
     <div class="team-grid reveal">
       <div class="team-card">
-        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=47" alt="Co-Founder"></div>
-        <div class="team-name" data-en="Emma Tsai" data-zh="蔡怡君">Emma Tsai</div>
-        <div class="team-role" data-en="Co-Founder" data-zh="共同創辦人">Co-Founder</div>
-        <div class="team-bio" data-en="Former McKinsey consultant, Asia-Pacific practice. Built and sold a D2C brand in 18 months. Deep expertise in go-to-market for APAC and MENA markets." data-zh="前麥肯錫亞太區顧問。在 18 個月內建立並出售一個 D2C 品牌。深耕亞太與中東北非市場的市場進入策略。">Former McKinsey consultant, Asia-Pacific practice. Built and sold a D2C brand in 18 months. Deep expertise in go-to-market for APAC and MENA markets.</div>
+        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=5" alt="Tina Cheng"></div>
+        <div class="team-name" data-en="Tina Cheng" data-zh="鄭文婷">Tina Cheng</div>
+        <div class="team-role" data-en="Co-Founder · Serial Entrepreneur" data-zh="共同創辦人 · 連續創業家">Co-Founder · Serial Entrepreneur</div>
+        <div class="team-bio" data-en="6x founder across US and Asia-Pacific markets. Led e-commerce company to $65M exit. Former investment bank MD overseeing $1B+ AUM. CFA charterholder. Guest lecturer, USC Marshall School of Business." data-zh="橫跨美國與亞太的 6 次創業家。帶領電商公司以 6,500 萬美元成功出售。前投資銀行董事總經理，管理逾 10 億美元資產。CFA 特許持有人、南加大企管學院客座教授。">6x founder across US and Asia-Pacific markets. Led e-commerce company to $65M exit. Former investment bank MD overseeing $1B+ AUM. CFA charterholder. Guest lecturer, USC Marshall School of Business.</div>
         <div class="team-socials">
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+          <a href="#" onclick="showDemoNotice();return false;" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
         </div>
       </div>
       <div class="team-card">
-        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=33" alt="Co-Founder"></div>
-        <div class="team-name" data-en="Ryan Wu" data-zh="吳俊霖">Ryan Wu</div>
-        <div class="team-role" data-en="Co-Founder" data-zh="共同創辦人">Co-Founder</div>
-        <div class="team-bio" data-en="YC S19 alum. Former CTO of two venture-backed startups. Passionate about building founder-first learning experiences and cross-border deal flow." data-zh="YC S19 校友。曾任兩家風投支持新創的技術長。致力於打造以創辦人為核心的學習體驗與跨境交易機會。">YC S19 alum. Former CTO of two venture-backed startups. Passionate about building founder-first learning experiences and cross-border deal flow.</div>
+        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=11" alt="Terry Hsiao"></div>
+        <div class="team-name" data-en="Terry Hsiao" data-zh="蕭一白">Terry Hsiao</div>
+        <div class="team-role" data-en="Co-Founder · Serial Entrepreneur" data-zh="共同創辦人 · 連續創業家">Co-Founder · Serial Entrepreneur</div>
+        <div class="team-bio" data-en="Silicon Valley serial entrepreneur and angel investor. First venture acquired for $425M. Second company taken public on NYSE via SPAC. Board Chair, Jade Science & Technology Association (Washington DC). Lecturer in Innovation & Entrepreneurship, George Washington University." data-zh="矽谷連續創業家與天使投資人。首次創業以 4.25 億美元被併購。第二次創業透過 SPAC 於紐交所上市。現任華府玉山科技協會理事長、美國喬治華盛頓大學創新與創業講座教授。">Silicon Valley serial entrepreneur and angel investor. First venture acquired for $425M. Second company taken public on NYSE via SPAC. Board Chair, Jade Science & Technology Association (Washington DC). Lecturer in Innovation & Entrepreneurship, George Washington University.</div>
         <div class="team-socials">
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" onclick="showDemoNotice();return false;" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
         </div>
       </div>
       <div class="team-card">
-        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Project Lead"></div>
-        <div class="team-name" data-en="Marcus Lee" data-zh="李明翰">Marcus Lee</div>
-        <div class="team-role" data-en="Project Lead" data-zh="專案主管">Project Lead</div>
-        <div class="team-bio" data-en="Previously VP of Growth at a Series B SaaS company. Raised $4.2M across angel + pre-seed. Led market expansion across SEA and Japan." data-zh="曾任 Series B SaaS 公司成長副總裁。完成天使輪與種子前輪共 420 萬美元融資。主導東南亞與日本市場擴張。">Previously VP of Growth at a Series B SaaS company. Raised $4.2M across angel + pre-seed. Led market expansion across SEA and Japan.</div>
+        <div class="team-avatar"><img src="https://i.pravatar.cc/150?img=68" alt="Vincent Wang"></div>
+        <div class="team-name" data-en="Vincent Wang" data-zh="王文俊">Vincent Wang</div>
+        <div class="team-role" data-en="Program Director" data-zh="計畫總監">Program Director</div>
+        <div class="team-bio" data-en="Marketing strategist and founder educator. Leads the GVA curriculum design and cohort experience. Focused on helping Taiwan's deep tech founders build investor-grade narratives for global capital markets." data-zh="行銷策略師與創辦人教育者。主導 GVA 課程設計與梯次體驗。專注協助台灣深科技創辦人打造全球資本市場所需的投資人等級敘事。">Marketing strategist and founder educator. Leads the GVA curriculum design and cohort experience. Focused on helping Taiwan's deep tech founders build investor-grade narratives for global capital markets.</div>
         <div class="team-socials">
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" onclick="showDemoNotice();return false;" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+          <a href="#" onclick="showDemoNotice();return false;" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
       </div>
     </div>
@@ -1173,7 +1314,7 @@ footer{background:#0B1623;padding:72px 0 0}
 <div class="divider"></div>
 
 <!-- ════════════════════ PRESS ════════════════════════════════ -->
-<section id="press">
+<section id="press" class="section--dark">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:.5rem">
       <div class="eyebrow" data-en="In the Press" data-zh="媒體報導">In the Press</div>
@@ -1388,11 +1529,18 @@ footer{background:#0B1623;padding:72px 0 0}
 
 <script>
 /* ── PROGRESS BAR ─────────────────────────────────────────── */
+function updateNav(){
+  const navEl=document.getElementById('nav');
+  const y=window.scrollY;
+  navEl.classList.toggle('scrolled',y>80);
+  navEl.classList.toggle('hero-nav',y<=80);
+}
 window.addEventListener('scroll',()=>{
   const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
   document.getElementById('bar').style.width=pct+'%';
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
-});
+  updateNav();
+},{ passive:true });
+updateNav();
 
 /* ── MOBILE MENU ──────────────────────────────────────────── */
 function openMob(){document.getElementById('mobMenu').classList.add('open')}
@@ -1409,18 +1557,10 @@ const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('vis');
-      // animate connector paths
-      e.target.querySelectorAll&&e.target.querySelectorAll('.connector-path').forEach(p=>p.classList.add('vis'));
     }
   });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
-// Connector path observer
-const pathObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
-},{threshold:.5});
-document.querySelectorAll('.connector-path').forEach(p=>pathObs.observe(p));
 
 /* ── COUNTER ANIMATION ────────────────────────────────────── */
 const cntObs=new IntersectionObserver(entries=>{
@@ -1474,8 +1614,11 @@ function toggleAcc(item){
   sec.addEventListener('mousemove',e=>{const r=sec.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;},{passive:true});
   sec.addEventListener('mouseleave',()=>{mx=-9999;my=-9999;});
 
+  let _vis=false;
+  new IntersectionObserver(es=>{_vis=es[0].isIntersecting},{threshold:0}).observe(sec);
   function loop(){
     requestAnimationFrame(loop);
+    if(!_vis)return;
     ctx.clearRect(0,0,W,H);
     for(let i=0;i<N;i++){
       const p=pts[i];
@@ -1819,7 +1962,10 @@ applyLang(lang);
   const tipEl=document.getElementById('globe-tooltip');
   let prevHov=null;
 
+  let _gvis=false;
+  new IntersectionObserver(es=>{_gvis=es[0].isIntersecting},{threshold:0}).observe(canvas);
   function loop(){
+    if(!_gvis){requestAnimationFrame(loop);return;}
     frame++;
     if(!isDrag){
       if(returning){
@@ -2287,12 +2433,12 @@ applyLang(lang);
   }
 
   const LAYERS = [
-    {m:'mtn', base:.34, p0:0,   spd:.24, a:.13, g:.38},
-    {m:'mtn', base:.43, p0:1.9, spd:.17, a:.20, g:.52},
-    {m:'mtn', base:.51, p0:3.7, spd:.12, a:.28, g:.68},
-    {m:'sea', base:.70, p0:0,   spd:.88, a:.16, g:.44},
-    {m:'sea', base:.79, p0:2.2, spd:1.12,a:.24, g:.60},
-    {m:'sea', base:.88, p0:4.4, spd:1.36,a:.32, g:.76},
+    {m:'mtn', base:.34, p0:0,   spd:.24, a:.28, g:.55},
+    {m:'mtn', base:.43, p0:1.9, spd:.17, a:.38, g:.70},
+    {m:'mtn', base:.51, p0:3.7, spd:.12, a:.50, g:.85},
+    {m:'sea', base:.70, p0:0,   spd:.88, a:.32, g:.60},
+    {m:'sea', base:.79, p0:2.2, spd:1.12,a:.44, g:.75},
+    {m:'sea', base:.88, p0:4.4, spd:1.36,a:.56, g:.90},
   ];
 
   function loop() {
@@ -2376,8 +2522,11 @@ applyLang(lang);
   let isMobile=matchMedia('(pointer:coarse)').matches;
   matchMedia('(pointer:coarse)').addEventListener('change',e=>{isMobile=e.matches;});
 
+  let _hvis=false;
+  new IntersectionObserver(es=>{_hvis=es[0].isIntersecting},{threshold:0}).observe(hero);
   function loop(){
     requestAnimationFrame(loop);
+    if(!_hvis)return;
     ctx.clearRect(0,0,W,H);
     t+=.011;
     mA+=(1-mA)*.04;
@@ -2524,8 +2673,8 @@ document.addEventListener('keydown', function(e){
 });
 
 function showDemoNotice(){
-  const lang = document.documentElement.getAttribute('data-lang') || 'en';
-  const msg = lang === 'zh'
+  const cur = (typeof lang!=='undefined' ? lang : document.documentElement.lang) || 'en';
+  const msg = cur === 'zh'
     ? '此為 Demo 展示網站，目前尚未對外開放申請。'
     : 'This is a demo site. Applications are not yet open.';
   var el = document.getElementById('demoToast');
@@ -2549,6 +2698,153 @@ function showDemoNotice(){
     el.style.transform = 'translateX(-50%) translateY(20px)';
   }, 3200);
 }
+
+/* ── METHODOLOGY: STARFIELD ANIMATION ───────────────────────── */
+(function(){
+  const sec=document.getElementById('methodology');
+  if(!sec)return;
+  const cnv=document.createElement('canvas');
+  cnv.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0';
+  sec.insertBefore(cnv,sec.firstChild);
+  const cont=sec.querySelector('.container');
+  if(cont){cont.style.position='relative';cont.style.zIndex='1';}
+  const ctx=cnv.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  let W=0,H=0,t=0;
+  const stars=[];
+  const N=240;
+
+  function resize(){
+    W=cnv.offsetWidth;H=cnv.offsetHeight;
+    cnv.width=W*dpr;cnv.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function initStars(){
+    stars.length=0;
+    for(let i=0;i<N;i++){
+      const big=Math.random()<0.10;
+      const teal=Math.random()<0.15;
+      const spd=0.04+Math.random()*0.09;
+      const ang=Math.random()*Math.PI*2;
+      stars.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r: big?0.9+Math.random()*0.7:0.2+Math.random()*.55,
+        base:0.04+Math.random()*.18,
+        sp:0.3+Math.random()*1.4,
+        ph:Math.random()*Math.PI*2,
+        vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd,
+        hist:[], big, col:teal?'6,182,212':'255,255,255'
+      });
+    }
+  }
+  let _mvis=false;
+  new IntersectionObserver(es=>{_mvis=es[0].isIntersecting},{threshold:0}).observe(sec);
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!_mvis)return;
+    ctx.clearRect(0,0,W,H);
+    t+=0.009;
+    stars.forEach(s=>{
+      // drift
+      s.x+=s.vx; s.y+=s.vy;
+      if(s.x<0)s.x=W; if(s.x>W)s.x=0;
+      if(s.y<0)s.y=H; if(s.y>H)s.y=0;
+      // trail history (last 8 positions)
+      s.hist.push({x:s.x,y:s.y});
+      if(s.hist.length>8)s.hist.shift();
+      const a=s.base*(0.35+0.65*Math.sin(t*s.sp+s.ph));
+      // draw trail
+      s.hist.forEach((p,i)=>{
+        const ta=a*(i/s.hist.length)*0.45;
+        ctx.beginPath();ctx.arc(p.x,p.y,s.r*.6,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${s.col},${ta.toFixed(3)})`;ctx.fill();
+      });
+      // draw star dot
+      if(s.big){
+        const gr=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*5);
+        gr.addColorStop(0,`rgba(${s.col},${(a*.4).toFixed(3)})`);
+        gr.addColorStop(1,`rgba(${s.col},0)`);
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r*5,0,Math.PI*2);
+        ctx.fillStyle=gr;ctx.fill();
+      }
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${s.col},${a.toFixed(3)})`;ctx.fill();
+    });
+  }
+  resize();initStars();
+  window.addEventListener('resize',()=>{resize();initStars();},{passive:true});
+  loop();
+})();
+
+/* ── TEAM: METEOR ANIMATION ──────────────────────────────────── */
+(function(){
+  const sec=document.getElementById('team');
+  if(!sec)return;
+  const cnv=document.createElement('canvas');
+  cnv.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0';
+  sec.style.position='relative';sec.style.overflow='hidden';
+  sec.insertBefore(cnv,sec.firstChild);
+  const cont=sec.querySelector('.container');
+  if(cont){cont.style.position='relative';cont.style.zIndex='1';}
+  const ctx=cnv.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  let W=0,H=0;
+  const meteors=[];
+  const ANG=Math.PI/5.2; // ~34° — 左上到右下斜角
+  const CX=Math.cos(ANG),SY=Math.sin(ANG);
+
+  function resize(){
+    W=cnv.offsetWidth;H=cnv.offsetHeight;
+    cnv.width=W*dpr;cnv.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function spawn(){
+    const len=100+Math.random()*160;
+    return{
+      x:Math.random()*W*0.85,   // 偏左側生成
+      y:-len*SY,
+      len,
+      speed:0.65+Math.random()*1.0,
+      life:0,maxLife:400,
+      alpha:0.28+Math.random()*0.28,
+      lw:1.3+Math.random()*1.4
+    };
+  }
+  let _tvis=false;
+  new IntersectionObserver(es=>{_tvis=es[0].isIntersecting},{threshold:0}).observe(sec);
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!_tvis)return;
+    ctx.clearRect(0,0,W,H);
+    if(Math.random()<0.018&&meteors.length<13)meteors.push(spawn());
+    for(let i=meteors.length-1;i>=0;i--){
+      const m=meteors[i];
+      m.life++;
+      // 右下方向漸隱
+      const progX=m.x/W, progY=m.y/H;
+      const prog=Math.max(progX,progY);
+      const fade=prog>0.75?(1-prog)/0.25:1;
+      m.x+=m.speed*CX; m.y+=m.speed*SY;
+      const tx=m.x-m.len*CX, ty=m.y-m.len*SY;
+      const g=ctx.createLinearGradient(tx,ty,m.x,m.y);
+      g.addColorStop(0,'rgba(8,145,178,0)');
+      g.addColorStop(0.5,`rgba(8,145,178,${(m.alpha*fade*0.38).toFixed(3)})`);
+      g.addColorStop(1,`rgba(6,182,212,${(m.alpha*fade).toFixed(3)})`);
+      ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(m.x,m.y);
+      ctx.strokeStyle=g;ctx.lineWidth=m.lw;ctx.stroke();
+      const hg=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,7);
+      hg.addColorStop(0,`rgba(255,255,255,${(m.alpha*fade*.9).toFixed(3)})`);
+      hg.addColorStop(0.4,`rgba(6,182,212,${(m.alpha*fade*.5).toFixed(3)})`);
+      hg.addColorStop(1,'rgba(6,182,212,0)');
+      ctx.beginPath();ctx.arc(m.x,m.y,7,0,Math.PI*2);
+      ctx.fillStyle=hg;ctx.fill();
+      if(m.x>W+m.len||m.y>H+m.len)meteors.splice(i,1);
+    }
+  }
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  loop();
+})();
 </script>
 </body>
 </html>
