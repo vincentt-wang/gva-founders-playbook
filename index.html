@@ -683,6 +683,26 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
 #curriculum .section-h{font-size:clamp(1.7rem,2.5vw,2.45rem);line-height:1.06}
 #curriculum .section-p{margin-bottom:0}
 #pillars.slide{padding-top:calc(64px + 1.6vh)!important;padding-bottom:1.6vh!important}
+
+/* curriculum module buttons: comfortable height (right col has headroom vs left panel) */
+#curriculum .acc-trigger{padding:1.05rem 1.5rem}
+#curriculum .acc-item{margin-bottom:.6rem}
+
+/* curriculum: shave headline + padding so all 8 taller buttons fit above the fold */
+#curriculum.slide{padding-top:calc(64px + .8vh)!important;padding-bottom:.8vh!important}
+#curriculum .section-h{font-size:clamp(1.6rem,2.15vw,2.25rem)}
+#curriculum .curriculum-inner{margin-top:.7rem}
+
+/* FIX: keyboard nav already clears the fixed nav (-navH); use scroll-margin for anchor clicks,
+   drop the double-counted 64px top padding, and force the curriculum headline smaller (beats inline) */
+.slide{padding-top:2.2vh!important;padding-bottom:2.2vh!important;scroll-margin-top:64px}
+#pillars.slide{padding-top:2.2vh!important;padding-bottom:2.2vh!important}
+#curriculum.slide{padding-top:1.4vh!important;padding-bottom:1.4vh!important}
+#curriculum .section-h{font-size:clamp(1.55rem,2.35vw,2.35rem)!important;line-height:1.08!important}
+
+/* slides fill the VISIBLE area (viewport minus the 68px fixed nav) so content centres in
+   what you actually see, not behind the nav */
+.slide{min-height:calc(100vh - 68px)!important;scroll-margin-top:68px!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
