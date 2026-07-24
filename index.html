@@ -2846,5 +2846,50 @@ function showDemoNotice(){
   loop();
 })();
 </script>
+
+<script>
+/* ── Presentation keyboard nav (ported from Trinity src/lib/presentation.ts) ──
+   ArrowDown / PageDown / Space / ArrowRight = next section anchor.
+   ArrowUp   / PageUp   / ArrowLeft          = previous section anchor.
+   Wheel / trackpad = free smooth scroll; a manual scroll resyncs the index to
+   the nearest section so the next keypress continues from where you are.
+   Ignores typing in form fields and respects prefers-reduced-motion. */
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ORDER = ['hero','about','pillars','global','curriculum','proof','methodology','team','press','ecosystem','video','apply','faq'];
+  function navH(){ var n=document.getElementById('nav'); return n ? n.offsetHeight : 0; }
+  /* offsetParent-chain absolute top — immune to current scroll and sticky pinning */
+  function absTop(el){ var y=0; while(el){ y+=el.offsetTop; el=el.offsetParent; } return y; }
+  function steps(){
+    var nav=navH(), out=[];
+    ORDER.forEach(function(id){ var el=document.getElementById(id); if(el) out.push(Math.max(0, absTop(el)-nav)); });
+    return out;
+  }
+  var idx=0, manual=false;
+  function nearest(ys){ var y=window.scrollY, best=0, bd=Infinity; ys.forEach(function(t,i){ var d=Math.abs(t-y); if(d<bd){bd=d;best=i;} }); return best; }
+  function glide(toY){
+    var startY=window.scrollY, dist=toY-startY, dur=1000, t0=null;
+    function eio(p){ return p<0.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
+    function frame(ts){ if(t0==null)t0=ts; var p=Math.min(1,(ts-t0)/dur); window.scrollTo({top:startY+dist*eio(p), behavior:'instant'}); if(p<1) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  }
+  function go(dir){
+    var ys=steps(); if(!ys.length) return;
+    if(manual){ idx=nearest(ys); manual=false; }
+    idx=Math.max(0, Math.min(ys.length-1, idx+dir));
+    glide(ys[idx]);
+  }
+  window.addEventListener('keydown', function(e){
+    var t=e.target;
+    if(t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+    if(e.metaKey||e.ctrlKey||e.altKey||e.shiftKey) return;
+    if(e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '||e.key==='Spacebar'||e.key==='ArrowRight'){ e.preventDefault(); go(1); }
+    else if(e.key==='ArrowUp'||e.key==='PageUp'||e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+  });
+  var onManual=function(){ manual=true; };
+  window.addEventListener('wheel', onManual, {passive:true});
+  window.addEventListener('touchmove', onManual, {passive:true});
+})();
+</script>
 </body>
 </html>
