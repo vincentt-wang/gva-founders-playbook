@@ -705,7 +705,7 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
 .slide{min-height:calc(100vh - 68px)!important;scroll-margin-top:68px!important}
 
 /* ── systeme.io 名單表單嵌入（2026-08-10） ── */
-.gva-optin{max-width:560px;margin:0 auto;text-align:center}
+.gva-optin{max-width:680px;margin:0 auto;text-align:center}
 .gva-optin-lead{font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.72);margin-bottom:18px}
 #gva-optin-form{margin-top:18px;border-radius:16px;overflow:hidden}
 #gva-optin-form iframe{max-width:100%;border-radius:16px;display:block;margin:0 auto}
@@ -2953,6 +2953,7 @@ function gvaOpenOptin(){
   if(!box||box.dataset.loaded)return;
   box.hidden=false; box.dataset.loaded='1';
   if(btn)btn.style.display='none';
+  var nt=document.querySelector('.gva-optin-note'); if(nt)nt.style.display='none';
   var sc=document.createElement('script');
   sc.id='form-script-tag-24996743';
   sc.src='https://new-vincent21.systeme.io/public/remote/page/433662329c3dc9463a81d18dbf848b498659c1de.js';
