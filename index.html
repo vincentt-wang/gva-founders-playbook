@@ -794,7 +794,7 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
         </div>
       </div>
       <div class="portal-btn-row">
-        <button onclick="showDemoNotice()" class="portal-btn" data-en="Start Application →" data-zh="開始申請 →">Start Application →</button>
+        <button onclick="gvaPortalToWaitlist()" class="portal-btn" data-en="Join the Waitlist →" data-zh="加入候補名單 →">Join the Waitlist →</button>
         <button class="portal-btn-outline" onclick="closePortal()" data-en="Not ready yet" data-zh="我還沒準備好">Not ready yet</button>
       </div>
     </div>
@@ -2947,6 +2947,12 @@ function showDemoNotice(){
 })();
 
 /* ── 名單表單：點擊才載入 systeme.io 嵌入（2026-08-10） ── */
+function gvaPortalToWaitlist(){
+  try{closePortal()}catch(e){}
+  var a=document.getElementById('apply');
+  if(a)a.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(gvaOpenOptin,500);
+}
 function gvaOpenOptin(){
   var box=document.getElementById('gva-optin-form');
   var btn=document.getElementById('gva-optin-open');
