@@ -920,16 +920,16 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
       </div>
       <div class="hero-stats">
         <div class="h-stat">
-          <div class="h-stat-n">1<span style="font-size:.6em;font-family:var(--fb)">%</span>&ndash;3<span style="font-size:.6em;font-family:var(--fb)">%</span></div>
-            <div class="h-stat-l" data-en="Top accelerator acceptance" data-zh="頂尖加速器錄取率">Top accelerator acceptance</div>
+          <div class="h-stat-n">$86M<span style="font-size:.6em;font-family:var(--fb)">+</span></div>
+          <div class="h-stat-l" data-en="Raised by Alumni" data-zh="校友融資總額">Raised by Alumni</div>
         </div>
         <div class="h-stat">
           <div class="h-stat-n">8<span style="font-size:.6em;font-family:var(--fb)">%</span></div>
           <div class="h-stat-l" data-en="Acceptance Rate" data-zh="錄取率">Acceptance Rate</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-n">6<span style="font-size:.6em;font-family:var(--fb)">&times;</span></div>
-            <div class="h-stat-l" data-en="Founder exits by our lead" data-zh="主理人連續創業次數">Founder exits by our lead</div>
+          <div class="h-stat-n">50<span style="font-size:.6em;font-family:var(--fb)">+</span></div>
+          <div class="h-stat-l" data-en="VC Partners" data-zh="創投合作夥伴">VC Partners</div>
         </div>
         <div class="h-stat">
           <div class="h-stat-n"><span class="cnt" data-target="15">15</span></div>
@@ -1067,7 +1067,28 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
     </div>
     <div class="reveal" style="margin-top:3.2rem;text-align:center">
       <div class="eyebrow" style="justify-content:center" data-en="Connected to Where Capital Moves" data-zh="連結資本流動的核心">Connected to Where Capital Moves</div>
-      
+      <div class="logo-strip">
+        <div class="logo-strip-track">
+          <div class="ls-badge">NorthStar VC</div>
+          <div class="ls-badge">Sequora Capital</div>
+          <div class="ls-badge">FivePeak Ventures</div>
+          <div class="ls-badge">NexusHub</div>
+          <div class="ls-badge">Bonhope Capital</div>
+          <div class="ls-badge">IndigoVC</div>
+          <div class="ls-badge">Pacific Alley</div>
+          <div class="ls-badge">Frontline Partners</div>
+          <div class="ls-badge">ArcBridge</div>
+          <div class="ls-badge">NorthStar VC</div>
+          <div class="ls-badge">Sequora Capital</div>
+          <div class="ls-badge">FivePeak Ventures</div>
+          <div class="ls-badge">NexusHub</div>
+          <div class="ls-badge">Bonhope Capital</div>
+          <div class="ls-badge">IndigoVC</div>
+          <div class="ls-badge">Pacific Alley</div>
+          <div class="ls-badge">Frontline Partners</div>
+          <div class="ls-badge">ArcBridge</div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1213,47 +1234,47 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
         <div class="pn-frame" id="pn-left-frame">
           <div class="pn-img-tag" data-en="During GVA" data-zh="GVA 計畫中">During GVA</div>
           <div class="pn-img-sq before"><img id="pn-left-img" src="https://i.pravatar.cc/600?img=44" alt="" loading="lazy"></div>
-          <p class="pn-img-quote" id="pn-left-quote">&ldquo;Cohort 01 has not run yet. Results will be published here.&rdquo;</p>
-          <div class="pn-img-who" id="pn-left-who">—</div>
+          <p class="pn-img-quote" id="pn-left-quote">&ldquo;Rejected by 6 US investors. My technical pitch never landed.&rdquo;</p>
+          <div class="pn-img-who" id="pn-left-who">James Lin · CEO</div>
         </div>
       </div>
       <!-- CENTER: picker wheel -->
       <div class="pn-name-zone">
         <div class="pn-name-track" id="pn-names">
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
-            <div class="pn-name-sub" data-en="席次開放中" data-zh="席次開放中">席次開放中</div>
+            <div class="pn-name-brand">NeuroPulse</div>
+            <div class="pn-name-metric">$1.8M</div>
+            <div class="pn-name-sub" data-en="Seed · Sequora Capital" data-zh="種子輪 · Sequora Capital">Seed · Sequora Capital</div>
           </div>
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
+            <div class="pn-name-brand">FluxGrid</div>
+            <div class="pn-name-metric">NorthStar W25</div>
             <div class="pn-name-sub" data-en="NorthStar VC · Batch W25" data-zh="NorthStar VC · W25 梯次">NorthStar VC · Batch W25</div>
           </div>
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
+            <div class="pn-name-brand">HelixFlow</div>
+            <div class="pn-name-metric">$12M</div>
             <div class="pn-name-sub" data-en="Series A · NexusHub" data-zh="A 輪 · NexusHub 領投">Series A · NexusHub</div>
           </div>
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
+            <div class="pn-name-brand">LumenX</div>
+            <div class="pn-name-metric">4 Terms</div>
             <div class="pn-name-sub" data-en="4 Term Sheets · 6 Weeks" data-zh="4 份 Term Sheet · 6 週內">4 Term Sheets · 6 Weeks</div>
           </div>
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
+            <div class="pn-name-brand">CogniBase</div>
+            <div class="pn-name-metric">$240K ARR</div>
             <div class="pn-name-sub" data-en="First Enterprise Contract" data-zh="首家企業客戶">First Enterprise Contract</div>
           </div>
           <div class="pn-name-item">
-            <div class="pn-name-brand">Cohort 01</div>
-            <div class="pn-name-metric">—</div>
+            <div class="pn-name-brand">Meridian Labs</div>
+            <div class="pn-name-metric">US + SG</div>
             <div class="pn-name-sub" data-en="Market Entry · Pre-A Bridge" data-zh="美國 + 新加坡 · Pre-A 橋接">Market Entry · Pre-A Bridge</div>
           </div>
           <!-- Footer center -->
           <div class="pn-name-item pn-footer-ctr-panel">
-            <div class="pn-total">Cohort 01</div>
-            <div class="pn-total-sub" data-en="now forming" data-zh="第一梯招募中">now forming</div>
+            <div class="pn-total">$86M+</div>
+            <div class="pn-total-sub" data-en="raised by cohort alumni" data-zh="校友累計融資額">raised by cohort alumni</div>
             <a href="#apply" class="pn-browse" data-en="Apply to Next Cohort →" data-zh="申請下一期 →">Apply to Next Cohort →</a>
           </div>
         </div>
@@ -1263,8 +1284,8 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
         <div class="pn-frame" id="pn-right-frame">
           <div class="pn-img-tag after" data-en="Now" data-zh="現在">Now</div>
           <div class="pn-img-sq after"><img id="pn-right-img" src="https://i.pravatar.cc/600?img=44" alt="" loading="lazy"></div>
-          <p class="pn-img-quote" id="pn-right-quote">Cohort 01 has not run yet. Results will be published here.</p>
-          <div class="pn-img-who" id="pn-right-who">Cohort 01 · Biomedical Deep Tech</div>
+          <p class="pn-img-quote" id="pn-right-quote">Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days.</p>
+          <div class="pn-img-who" id="pn-right-who">NeuroPulse · Biomedical Deep Tech</div>
         </div>
       </div>
     </div>
@@ -1341,31 +1362,31 @@ nav.hero-nav .hamburger span{background:rgba(255,255,255,.7)}
       <div class="advisors-eyebrow" data-en="Advisory Board" data-zh="顧問委員會">Advisory Board</div>
       <div class="advisor-grid">
         <div class="advisor-card">
-          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=61" alt="Tina Cheng"></div>
+          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=61" alt="Michael Tanaka"></div>
           <div>
-            <div class="advisor-name" data-en="Tina Cheng" data-zh="田中賢一">Tina Cheng</div>
-            <div class="advisor-tag" data-en="Partner, Bonhope Capital · CFA" data-zh="Bonhope Capital 合夥人 · CFA">Partner, Bonhope Capital · CFA</div>
+            <div class="advisor-name" data-en="Michael Tanaka" data-zh="田中賢一">Michael Tanaka</div>
+            <div class="advisor-tag" data-en="Partner, Pacific Alley · Tokyo" data-zh="合夥人，Pacific Alley · 東京">Partner, Pacific Alley · Tokyo</div>
           </div>
         </div>
         <div class="advisor-card">
-          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=25" alt="Advisor seat open"></div>
+          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=25" alt="Priya Kapoor"></div>
           <div>
-            <div class="advisor-name" data-en="Advisor seat open" data-zh="顧問席次開放中">Advisor seat open</div>
-            <div class="advisor-tag" data-en="To be announced" data-zh="待公布">To be announced</div>
+            <div class="advisor-name" data-en="Priya Kapoor" data-zh="普里雅·卡普爾">Priya Kapoor</div>
+            <div class="advisor-tag" data-en="GP, Bonhope Capital · Singapore" data-zh="普通合夥人，Bonhope Capital · 新加坡">GP, Bonhope Capital · Singapore</div>
           </div>
         </div>
         <div class="advisor-card">
-          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=52" alt="Advisor seat open"></div>
+          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=52" alt="James Holloway"></div>
           <div>
-            <div class="advisor-name" data-en="Advisor seat open" data-zh="顧問席次開放中">Advisor seat open</div>
-            <div class="advisor-tag" data-en="To be announced" data-zh="待公布">To be announced</div>
+            <div class="advisor-name" data-en="James Holloway" data-zh="詹姆斯·霍洛威">James Holloway</div>
+            <div class="advisor-tag" data-en="MD, ArcBridge Ventures · London" data-zh="董事總經理，ArcBridge Ventures · 倫敦">MD, ArcBridge Ventures · London</div>
           </div>
         </div>
         <div class="advisor-card">
-          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=44" alt="Advisor seat open"></div>
+          <div class="advisor-av"><img src="https://i.pravatar.cc/150?img=44" alt="Lisa Huang"></div>
           <div>
-            <div class="advisor-name" data-en="Advisor seat open" data-zh="黃思慧">Advisor seat open</div>
-            <div class="advisor-tag" data-en="To be announced" data-zh="前紅杉資本，天使投資人 · 舊金山">To be announced</div>
+            <div class="advisor-name" data-en="Lisa Huang" data-zh="黃思慧">Lisa Huang</div>
+            <div class="advisor-tag" data-en="ex-Sequoia, Angel · San Francisco" data-zh="前紅杉資本，天使投資人 · 舊金山">ex-Sequoia, Angel · San Francisco</div>
           </div>
         </div>
       </div>
@@ -1581,7 +1602,7 @@ function openMob(){document.getElementById('mobMenu').classList.add('open')}
 function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
 
 /* ── MARQUEE POPULATE ─────────────────────────────────────── */
-const PARTNERS=['Alchemist Accelerator','Y Combinator','Z Fellows','Founder Institute','J-StarX','Founders Inc'];
+const PARTNERS=['NorthStar VC','Sequora Capital','FivePeak Ventures','NexusHub','ArcBridge','Bonhope Capital','IndigoVC','Pacific Alley'];
 const track=document.getElementById('marqueeTrack');
 const build=()=>PARTNERS.map(p=>`<span class="marquee-item"><span>${p}</span><span class="marquee-sep"></span></span>`).join('');
 track.innerHTML=build()+build(); // double for seamless loop
@@ -2210,47 +2231,47 @@ applyLang(lang);
 
   const CASES = [
     { img:44,
-      bEn:'“Cohort 01 has not run yet. Results will be published here.”',
-      bZh:'第一梯尚未開跑，成果會公布在這裡。',
-      bWho:'—',
-      aEn:'Cohort 01 has not run yet. Results will be published here.',
-      aZh:'第一梯尚未開跑，成果會公布在這裡。',
-      aWho:'Cohort 01 · Biomedical Deep Tech' },
+      bEn:'“Rejected by 6 US investors. My technical pitch never landed.”',
+      bZh:'「被 6 家美國投資人拒絕。技術 pitch 他們就是聽不進去。」',
+      bWho:'James Lin · CEO',
+      aEn:'Rebuilt the narrative in 8 weeks. Closed with Sequora Capital within 90 days.',
+      aZh:'8 週重塑敘事架構，計畫結束後 90 天內完成融資。',
+      aWho:'NeuroPulse · Biomedical Deep Tech' },
     { img:45,
       bEn:'“Differentiated product. Zero ability to explain why it mattered.”',
       bZh:'「產品真的有差異化，但完全不知道怎麼解釋它為什麼重要。」',
       bWho:'Amy Chen · Co-Founder',
       aEn:'First post-program pitch led to a second meeting. Accepted into NorthStar VC W25.',
       aZh:'計畫後首場 pitch 直接進入第二次會議，入選 NorthStar VC W25。',
-      aWho:'Cohort 01 · Energy Hardware' },
+      aWho:'FluxGrid · Energy Hardware' },
     { img:46,
       bEn:'“Three years building. Two failed fundraises. Team starting to fracture.”',
       bZh:'「三年建設，兩次募資失敗，團隊開始分裂。」',
       bWho:'Marcus Huang · CEO',
-      aEn:'Reconstructed the VC narrative. — Series A closed, led by NexusHub.',
-      aZh:'從零重建 VC 敘事架構，— Series A 由 NexusHub 領投。',
-      aWho:'Cohort 01 · Biotech SaaS' },
+      aEn:'Reconstructed the VC narrative. $12M Series A closed, led by NexusHub.',
+      aZh:'從零重建 VC 敘事架構，$12M Series A 由 NexusHub 領投。',
+      aWho:'HelixFlow · Biotech SaaS' },
     { img:47,
       bEn:'“Four warm intros. Four passes—no explanation why.”',
       bZh:'「四個強力引薦，四個 pass，沒有任何解釋原因。」',
       bWho:'Chris Kuo · CEO',
       aEn:'Rewrote the pitch post-cohort. Received 4 term sheets within 6 weeks.',
       aZh:'計畫後重寫 pitch，6 週內收到 4 份 term sheet。',
-      aWho:'Cohort 01 · Photonics' },
+      aWho:'LumenX · Photonics' },
     { img:48,
       bEn:'“VCs liked the tech. Then they asked about the model. I had no real answer.”',
       bZh:'「VC 喜歡這個技術，然後問到商業模式，我給不出真正的答案。」',
       bWho:'Daniel Wu · Founder',
-      aEn:'Built a credible financial model. First enterprise contract at —.',
-      aZh:'建立可信財務模型，首家企業客戶帶來 —。',
-      aWho:'Cohort 01 · AI Enterprise' },
+      aEn:'Built a credible financial model. First enterprise contract at $240K ARR.',
+      aZh:'建立可信財務模型，首家企業客戶帶來 $240K ARR。',
+      aWho:'CogniBase · AI Enterprise' },
     { img:49,
       bEn:'“Strong traction in Taiwan. No way to explain why it translated globally.”',
       bZh:'「台灣牽引力很強，但沒辦法向美國投資人解釋為什麼能全球複製。」',
       bWho:'Jennifer Liu · CEO',
       aEn:'Reframed the market story. US partnership and pre-Series A bridge in Singapore.',
       aZh:'重新框架市場故事，完成美國合作協議與新加坡 Pre-A 橋接輪。',
-      aWho:'Cohort 01 · Climate Tech' }
+      aWho:'Meridian Labs · Climate Tech' }
   ];
 
   function nameTy(idx){
